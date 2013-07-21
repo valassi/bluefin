@@ -1,0 +1,582 @@
+\section{Nominal correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
+\hline
+AXS &     103.00 $\pm$       3.87 &      40.00 &      40.00 &      40.00 &      40.00 &       3.87\\
+BXS &      98.00 $\pm$       3.16 &      60.00 &      60.00 &      60.00 &      60.00 &       3.16\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny xs} &     100.00 $\pm$       2.45 &     100.00 &     100.00 &     100.00 &     100.00 &       2.45\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.00/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
+\hline
+BXS / AXS &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: nominal correlations). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Error.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\section{Modified correlations.}
+\subsection{Summary of results.}
+\begin{table}[h]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|l|c|c|c|}
+\hline
+Combination & BLUE & {\tiny Error} & {\tiny$\chi^2$/ndof} \\
+\hline
+Nominal correlations &     100.00 $\pm$      2.45 &       2.45 &       1.00/1\\
+\hline
+Minimize by global factor &     100.00 $\pm$      2.45 &       2.45 &       1.00/1\\
+Minimize by error sources &     100.00 $\pm$      2.45 &       2.45 &       1.00/1\\
+Minimize by off-diagonal elements &     100.00 $\pm$      2.45 &       2.45 &       1.00/1\\
+Remove negative CVWs &     100.00 $\pm$      2.45 &       2.45 &       1.00/1\\
+Onionize &     100.00 $\pm$      2.45 &       2.45 &       1.00/1\\
+\hline
+NO correlations &     100.00 $\pm$      2.45 &       2.45 &       1.00/1\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Summary table. BLUE's of the combinations performed with nominal and modified correlations.}
+\end{center}
+\end{table}
+
+\clearpage
+\subsection{Minimize correlations by a global rescaling factor.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
+\hline
+AXS &     103.00 $\pm$       3.87 &      40.00 &      40.00 &      40.00 &      40.00 &       3.87\\
+BXS &      98.00 $\pm$       3.16 &      60.00 &      60.00 &      60.00 &      60.00 &       3.16\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny xs} &     100.00 $\pm$       2.45 &     100.00 &     100.00 &     100.00 &     100.00 &       2.45\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.00/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} &Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny GlobalScaleFact} & \#0 &    1.0000 $\pm$ 0 & 0 & 0 & 0 & FIXED \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX(before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X are varied (between 0 and 1, starting at 1) if 1/I$^\mathrm{nom}$*dI/dX@1 $>$ 0.001 and dI/dX@0 $<$ 0.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
+\hline
+BXS / AXS &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by global factor). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Error. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Minimize correlations by one factor per error source.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
+\hline
+AXS &     103.00 $\pm$       3.87 &      40.00 &      40.00 &      40.00 &      40.00 &       3.87\\
+BXS &      98.00 $\pm$       3.16 &      60.00 &      60.00 &      60.00 &      60.00 &       3.16\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny xs} &     100.00 $\pm$       2.45 &     100.00 &     100.00 &     100.00 &     100.00 &       2.45\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.00/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} &Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny Error} & \#0 &    1.0000 $\pm$ 0 & 0 & 0 & 0 & FIXED \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX(before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X are varied (between 0 and 1, starting at 1) if 1/I$^\mathrm{nom}$*dI/dX@1 $>$ 0.001 and dI/dX@0 $<$ 0.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
+\hline
+BXS / AXS &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by error source). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Error. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Minimize correlations by one factor per off-diagonal element.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
+\hline
+AXS &     103.00 $\pm$       3.87 &      40.00 &      40.00 &      40.00 &      40.00 &       3.87\\
+BXS &      98.00 $\pm$       3.16 &      60.00 &      60.00 &      60.00 &      60.00 &       3.16\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny xs} &     100.00 $\pm$       2.45 &     100.00 &     100.00 &     100.00 &     100.00 &       2.45\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.00/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} &Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny BXS/AXS} & \#0 &    1.0000 $\pm$ 0 & 0 & 0 & 0 & FIXED \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX(before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X are varied (between 0 and 1, starting at 1) if 1/I$^\mathrm{nom}$*dI/dX@1 $>$ 0.001 and dI/dX@0 $<$ 0.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
+\hline
+BXS / AXS &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by off-diagonal elements). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Error. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Remove measurements with negative central value weights.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
+\hline
+AXS &     103.00 $\pm$       3.87 &      40.00 &      40.00 &      40.00 &      40.00 &       3.87\\
+BXS &      98.00 $\pm$       3.16 &      60.00 &      60.00 &      60.00 &      60.00 &       3.16\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny xs} &     100.00 $\pm$       2.45 &     100.00 &     100.00 &     100.00 &     100.00 &       2.45\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.00/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+N {\tiny meas} & \multicolumn{3}{c|}{Measurement removed in iteration} & \multirow{2}{*}{BLUE} & \multirow{2}{*}{\tiny Error} & \multirow{2}{*}{\tiny$\chi^2$/ndof}\\
+\cline{2-4}
+{\tiny in BLUE} & Removed & CVW/\% & MIW/\% & & & \\\hline
+\hline
+2 & {\em NONE} & N/A & N/A & 
+    100.00 $\pm$      2.45 &       2.45 &       1.00/1 \\
+\hline
+\end{tabular}
+\caption{From the original combination of 2 with nominal correlations, a new combination where all remaining 2 measurements have central value weights CVW$>$0 was derived by removing measurements iteratively. At each step of the iteration, the measurement with the most negative CVW$<=$0 in the combination with N measurements was removed until all remainining measurements had CVW$>$0 in the combination of N-1 measurements. No measurements were removed in this case as no measurements with CVW$<=$0 were found in the original combination of 2 measurements. For each iteration and for the final result, the results of the BLUE and the name, CVW and MIW of the measurement removed in that iteration are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
+\hline
+BXS / AXS &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in combination with CVW$>$0 measurements). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Error.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Onionize correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
+\hline
+AXS &     103.00 $\pm$       3.87 &      40.00 &      40.00 &      40.00 &      40.00 &       3.87\\
+BXS &      98.00 $\pm$       3.16 &      60.00 &      60.00 &      60.00 &      60.00 &       3.16\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny xs} &     100.00 $\pm$       2.45 &     100.00 &     100.00 &     100.00 &     100.00 &       2.45\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.00/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
+\hline
+BXS / AXS &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in onionization 1st recipe). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Error. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Zero correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
+\hline
+AXS &     103.00 $\pm$       3.87 &      40.00 &      40.00 &      40.00 &      40.00 &       3.87\\
+BXS &      98.00 $\pm$       3.16 &      60.00 &      60.00 &      60.00 &      60.00 &       3.16\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny xs} &     100.00 $\pm$       2.45 &     100.00 &     100.00 &     100.00 &     100.00 &       2.45\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.00/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
+\hline
+BXS / AXS &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: zero correlations). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AXS} & 
+\mathrm{BXS} \\
+\hline
+\mathrm{AXS} \hspace*{2pt} &      15.00 &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  0 &      10.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Error. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}

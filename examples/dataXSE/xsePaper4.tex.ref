@@ -1,0 +1,88 @@
+%\documentclass[11pt,a4paper,landscape]{article} % OLD 0.03
+\documentclass[11pt,landscape]{article} % NEW 0.4
+\usepackage[paperheight=210mm,paperwidth=296mm]{geometry} % NEW 0.04
+%%%\usepackage[paperheight=60mm,paperwidth=96mm]{geometry} % TEST FOR 0.04 (remove 15x20cm)
+\addtolength{\paperwidth}{0pt} % NEW 0.04
+\addtolength{\paperheight}{0pt} % NEW 0.04
+\usepackage{fancyhdr}
+\usepackage{graphicx} % For jpg pictures
+\usepackage{listings} % For \lstinputlisting
+\usepackage[x11names]{xcolor}% For \colorbox{yellow}
+\setlength\fboxsep{1pt} % width of \colorbox
+\usepackage[font={small}]{caption}
+\usepackage{multirow}
+\usepackage{float} % For the [H] option!
+
+% LANDSCAPE SETTINGS
+\setlength{\textwidth}{266mm} %A4 \paperheight=296mm => keep 15/15mm r/l margin
+\setlength{\textheight}{174mm} %A4 \paperwidth=210mm => keep 8/8mm t/b margin, add 2cm for fancyhdr
+%%%\setlength{\textwidth}{66mm} % TEST FOR 0.04 (remove 15x20cm)
+%%%\setlength{\textheight}{24mm} % TEST FOR 0.04 (remove 15x20cm)
+\addtolength{\textwidth}{0pt} % NEW 0.04
+\addtolength{\textheight}{0pt} % NEW 0.04
+\setlength{\voffset}{-17mm} % Shift upper left -25mm (-1in=0,0) + 8mm
+\setlength{\hoffset}{-10mm} % Shift upper left -25mm (-1in=0,0) + 15mm
+\setlength{\oddsidemargin}{0mm}
+\setlength{\evensidemargin}{0mm}
+\setlength{\topmargin}{0mm}
+
+% IMPROVE FLOAT HANDLING - but using [H] makes totalnumber and \textfraction unnecessary
+\setcounter{totalnumber}{100} % ALLOW MANY TABLES ON ONE PAGE
+\renewcommand{\textfraction}{0} % ALLOW MANY TABLES WITH ~0 TEXT ON ONE PAGE
+%%%\raggedbottom % DOES NOT WORK IN FLOAT PAGES? USE [H] AND _AVOID_ FLOAT PAGES!
+
+\begin{document}
+
+% NO HEADER
+%\setlength{\headheight}{15pt} % Make room for fancyhdr
+%\lhead{} % No left header (default: subsection number/title)
+%\chead{} % No center header (default: none)
+%\rhead{} % No right header (default: section number/title)
+%\renewcommand{\headrulewidth}{0pt} % No horizontal line in header
+%\setlength{\headsep}{0mm} % Vertical space below the horizontal line in the header
+
+% HEADER
+\setlength{\headheight}{15pt} % Make room for fancyhdr
+\renewcommand{\headrulewidth}{0.4pt} % Thickness of horizontal line in header
+\setlength{\headsep}{15pt} % Vertical space below the horizontal line in the header
+
+% FOOTER
+\setlength{\footskip}{30pt} % Make room for fancyhdr
+%%%\renewcommand{\footrulewidth}{0pt} % No horizontal line in footer
+\renewcommand{\footrulewidth}{0.4pt} % Thickness of horizontal line in footer
+\lfoot{\raisebox{-0.35cm}{\includegraphics[height=1cm]{BlueFinLogo.jpg}}\hspace*{3mm}{\sc BlueFin 01.00.00}}
+%%%{\it\tiny (BLUE Fisher Information aNalysis)}
+%%%\cfoot{} % Use default (\thepage)
+\cfoot{\thepage\\{\raisebox{1.4cm}[0pt][0pt]{\color{red}\em }}}
+%\rfoot{Cross section example XSE ({\tt xsePaper4.bfin})} % ERROR on Ex2_p15...
+% See http://tex.stackexchange.com/questions/203
+\newsavebox\myverbsavebox
+\newenvironment{myverbboxenv}{\lrbox\myverbsavebox}{\endlrbox}
+\begin{myverbboxenv}\verb"xsePaper4.bfin"\end{myverbboxenv}
+\rfoot{Cross section example XSE (\usebox\myverbsavebox)}
+
+\pagestyle{fancyplain} % Use fancy for all pages except chapter start
+
+% Decrease horizontal space between array columns
+\setlength\arraycolsep{2pt}
+
+\include{xsePaper4_body}
+
+\appendix
+\renewcommand\thesection{Appendix A\arabic{section}.}
+\renewcommand\thesubsection{A\thesection.\arabic{subsection}.}
+\section{Input data.}
+%%%\vspace*{1cm}
+%%%\lstset{breaklines=false,breakatwhitespace=false,numbers=left,basicstyle=\tiny\ttfamily}
+%%%\lstset{caption=\lstname,captionpos=b} % It works but prints the title in a strange place
+%%%\lstset{title=\lstname} % It works but prints the title in a strange place
+\begin{center}
+%%%\lstset{breaklines=false,breakatwhitespace=false,numbers=left,basicstyle=\tiny\ttfamily}
+%%%\fbox{\lstinputlisting{xsePaper4.bfin}}\\
+%\lstset{breaklines=false,breakatwhitespace=false,numbers=left,basicstyle=\scriptsize\ttfamily,frame=single} %OLD 0.03
+\lstset{breaklines=true,breakatwhitespace=false,numbers=left,basicstyle=\scriptsize\ttfamily,frame=single} %NEW 0.04
+\lstinputlisting{xsePaper4.bfin}
+Input data file: {\tt\lstname}.
+\end{center}
+
+\end{document}

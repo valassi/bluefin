@@ -1,0 +1,608 @@
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1. NOMINAL CORRELATIONS
+
+------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
+
+     AXS  95.00 +- 17.92 |  60.39 |  50.91 |  34.69 |  48.78 | 10.0 10.0 11.0
+     BXS 144.00 +- 44.63 | -11.90 |   8.20 |   8.97 |   9.61 | 14.0 40.0 14.0
+     CXS 115.00 +- 20.81 |  25.36 |  37.74 |  14.63 |  20.49 | 18.0 3.00 10.0
+     DXS 122.00 +- 25.00 |  26.15 |  26.15 |  26.15 |  21.12 | 25.0 0.00 0.00
+------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
+BLUE  xs 101.30 +- 12.78 | 100.00 | 123.01 |  84.44 | 100.00 | 10.1 2.04 7.51
+BLUE  xs (full precision): 101.30092 +- 12.7838
+Chi2 / d.o.f = 4.22615 / 3
+
+   CovM       AXS       BXS       CXS       DXS
+    AXS  321.0000  554.0000  140.0000    0.0000
+    BXS  554.0000 1992.0000  260.0000    0.0000
+    CXS  140.0000  260.0000  433.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+
+2. MINIMIZE WRT GLOBAL FACTOR
+
+DERIVATIVE ANALYSIS
+Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ GlobalScaleFact  |    #0 |     ??? +-     ??? | -0.7109 ->     ??? ->  0.3209 | ==> Vary in minimization #0
+
+MINIMIZE USING ROOT Minuit2
+Parameters    (%=FIXED)    #0
+START: f= 0.00000000 at 1.000
+END:   f= 0.97263682 at 0.798
+Minimization completed: minValue=0.9726368, edm=0.0000000, #calls=18       
+ROOT minimizer Minuit2 found a minimum
+
+DERIVATIVE ANALYSIS
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ GlobalScaleFact  |    #0 |  0.7983 +-  0.7219 | -0.7109 ->      ~0 ->  0.3209 | 
+
+------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
+
+     AXS  95.00 +- 17.92 |  50.25 |  52.34 |  31.91 |  45.11 | 10.0 10.0 11.0
+     BXS 144.00 +- 44.63 |  -5.70 |   8.43 |   2.66 |   5.12 | 14.0 40.0 14.0
+     CXS 115.00 +- 20.81 |  28.57 |  38.80 |  19.04 |  25.64 | 18.0 3.00 10.0
+     DXS 122.00 +- 25.00 |  26.88 |  26.88 |  26.88 |  24.13 | 25.0 0.00 0.00
+------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
+BLUE  xs 105.18 +- 12.96 | 100.00 | 126.47 |  80.48 | 100.00 | 9.87 4.08 7.34
+BLUE  xs (full precision): 105.17953 +- 12.9623
+Chi2 / d.o.f = 3.1221 / 3
+
+   CovM       AXS       BXS       CXS       DXS
+    AXS  321.0000  442.2818  111.7680    0.0000
+    BXS  442.2818 1992.0000  207.5691    0.0000
+    CXS  111.7680  207.5691  433.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+
+3. MINIMIZE WRT ERROR SOURCES
+
+DERIVATIVE ANALYSIS
+Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ Unc              |   Unc |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
+ Bkgd             |  Bkgd |     ??? +-     ??? | -0.3205 ->     ??? ->  0.3399 | ==> Vary in minimization #0
+ Lumi             |  Lumi |     ??? +-     ??? | -0.3904 ->     ??? -> -0.0190 | %FIXED%
+
+MINIMIZE USING ROOT Minuit2
+Error sources (%=FIXED)  %Unc,  Bkgd, %Lumi
+START: f= 0.00000000 at 1.000, 1.000, 1.000
+END:   f= 0.93314076 at 1.000, 0.467, 1.000
+Minimization completed: minValue=0.9331408, edm=0.0000000, #calls=16       
+ROOT minimizer Minuit2 found a minimum
+
+DERIVATIVE ANALYSIS
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ Unc              |   Unc |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
+ Bkgd             |  Bkgd |  0.4676 +-  0.7339 | -0.3205 ->      ~0 ->  0.3399 | 
+ Lumi             |  Lumi |  1.0000 +-     N/A | -0.3904 -> -0.1298 -> -0.0190 | %FIXED%
+
+------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
+
+     AXS  95.00 +- 17.92 |  45.56 |  54.56 |  28.78 |  43.99 | 10.0 10.0 11.0
+     BXS 144.00 +- 44.63 |  -1.78 |   8.79 |   0.29 |   1.72 | 14.0 40.0 14.0
+     CXS 115.00 +- 20.81 |  28.21 |  40.45 |  17.38 |  27.23 | 18.0 3.00 10.0
+     DXS 122.00 +- 25.00 |  28.02 |  28.02 |  28.02 |  27.06 | 25.0 0.00 0.00
+------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
+BLUE  xs 107.33 +- 13.23 | 100.00 | 131.82 |  74.47 | 100.00 | 9.78 4.69 7.58
+BLUE  xs (full precision): 107.33267 +- 13.2338
+Chi2 / d.o.f = 2.6244 / 3
+
+   CovM       AXS       BXS       CXS       DXS
+    AXS  321.0000  341.0360  124.0277    0.0000
+    BXS  341.0360 1992.0000  196.1108    0.0000
+    CXS  124.0277  196.1108  433.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+
+4. MINIMIZE WRT OFF DIAGONAL ELEMENTS
+
+DERIVATIVE ANALYSIS
+Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ BXS/AXS          |    #0 |     ??? +-     ??? | -0.2832 ->     ??? ->  0.4873 | ==> Vary in minimization #0
+ CXS/AXS          |    #1 |     ??? +-     ??? | -0.3292 ->     ??? -> -0.2624 | %FIXED%
+ CXS/BXS          |    #2 |     ??? +-     ??? | -0.0985 ->     ??? ->  0.0960 | ==> Vary in minimization #1
+ DXS/AXS          |    #3 |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
+ DXS/BXS          |    #4 |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
+ DXS/CXS          |    #5 |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
+
+MINIMIZE USING ROOT Minuit2
+Off-Diag Elem (%=FIXED)    #0,   %#1,    #2,   %#3,   %#4,   %#5
+START: f= 0.00000000 at 1.000, 1.000, 1.000, 1.000, 1.000, 1.000
+END:   f= 0.91029528 at 0.547, 1.000, 0.649, 1.000, 1.000, 1.000
+Minimization completed: minValue=0.9102953, edm=0.0000000, #calls=34       
+ROOT minimizer Minuit2 found a minimum
+
+DERIVATIVE ANALYSIS
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ BXS/AXS          |    #0 |  0.5473 +-  0.7069 | -0.2832 ->      ~0 ->  0.4873 | 
+ CXS/AXS          |    #1 |  1.0000 +-     N/A | -0.3292 -> -0.1702 -> -0.2624 | %FIXED%
+ CXS/BXS          |    #2 |  0.6493 +-  0.8223 | -0.0985 ->      ~0 ->  0.0960 | 
+ DXS/AXS          |    #3 |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
+ DXS/BXS          |    #4 |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
+ DXS/CXS          |    #5 |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
+
+------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
+
+     AXS  95.00 +- 17.92 |  44.06 |  55.93 |  26.34 |  44.06 | 10.0 10.0 11.0
+     BXS 144.00 +- 44.63 |   0.00 |   9.01 |   0.00 |   0.00 | 14.0 40.0 14.0
+     CXS 115.00 +- 20.81 |  27.22 |  41.46 |  15.31 |  27.22 | 18.0 3.00 10.0
+     DXS 122.00 +- 25.00 |  28.72 |  28.72 |  28.72 |  28.72 | 25.0 0.00 0.00
+------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
+BLUE  xs 108.20 +- 13.40 | 100.00 | 135.13 |  70.38 | 100.00 | 9.75 5.22 7.57
+BLUE  xs (full precision): 108.19911 +- 13.3989
+Chi2 / d.o.f = 2.57115 / 3
+
+   CovM       AXS       BXS       CXS       DXS
+    AXS  321.0000  303.2006  140.0000    0.0000
+    BXS  303.2006 1992.0000  168.8113    0.0000
+    CXS  140.0000  168.8113  433.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+
+5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S
+
+------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
+
+     AXS  95.00 +- 17.92 |  44.06 |  55.93 |  29.81 |  44.06 | 10.0 10.0 11.0
+     CXS 115.00 +- 20.81 |  27.22 |  41.46 |  15.35 |  27.22 | 18.0 3.00 10.0
+     DXS 122.00 +- 25.00 |  28.72 |  28.72 |  28.72 |  28.72 | 25.0 0.00 0.00
+------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
+BLUE  xs 108.20 +- 13.40 | 100.00 | 126.12 |  73.88 | 100.00 | 9.75 5.22 7.57
+BLUE  xs (full precision): 108.19909 +- 13.3989
+Chi2 / d.o.f = 1.27144 / 2
+
+   CovM       AXS       CXS       DXS
+    AXS  321.0000  140.0000    0.0000
+    CXS  140.0000  433.0000    0.0000
+    DXS    0.0000    0.0000  625.0000
+
+6. ONIONIZE
+
+Onionize source #0 (Unc)
+ CovOld       AXS       BXS       CXS       DXS
+    AXS  100.0000    0.0000    0.0000    0.0000
+    BXS    0.0000  196.0000    0.0000    0.0000
+    CXS    0.0000    0.0000  324.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+ CovNew       AXS       BXS       CXS       DXS
+    AXS  100.0000    0.0000    0.0000    0.0000
+    BXS    0.0000  196.0000    0.0000    0.0000
+    CXS    0.0000    0.0000  324.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+
+Onionize source #1 (Bkgd)
+ CovOld       AXS       BXS       CXS       DXS
+    AXS  100.0000  400.0000   30.0000    0.0000
+    BXS  400.0000 1600.0000  120.0000    0.0000
+    CXS   30.0000  120.0000    9.0000    0.0000
+    DXS    0.0000    0.0000    0.0000    0.0000
+ CovNew       AXS       BXS       CXS       DXS
+    AXS  100.0000  100.0000    9.0000    0.0000
+    BXS  100.0000 1600.0000    9.0000    0.0000
+    CXS    9.0000    9.0000    9.0000    0.0000
+    DXS    0.0000    0.0000    0.0000    0.0000
+
+Onionize source #2 (Lumi)
+ CovOld       AXS       BXS       CXS       DXS
+    AXS  121.0000  154.0000  110.0000    0.0000
+    BXS  154.0000  196.0000  140.0000    0.0000
+    CXS  110.0000  140.0000  100.0000    0.0000
+    DXS    0.0000    0.0000    0.0000    0.0000
+ CovNew       AXS       BXS       CXS       DXS
+    AXS  121.0000  121.0000  100.0000    0.0000
+    BXS  121.0000  196.0000  100.0000    0.0000
+    CXS  100.0000  100.0000  100.0000    0.0000
+    DXS    0.0000    0.0000    0.0000    0.0000
+
+------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
+
+     AXS  95.00 +- 17.92 |  41.99 |  53.23 |  28.33 |  41.99 | 10.0 10.0 11.0
+     BXS 144.00 +- 44.63 |   2.37 |   8.58 |   0.60 |   2.37 | 14.0 40.0 14.0
+     CXS 115.00 +- 20.81 |  28.30 |  39.46 |  18.53 |  28.30 | 18.0 3.00 10.0
+     DXS 122.00 +- 25.00 |  27.34 |  27.34 |  27.34 |  27.34 | 25.0 0.00 0.00
+------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
+BLUE  xs 109.20 +- 13.07 | 100.00 | 128.62 |  74.80 | 100.00 | 9.51 4.85 7.55
+BLUE  xs (full precision): 109.20300 +- 13.0720
+Chi2 / d.o.f = 2.21319 / 3
+
+   CovM       AXS       BXS       CXS       DXS
+    AXS  321.0000  221.0000  109.0000    0.0000
+    BXS  221.0000 1992.0000  109.0000    0.0000
+    CXS  109.0000  109.0000  433.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+
+7. NO CORRELATIONS
+
+------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
+
+     AXS  95.00 +- 17.92 |  41.39 |  41.39 |  41.39 |  41.39 | 10.0 10.0 11.0
+     BXS 144.00 +- 44.63 |   6.67 |   6.67 |   6.67 |   6.67 | 14.0 40.0 14.0
+     CXS 115.00 +- 20.81 |  30.68 |  30.68 |  30.68 |  30.68 | 18.0 3.00 10.0
+     DXS 122.00 +- 25.00 |  21.26 |  21.26 |  21.26 |  21.26 | 25.0 0.00 0.00
+------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
+BLUE  xs 110.14 +- 11.53 | 100.00 | 100.00 | 100.00 | 100.00 | 8.76 5.01 5.57
+BLUE  xs (full precision): 110.14437 +- 11.5264
+Chi2 / d.o.f = 1.56924 / 3
+
+   CovM       AXS       BXS       CXS       DXS
+    AXS  321.0000    0.0000    0.0000    0.0000
+    BXS    0.0000 1992.0000    0.0000    0.0000
+    CXS    0.0000    0.0000  433.0000    0.0000
+    DXS    0.0000    0.0000    0.0000  625.0000
+
+--------------------------------------------------------------------
+
+Create latex report: /afs/cern.ch/user/a/avalassi/blue2/sw/examples/dataXSE/xsePaper4_body.tex
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./xsePaper4.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty)
+No file xsePaper4.aux.
+(/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./xsePaper4_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16]) <use BlueFinLogo.jpg> [17] (./xsePaper4.bfin
+<use BlueFinLogo.jpg> [18]) <use BlueFinLogo.jpg> [19] (./xsePaper4.aux
+(./xsePaper4_body.aux)) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmr5.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
+8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
+Output written on xsePaper4.pdf (19 pages, 305863 bytes).
+Transcript written on xsePaper4.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./xsePaper4.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./xsePaper4.aux
+(./xsePaper4_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./xsePaper4_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16]) <use BlueFinLogo.jpg> [17] (./xsePaper4.bfin
+<use BlueFinLogo.jpg> [18]) <use BlueFinLogo.jpg> [19] (./xsePaper4.aux
+(./xsePaper4_body.aux)) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmr5.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
+8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
+Output written on xsePaper4.pdf (19 pages, 305863 bytes).
+Transcript written on xsePaper4.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./xsePaper4.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./xsePaper4.aux
+(./xsePaper4_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./xsePaper4_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16]) <use BlueFinLogo.jpg> [17] (./xsePaper4.bfin
+<use BlueFinLogo.jpg> [18]) <use BlueFinLogo.jpg> [19] (./xsePaper4.aux
+(./xsePaper4_body.aux)) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmr5.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
+8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
+Output written on xsePaper4.pdf (19 pages, 305863 bytes).
+Transcript written on xsePaper4.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./xsePaper4.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./xsePaper4.aux
+(./xsePaper4_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./xsePaper4_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16]) <use BlueFinLogo.jpg> [17] (./xsePaper4.bfin
+<use BlueFinLogo.jpg> [18]) <use BlueFinLogo.jpg> [19] (./xsePaper4.aux
+(./xsePaper4_body.aux)) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmr5.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
+8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
+Output written on xsePaper4.pdf (19 pages, 305863 bytes).
+Transcript written on xsePaper4.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./xsePaper4.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./xsePaper4.aux
+(./xsePaper4_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./xsePaper4_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16]) <use BlueFinLogo.jpg> [17] (./xsePaper4.bfin
+<use BlueFinLogo.jpg> [18]) <use BlueFinLogo.jpg> [19] (./xsePaper4.aux
+(./xsePaper4_body.aux)) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmr5.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
+8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
+Output written on xsePaper4.pdf (19 pages, 305863 bytes).
+Transcript written on xsePaper4.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./xsePaper4.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./xsePaper4.aux
+(./xsePaper4_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./xsePaper4_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16]) <use BlueFinLogo.jpg> [17] (./xsePaper4.bfin
+<use BlueFinLogo.jpg> [18]) <use BlueFinLogo.jpg> [19] (./xsePaper4.aux
+(./xsePaper4_body.aux)) )</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmr5.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
+8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
+Output written on xsePaper4.pdf (19 pages, 305863 bytes).
+Transcript written on xsePaper4.log.

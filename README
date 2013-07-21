@@ -1,0 +1,16 @@
+Welcome to BlueFin.
+
+This software is supported on SLC5 and SLC6 machines
+(and other variants of RedHat 5 and 6 distributions).
+The CVMFS file system is required to use the ROOT and 
+GCC libraries installed there.
+
+To build the software: type 'make'.
+
+You can also use the prebuilt bluefin binary in prebuilt/slc6.
+In that case, please use the provided setup.csh and setup.sh
+scripts in the same directory.
+
+Some examples of using bluefin are in the tests.sh script.
+
+For any question, please contact Andrea.Valassi(at)cern.ch.

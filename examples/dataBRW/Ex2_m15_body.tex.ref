@@ -1,0 +1,336 @@
+\section{Nominal correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|ccccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW{\tiny ele}/\%  & CVW{\tiny tau}/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & {\tiny Sys4}\\
+\hline
+Aele &      10.50 $\pm$       1.00 &      86.70 &  0 &  0 &  0 &  0 &       1.00 &  0\\
+Bele &      13.50 $\pm$       3.00 &      13.30 &  0 &  0 &  0 &  0 &       3.00 &  0\\
+\hline
+BLUE {\tiny ele} &      10.90 $\pm$       0.90 &     100.00 &  0 &  0 &  0 &  0 &       0.90 &  0\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\vspace*{-0.5cm}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|ccccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW{\tiny ele}/\%  & CVW{\tiny tau}/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & {\tiny Sys4}\\
+\hline
+Atau &       9.50 $\pm$       3.00 &  0 &      50.00 &  0 &  0 &       3.00 &  0 &  0\\
+Btau &      14.00 $\pm$       3.00 &  0 &      50.00 &  0 &  0 &  0 &  0 &       3.00\\
+\hline
+BLUE {\tiny tau} &      11.75 $\pm$       2.12 &  0 &     100.00 &  0 &  0 &       1.50 &  0 &       1.50\\
+\hline
+\end{tabular}
+\caption{BLUE's of the combination ($\chi^2$/ndof=      1.95/2).
+ Values /10000 are displayed. For each input measurement $i$, the central value weight CVW or $\lambda_i^\alpha$ with which that measurement contributes to the BLUE for observable $\alpha$ is listed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{ele} & 
+\mathrm{tau} \\
+\hline
+\mathrm{ele} \hspace*{2pt} &       1.00 &  0 \\
+\mathrm{tau} \hspace*{2pt} &  0 &       1.00 \\
+\end{array}\right)\end{math}
+\caption{Correlations between the BLUE's.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &       1.00 &  0 &      -0.45 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &       9.00 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &      -0.45 &  0 &       9.00 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &       9.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &       9.00 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &       1.00 &  0 &      -0.45 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &      -0.45 &  0 &       9.00 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &       9.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#4: Sys4. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\section{Modified correlations.}
+\subsection{Zero correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|ccccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW{\tiny ele}/\%  & CVW{\tiny tau}/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & {\tiny Sys4}\\
+\hline
+Aele &      10.50 $\pm$       1.00 &      90.00 &  0 &  0 &  0 &  0 &       1.00 &  0\\
+Bele &      13.50 $\pm$       3.00 &      10.00 &  0 &  0 &  0 &  0 &       3.00 &  0\\
+\hline
+BLUE {\tiny ele} &      10.80 $\pm$       0.95 &     100.00 &  0 &  0 &  0 &  0 &       0.95 &  0\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\vspace*{-0.5cm}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|ccccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW{\tiny ele}/\%  & CVW{\tiny tau}/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & {\tiny Sys4}\\
+\hline
+Atau &       9.50 $\pm$       3.00 &  0 &      50.00 &  0 &  0 &       3.00 &  0 &  0\\
+Btau &      14.00 $\pm$       3.00 &  0 &      50.00 &  0 &  0 &  0 &  0 &       3.00\\
+\hline
+BLUE {\tiny tau} &      11.75 $\pm$       2.12 &  0 &     100.00 &  0 &  0 &       1.50 &  0 &       1.50\\
+\hline
+\end{tabular}
+\caption{BLUE's of the combination ($\chi^2$/ndof=      2.02/2).
+ Values /10000 are displayed. For each input measurement $i$, the central value weight CVW or $\lambda_i^\alpha$ with which that measurement contributes to the BLUE for observable $\alpha$ is listed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{ele} & 
+\mathrm{tau} \\
+\hline
+\mathrm{ele} \hspace*{2pt} &       1.00 &  0 \\
+\mathrm{tau} \hspace*{2pt} &  0 &       1.00 \\
+\end{array}\right)\end{math}
+\caption{Correlations between the BLUE's.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &       1.00 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &       9.00 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &       9.00 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &       9.00 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &       9.00 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &       1.00 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &       9.00 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cccc}
+ & \mathrm{Aele} & 
+\mathrm{Atau} & 
+\mathrm{Bele} & 
+\mathrm{Btau} \\
+\hline
+\mathrm{Aele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Atau} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Bele} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
+\mathrm{Btau} \hspace*{2pt} &  0 &  0 &  0 &       9.00 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#4: Sys4. Values /100M are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}

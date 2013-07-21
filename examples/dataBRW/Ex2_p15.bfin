@@ -1,0 +1,58 @@
+#==============================================================================
+#==== BlueFin input data file =================================================
+#==============================================================================
+
+# The file is expected to have the following format.
+# Blank lines and lines with only empty spaces are ignored.
+# Lines starting by '#' are reserved for comments and are ignored.
+# Data lines are composed of fields separated by one or more empty spaces.
+# Fields cannot contain empty spaces, with the exception of the title line.
+
+# The next line must have 2 fields: 'TITLE' and the title of the
+# BlueFin combination, which must be enclosed within double quotes
+# and may contain only alphanumeric characters or spaces or hyphens.
+TITLE "W branching ratio Ex2p15"
+
+# The next line must have 2 fields: 'NOBS' and the number of observables.
+NOBS 2
+
+# The next line must have 2 fields: 'NMEA' and the number of measurements.
+NMEA 4
+
+# The next line must have 2 fields: 'NERR' and the number of error sources.
+NERR 5
+
+# The next NERR+3 lines must have NMEA+1 fields in this format:
+# - in the 1st line: 'MEANAME' followed by NMEA distinct measurement names
+#   (measurement names may contain only alphanumeric characters or spaces);
+# - in the 2nd line: 'OBSNAME' followed by the NMEA names (with NOBS distinct
+#   values) of the observables measured by the corresponding measurements
+#   (observable names may contain only alphanumeric characters or spaces
+#   and should preferably be at most 3 characters long);
+# - in the 3rd line: 'MEAVAL' followed by the NMEA measured central values;
+# - in each of the last NERR lines: the error source name followed by the 
+#   NMEA partial errors for each measurement due to the given error source
+#   (error source names may contain only alphanumeric characters or spaces).
+MEANAME    Aele    Atau    Bele    Btau
+OBSNAME     ele     tau     ele     tau
+MEAVAL   105000   95000  135000  140000
+Stat          0       0       0       0
+Sys1          0       0       0       0
+Sys2          0   30000       0       0
+Sys3      10000       0   30000       0
+Sys4          0       0       0   30000
+
+# The next NMEA*(NMEA-1)/2+1 rows must have NERR+2 fields in this format:
+# - in the 1st line: 'CMEA1' 'CMEA2' (correlations between 2 measurements)
+#   followed by the NERR error source names in the same order used above;
+# - in each of the NMEA*(NMEA-1)/2 last lines: the names of two distinct
+#   measurements followed by the NERR correlations between the partial 
+#   errors on the two measurements due to corresponding error source.
+#   Measurements must appear in the same order listed above.
+CMEA1 CMEA2  Stat Sys1 Sys2 Sys3 Sys4
+Aele  Atau      0    0    0    0    0
+Aele  Bele      0    0    0  .15    0
+Aele  Btau      0    0    0    0    0
+Atau  Bele      0    0    0    0    0
+Atau  Btau      0    0    0  .15    0
+Bele  Btau      0    0    0    0    0
