@@ -806,8 +806,14 @@ TextReporter::printMinimization( const InfoMinimizer& im,
     std::ostream& tStr = ostr; // text stream
     tStr << "DERIVATIVE ANALYSIS" << std::endl;
     if ( !minimized )
-      tStr << "Vary parameters if 1/I*dI/dX@1 > " << im.varParD1NInfoNomCorThreshold()
-           << " and dI/dX@0 < 0" << std::endl;
+    {
+      if ( !InfoMinimizer::varyAllParameters() )
+        tStr << "Vary parameters if 1/I*dI/dX@1 > "
+             << im.varParD1NInfoNomCorThreshold()
+             << " and dI/dX@0 < 0" << std::endl;
+      else
+        tStr << "Vary parameters unless dI/dX@0 == dI/dX@1 == 0" << std::endl;
+    }
     tStr << "----------------- | ----- | ------------------ |"
          << "-------------------------------|" << std::endl;
     tStr << "  Parameter name  | ParID |   Parameter value  |"
@@ -835,11 +841,16 @@ TextReporter::printMinimization( const InfoMinimizer& im,
       tStr << " " << out << " +-";
       if ( minimized )
       {
-        snprintf( out, 8, "%7.4f", (double)im.dparMin()[iPar] );
-        if ( std::string(out) == " 0.0000" || std::string(out) == "-0.0000" )
-          snprintf( out, 8, "%7s", "~0" );
-        else if ( std::string(out) == "-2.0000" )
+        if ( parToVary.find(iPar) == parToVary.end() )
           snprintf( out, 8, "%7s", "N/A" ); // fixed
+        else
+        {
+          snprintf( out, 8, "%7.4f", (double)im.dparMin()[iPar] );
+          if ( std::string(out) == " 0.0000" || std::string(out) == "-0.0000" )
+            snprintf( out, 8, "%7s", "~0" );
+          else if ( std::string(out) == "-2.0000" )
+            snprintf( out, 8, "%7s", "N/A" ); // fixed - no path to this point?
+        }
       }
       else snprintf( out, 8, "%7s", "???" );
       tStr << " " << out << " |";
@@ -860,14 +871,17 @@ TextReporter::printMinimization( const InfoMinimizer& im,
       if ( std::string(out) == " 0.0000" || std::string(out) == "-0.0000" )
         snprintf( out, 8, "%7s", "~0" );
       tStr << " " << out << " | ";
-      // Dump which parameters will be varied and which parameters will be fixed and why
+      // Dump which parameters will be varied and which will be fixed and why
       // Dump which parameters have been fixed
       // Check which parameters should be varied
       if ( parToVary.find(iPar) == parToVary.end() )
       {
         tStr << "%FIXED%";
-        if ( !minimized && d1NInfosZerCor[iPar] > 0 )
-          tStr << " (d/dX@0>0: NEGATIVE CORRELATIONS?)";
+        if ( ! InfoMinimizer::varyAllParameters() )
+        {
+          if ( !minimized && d1NInfosZerCor[iPar] > 0 )
+            tStr << " (d/dX@0>0: NEGATIVE CORRELATIONS?)";
+        }
       }
       else if ( !minimized )
       {
@@ -892,18 +906,26 @@ TextReporter::printMinimization( const InfoMinimizer& im,
     lStr << "\\renewcommand{\\arraystretch}{1.1}" << std::endl;
     lStr << "\\begin{tabular}{|c|c|"
          << ( minimized ? "c|" : "" )
-         << ( minimized ? "ccc|c|}" : "cc|c|}" ) << std::endl;
+         << ( minimized ? "ccc|" : "cc|" )
+      // << ( InfoMinimizer::varyAllParameters() ? "}" : "c|}" )
+         << "c|}"
+         << std::endl;
     lStr << "\\hline" << std::endl;
     lStr << "Parameter name & ParID &"
          << ( minimized ? " Parameter value &" : "" )
          << "\\multicolumn{" << ( minimized ? "3" : "2" )
-         << "}{|c|}{1/I$^\\mathrm{nom}$*dI/dX} &"
-         << "Fixed or\\\\" << std::endl;
+         << "}{|c|}{1/I$^\\mathrm{nom}$*dI/dX} "
+      // << ( InfoMinimizer::varyAllParameters() ? "" : "&Fixed or" )
+         << "& Fixed or"
+         << "\\\\" << std::endl;
     lStr << " & &"
          << ( minimized ? " ScaleFactor X @MIN &" : "" )
-         << " @0 & " << ( minimized ? "@MIN & " : "" ) << "@1 &"
-         << " Variable\\\\" << std::endl;
+         << " @0 & " << ( minimized ? "@MIN & " : "" ) << "@1 "
+      // << ( InfoMinimizer::varyAllParameters() ? "" : "& Variable" )
+         << "& Variable"
+         << "\\\\" << std::endl;
     lStr << "\\hline" << std::endl;
+    bool noParsWereVaried = true;
     for ( size_t iPar=0, iVary=0; iPar<nPar; ++iPar )
     {
       // Parameter name
@@ -916,35 +938,42 @@ TextReporter::printMinimization( const InfoMinimizer& im,
       if ( minimized )
       {
         TextReporterImpl::latexPrintDot4( lStr, im.parMin()[iPar], " $\\pm$" );
-        if ( im.dparMin()[iPar] == -2 ) lStr << " N/A"; // fixed
+        if ( parToVary.find(iPar) == parToVary.end() ) lStr << " N/A"; // fixed
+        else if ( im.dparMin()[iPar] == -2 ) lStr << " N/A"; // fixed - no path?
         else TextReporterImpl::latexPrintDot4( lStr, im.dparMin()[iPar] );
         lStr << " &";
       }
       // First derivatives
       TextReporterImpl::latexPrintDot4( lStr, d1NInfosZerCor[iPar], " &" );
       if ( minimized ) TextReporterImpl::latexPrintDot4( lStr, im.d1NInfosMinCor()[iPar], " &" );
-      TextReporterImpl::latexPrintDot4( lStr, d1NInfosNomCor[iPar], " &" );
-      // Dump which parameters will be varied and which parameters will be fixed and why
-      // Dump which parameters have been fixed
-      // Check which parameters should be varied
-      if ( parToVary.find(iPar) == parToVary.end() )
+      TextReporterImpl::latexPrintDot4( lStr, d1NInfosNomCor[iPar] );
+      // Dump which parameters will be varied and which will be fixed and why
       {
-        lStr << " FIXED";
-        if ( !minimized && d1NInfosZerCor[iPar] > 0 )
-          lStr << " (d/dX@0$>$0: negative corr?)";
+        lStr << " &";
+        // Dump which parameters have been fixed
+        // Check which parameters should be varied
+        if ( parToVary.find(iPar) == parToVary.end() )
+        {
+          lStr << " FIXED";
+          if ( ! InfoMinimizer::varyAllParameters() )
+          {
+            if ( !minimized && d1NInfosZerCor[iPar] > 0 )
+              lStr << " (d/dX@0$>$0: negative corr?)";
+          }
+        }
+        else
+        {
+          noParsWereVaried = false;
+          if ( !minimized ) lStr << " Variable \\#" << iVary++;
+          else lStr << " Variable";
+        }
       }
-      else
-      {
-        if ( !minimized ) lStr << " Variable \\#" << iVary++;
-        else lStr << " Variable";
-      }
-
       lStr << " \\\\" << std::endl;
     }
     lStr << "\\hline" << std::endl;
     lStr << "\\end{tabular}" << std::endl;
     lStr << "\\renewcommand{\\arraystretch}{1}" << std::endl;
-    lStr << "\\caption{Normalised Fisher information derivatives 1/I$^\\mathrm{nom}$*dI/dX";
+    lStr << "\\caption{Normalised Fisher information derivatives 1/I$^\\mathrm{nom}$*dI/dX ";
     if ( !minimized ) lStr << "(before minimization). ";
     else lStr << "(before and after minimization) and minimization results. ";
     lStr << " The derivatives in the table are computed with respect to scale factors X,"
@@ -954,8 +983,19 @@ TextReporter::printMinimization( const InfoMinimizer& im,
          << " for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''),"
          << " for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'')"
          << " and for the scale factors minimizing Fisher information (''@MIN'').";
-    lStr << " In the minimization, the scale factors X are varied (between 0 and 1, starting at 1)"
-         << " if 1/I$^\\mathrm{nom}$*dI/dX@1 $>$ " << im.varParD1NInfoNomCorThreshold() << " and dI/dX@0 $<$ 0.";
+    if ( ! InfoMinimizer::varyAllParameters() )
+      lStr << " In the minimization, the scale factors X were varied (between 0 and 1, starting at 1)"
+           << " if 1/I$^\\mathrm{nom}$*dI/dX@1 $>$ " << im.varParD1NInfoNomCorThreshold() << " and dI/dX@0 $<$ 0.";
+    else
+      lStr << " In the minimization, the scale factors X were varied (between 0 and 1, starting at 1)"
+           << " unless dI/dX@0 == dI/dX@1 == 0.";
+    if ( im.wasMinimumFound() )
+      lStr << " A minimum was found in this minimization.";
+    else if ( noParsWereVaried )
+      lStr << " No minimization was attempted in this case"
+           << " as all parameters were kept fixed.";
+    else
+      lStr << " {\\em\\color{Orange1}A minimum was NOT found in this minimization.}";
     lStr << "}" << std::endl;
     lStr << "\\end{center}" << std::endl;
     lStr << "\\end{table}" << std::endl;

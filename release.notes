@@ -1,0 +1,33 @@
+!-----------------------------------------------------------------------------
+! Package     : BlueFin
+! Responsible : Andrea Valassi
+! Purpose     : Best Linear Unbiased Estimate Fisher Information aNalysis
+!-----------------------------------------------------------------------------
+! Repository  : svn+ssh://svn.cern.ch/reps/bluefin
+! Web page    : https://svnweb.cern.ch/trac/bluefin
+! Description : http://arxiv.org/abs/1307.4003
+!-----------------------------------------------------------------------------
+
+==============================================================================
+! 2013.07.27 - BlueFin 01.00.01
+==============================================================================
+
+Vary all parameters in all minimizations (unless dI/dX@0 == dI/dX@1 == 0).
+The lhc2012 ByOD minimization now gives CVW=0 for all 5 measurements with 
+CVW<0 (in 01.00.00 only 4 measurements had CVW=0 while one had CVW>0).
+Change table captions accordingly.
+
+Display in the pdf report whether a minimum was found.
+Relax tolerance for EDM from 1E-7 to 1E-6. The lhc2012 ByOD minimization
+now finds a minimum (in 01.00.00 the edm was larger than the tolerance).
+
+==============================================================================
+! 2013.07.21 - BlueFin 01.00.00 (git 7f60b13a751c782eaafdf432f6ad02bbf3940fee)
+==============================================================================
+
+First public release on SVN.
+
+This is the software that was used to prepare the first version of the 
+article by Andrea and Roberto (http://arxiv.org/abs/1307.4003v1).
+
+==============================================================================

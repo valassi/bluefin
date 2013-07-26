@@ -53,7 +53,10 @@ namespace bluefin
         ByGlobalFactorMD=3  // by global factor (matrix derivatives)
       };
 
-    // Threshold for varying parameters (minimum "d1NInfoNomCor" 1/I * dI/dR at 1)
+    // Should all parameters be varied?
+    static bool varyAllParameters();
+
+    // Threshold for varying parameters (minimum "d1NInfoNomCor" 1/I*dI/dR at 1)
     static Number varParD1NInfoNomCorThreshold()
     {
       return 0.001;
@@ -183,13 +186,16 @@ namespace bluefin
     const std::set<size_t>& parToVary() const; // size: VARIABLE parameters
 
     /// ========================================================================
-    /// === Return results (computed on demand) of pre-minimization analysis ===
+    /// === Return results (computed on demand) of parameter minimization    ===
     /// ========================================================================
 
     /// Minimize correlations in single-obs combination.
     /// Recompute the output and return it in a new BlueFish1Obs instance.
     /// Throws if this is not a single-observable combination
     const BlueFish1Obs& minimizeBF1( std::ostream& tStr = std::cout ) const; // text stream
+
+    /// Return true if a minimum was found.
+    bool wasMinimumFound() const;
 
     /// Return the parameters at minimum-info correlations (computed on demand).
     const std::vector<Number>& parMin() const; // size: ALL parameters
@@ -202,8 +208,9 @@ namespace bluefin
 
   protected:
 
-    /// Minimize using ROOT
-    void minimizeUsingROOT( Number& runMinVal,
+    /// Minimize using ROOT. Throws if minimization failed with an error.
+    /// Return value: true if a minimum was found, false otherwise.
+    bool minimizeUsingROOT( Number& runMinVal,
                             std::vector<Number>& runSfsALL, // size: ALL parameters
                             std::vector<Number>& runDSfsALL, // size: ALL parameters
                             unsigned& runNCalls,
@@ -274,6 +281,9 @@ namespace bluefin
 
     /// Was minimization attempted and did it fail?
     mutable bool m_minimizationFailed;
+
+    /// Was minimization attempted and was a minimum found?
+    mutable bool m_wasMinimumFound;
 
     /// The parameters at minimum-info correlations.
     mutable std::vector<Number> m_parMin; // size: ALL parameters

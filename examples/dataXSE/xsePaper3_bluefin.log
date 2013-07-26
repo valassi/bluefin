@@ -21,7 +21,7 @@ Chi2 / d.o.f = 1.16666 / 2
 2. MINIMIZE WRT GLOBAL FACTOR
 
 DERIVATIVE ANALYSIS
-Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
 ----------------- | ----- | ------------------ |-------------------------------|
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
@@ -60,7 +60,7 @@ Chi2 / d.o.f = 0.599461 / 2
 3. MINIMIZE WRT ERROR SOURCES
 
 DERIVATIVE ANALYSIS
-Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
 ----------------- | ----- | ------------------ |-------------------------------|
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
@@ -99,7 +99,7 @@ Chi2 / d.o.f = 0.599461 / 2
 4. MINIMIZE WRT OFF DIAGONAL ELEMENTS
 
 DERIVATIVE ANALYSIS
-Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
 ----------------- | ----- | ------------------ |-------------------------------|
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
@@ -259,7 +259,7 @@ s/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb
 e1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></us
 r/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/b
 luesky/cm/cmtt8.pfb>
-Output written on xsePaper3.pdf (17 pages, 293373 bytes).
+Output written on xsePaper3.pdf (17 pages, 293379 bytes).
 Transcript written on xsePaper3.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -318,7 +318,7 @@ s/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb
 e1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></us
 r/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/b
 luesky/cm/cmtt8.pfb>
-Output written on xsePaper3.pdf (17 pages, 293373 bytes).
+Output written on xsePaper3.pdf (17 pages, 293379 bytes).
 Transcript written on xsePaper3.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -377,7 +377,7 @@ s/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb
 e1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></us
 r/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/b
 luesky/cm/cmtt8.pfb>
-Output written on xsePaper3.pdf (17 pages, 293373 bytes).
+Output written on xsePaper3.pdf (17 pages, 293379 bytes).
 Transcript written on xsePaper3.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -436,7 +436,7 @@ s/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb
 e1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></us
 r/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/b
 luesky/cm/cmtt8.pfb>
-Output written on xsePaper3.pdf (17 pages, 293373 bytes).
+Output written on xsePaper3.pdf (17 pages, 293379 bytes).
 Transcript written on xsePaper3.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -495,7 +495,7 @@ s/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb
 e1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></us
 r/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/b
 luesky/cm/cmtt8.pfb>
-Output written on xsePaper3.pdf (17 pages, 293373 bytes).
+Output written on xsePaper3.pdf (17 pages, 293379 bytes).
 Transcript written on xsePaper3.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -554,5 +554,5 @@ s/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsl10.pfb
 e1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></us
 r/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/b
 luesky/cm/cmtt8.pfb>
-Output written on xsePaper3.pdf (17 pages, 293373 bytes).
+Output written on xsePaper3.pdf (17 pages, 293379 bytes).
 Transcript written on xsePaper3.log.

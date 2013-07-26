@@ -69,6 +69,7 @@ InfoMinimizer::InfoMinimizer( const BlueFish1Obs& bf,
   , m_parToVaryExists( false )
   , m_parToVary()
   , m_minimizationFailed( false )
+  , m_wasMinimumFound( false )
   , m_parMin()
   , m_dparMin()
   , m_d1NInfosMinCor()
@@ -85,6 +86,14 @@ InfoMinimizer::InfoMinimizer( const BlueFish1Obs& bf,
        m_type != ByOffDiagElemMD &&
        m_type != ByGlobalFactorMD )
     throw std::runtime_error( "unsupported type in IM ctor" );
+}
+
+//-----------------------------------------------------------------------------
+
+bool InfoMinimizer::varyAllParameters()
+{
+  //return false; // 01.00.00 behaviour (arxiv v1)
+  return true; // 01.00.01 behaviour (arxiv v2)
 }
 
 //-----------------------------------------------------------------------------
@@ -231,7 +240,7 @@ void InfoMinimizer::normInfoAndFirstDerivatives( const std::vector<Number>& ddNe
 
 //-----------------------------------------------------------------------------
 
-void InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
+bool InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
                                        std::vector<Number>& runSfs,
                                        std::vector<Number>& runDSfs,
                                        unsigned& runNCalls,
@@ -255,7 +264,8 @@ void InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
   rootMin.reset( ROOT::Math::Factory::CreateMinimizer( rootMinName, rootAlgName ) );
   rootMin->SetMaxFunctionCalls(1000000); // for Minuit/Minuit2 in ROOT
   rootMin->SetMaxIterations(10000);      // for GSL in ROOT
-  rootMin->SetTolerance(0.0000001);
+  //rootMin->SetTolerance(0.0000001);    // 01.00.00 (no minimum in top byOD)
+  rootMin->SetTolerance(0.000001);       // 01.00.01 (minimum OK in top byOD)
   if ( debugROOT >= 1 ) rootMin->SetPrintLevel(1);
   else rootMin->SetPrintLevel(0);
   // INFORMATION MINIMIZATION (USING ROOT)
@@ -263,13 +273,10 @@ void InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
   ROOT::Math::Functor rootFunc( &InfoMinimizerImpl::normInfoTM, this->nPar() ); // include fixed and variable
   rootMin->SetFunction( rootFunc );
   const Number step = 0.1;
-  const bool ignoreParsTV = false;
-  //const bool ignoreParsTV = true;
-  if ( ignoreParsTV )
-    tStr << "__INFO: ALL PARAMETERS WILL BE VARIED (hardcoded override)__" << std::endl;
+  //if ( varyAllParameters() ) tStr << "__INFO: ALL PARAMETERS WILL BE VARIED (hardcoded override)__" << std::endl;
   for ( size_t iPar=0; iPar<nPar; ++iPar )
   {
-    if ( ignoreParsTV || parsTV.find(iPar) != parsTV.end() )
+    if ( parsTV.find(iPar) != parsTV.end() )
     {
       //rootMin->SetVariable( iPar, this->parName(iPar), runSfs[iPar], step ); // unbounded
       Number low = 0;
@@ -322,7 +329,7 @@ void InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
         tStr << "Parameters    (%=FIXED)";
       for ( size_t iPar=0; iPar<nPar; ++iPar )
       {
-        bool parWasVaried = ignoreParsTV || parsTV.find(iPar)!=parsTV.end();
+        bool parWasVaried = parsTV.find(iPar)!=parsTV.end();
         snprintf( out, 6, "%5s", ( (parWasVaried?" ":"%") + this->parID(iPar) ).c_str() );
         tStr << (iPar==0?" ":", ") << out;
       }
@@ -399,9 +406,10 @@ void InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
   tStr << std::endl;
   // Update the errors
   for ( size_t iPar=0; iPar<nPar; ++iPar )
-    if ( !ignoreParsTV && parsTV.find(iPar) == parsTV.end() )
+    if ( parsTV.find(iPar) == parsTV.end() )
       runDSfs[iPar]=-2; // parameter fixed
   InfoMinimizerImpl::s_imForROOT = 0;
+  return runStatus;
 }
 
 //-----------------------------------------------------------------------------
@@ -470,13 +478,24 @@ InfoMinimizer::parToVary() const
       if ( d1NInfosZerCor[iPar] == 0 && d1NInfosNomCor[iPar] != 0 )
         throw std::runtime_error( "d1NInfoZerCor==0 but d1NInfoNomCor!=0 in analyseDerivatives" );
       // Check which parameters should be varied
-      if ( d1NInfosZerCor[iPar] > 0 ) {} // FIXED (d/dX@0>0: NEGATIVE CORRELATIONS?)
-      else if ( d1NInfosZerCor[iPar] == 0 ) {} // FIXED (info insensitive - uncorrelated error, eg stat)
-      else if ( d1NInfosNomCor[iPar] > varParD1NInfoNomCorThreshold() ) // no need to normalize (sfs==1 here)
+      if ( InfoMinimizer::varyAllParameters() )
       {
-        m_parToVary.insert( iPar ); // VARY (above threshold)
+        if ( d1NInfosZerCor[iPar] == 0 && d1NInfosNomCor[iPar] == 0 ) {} // FIXED (info insensitive - uncorrelated error, eg stat)
+        else
+        {
+          m_parToVary.insert( iPar ); // VARY (vary all parameters!)
+        }
       }
-      else {} // FIXED (below threshold)
+      else
+      {
+        if ( d1NInfosZerCor[iPar] > 0 ) {} // FIXED (d/dX@0>0: NEGATIVE CORRELATIONS?)
+        else if ( d1NInfosZerCor[iPar] == 0 ) {} // FIXED (info insensitive - uncorrelated error, eg stat)
+        else if ( d1NInfosNomCor[iPar] > varParD1NInfoNomCorThreshold() ) // no need to normalize (sfs==1 here)
+        {
+          m_parToVary.insert( iPar ); // VARY (above threshold)
+        }
+        else {} // FIXED (below threshold)
+      }
     }
     m_parToVaryExists = true;
   }
@@ -534,7 +553,7 @@ InfoMinimizer::minimizeBF1( std::ostream& tStr ) const
       bool downFromNomCor = true;
       try
       {
-        this->minimizeUsingROOT( runMinVal, par, dpar, runNCalls, parToVary, downFromNomCor, tStr );
+        m_wasMinimumFound = this->minimizeUsingROOT( runMinVal, par, dpar, runNCalls, parToVary, downFromNomCor, tStr );
       }
       catch ( ... )
       {
@@ -573,6 +592,21 @@ InfoMinimizer::minimizeBF1( std::ostream& tStr ) const
     throw std::runtime_error( "Minimization failed (in minimizeBF1)" );
   // Return the results
   return m_minBf;
+}
+
+//-----------------------------------------------------------------------------
+
+bool
+InfoMinimizer::wasMinimumFound() const
+{
+  // Did the minimization fail?
+  if ( m_minimizationFailed )
+    throw std::runtime_error( "Minimization failed (in wasMinimumFound)" );
+  // Perform the minimization if not already attempted
+  else if ( m_minBf.nObs() == 0 )
+    minimizeBF1();
+  // Return the results
+  return m_wasMinimumFound;
 }
 
 //-----------------------------------------------------------------------------

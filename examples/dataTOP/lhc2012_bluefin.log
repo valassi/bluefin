@@ -29,7 +29,7 @@ Chi2 / d.o.f = 2.46344 / 6
 2. MINIMIZE WRT GLOBAL FACTOR
 
 DERIVATIVE ANALYSIS
-Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
 ----------------- | ----- | ------------------ |-------------------------------|
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
@@ -76,7 +76,7 @@ Chi2 / d.o.f = 2.09776 / 6
 3. MINIMIZE WRT ERROR SOURCES
 
 DERIVATIVE ANALYSIS
-Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
 ----------------- | ----- | ------------------ |-------------------------------|
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
@@ -88,23 +88,23 @@ Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
  cJES             |  cJES |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
  dJES             |  dJES |     ??? +-     ??? | -0.4907 ->     ??? ->  0.0517 | ==> Vary in minimization #1
  rJES             |  rJES |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
- Lept             |  Lept |     ??? +-     ??? | -0.0006 ->     ??? -> -0.0001 | %FIXED%
- MC               |    MC |     ??? +-     ??? | -0.0217 ->     ??? ->  0.0090 | ==> Vary in minimization #2
- Rad              |   Rad |     ??? +-     ??? | -0.8110 ->     ??? ->  0.0499 | ==> Vary in minimization #3
- CR               |    CR |     ??? +-     ??? | -0.3164 ->     ??? -> -0.0317 | %FIXED%
- PDF              |   PDF |     ??? +-     ??? | -0.0450 ->     ??? ->  0.0038 | ==> Vary in minimization #4
- DTMO             |  DTMO |     ??? +-     ??? | -0.0949 ->     ??? ->  0.0184 | ==> Vary in minimization #5
- UE               |    UE |     ??? +-     ??? | -0.1538 ->     ??? ->  0.0347 | ==> Vary in minimization #6
- BGMC             |  BGMC |     ??? +-     ??? | -0.0216 ->     ??? ->  0.0120 | ==> Vary in minimization #7
+ Lept             |  Lept |     ??? +-     ??? | -0.0006 ->     ??? -> -0.0001 | ==> Vary in minimization #2
+ MC               |    MC |     ??? +-     ??? | -0.0217 ->     ??? ->  0.0090 | ==> Vary in minimization #3
+ Rad              |   Rad |     ??? +-     ??? | -0.8110 ->     ??? ->  0.0499 | ==> Vary in minimization #4
+ CR               |    CR |     ??? +-     ??? | -0.3164 ->     ??? -> -0.0317 | ==> Vary in minimization #5
+ PDF              |   PDF |     ??? +-     ??? | -0.0450 ->     ??? ->  0.0038 | ==> Vary in minimization #6
+ DTMO             |  DTMO |     ??? +-     ??? | -0.0949 ->     ??? ->  0.0184 | ==> Vary in minimization #7
+ UE               |    UE |     ??? +-     ??? | -0.1538 ->     ??? ->  0.0347 | ==> Vary in minimization #8
+ BGMC             |  BGMC |     ??? +-     ??? | -0.0216 ->     ??? ->  0.0120 | ==> Vary in minimization #9
  BGDT             |  BGDT |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
  Meth             |  Meth |     ??? +-     ??? |      ~0 ->     ??? ->      ~0 | %FIXED%
- MHI              |   MHI |     ??? +-     ??? | -0.0555 ->     ??? ->  0.0241 | ==> Vary in minimization #8
+ MHI              |   MHI |     ??? +-     ??? | -0.0555 ->     ??? ->  0.0241 | ==> Vary in minimization #10
 
 MINIMIZE USING ROOT Minuit2
-Error sources (%=FIXED) %Stat, %iJES, %aJES,  bJES, %cJES,  dJES, %rJES, %Lept,    MC,   Rad,   %CR,   PDF,  DTMO,    UE,  BGMC, %BGDT, %Meth,   MHI
+Error sources (%=FIXED) %Stat, %iJES, %aJES,  bJES, %cJES,  dJES, %rJES,  Lept,    MC,   Rad,    CR,   PDF,  DTMO,    UE,  BGMC, %BGDT, %Meth,   MHI
 START: f= 0.00000000 at 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000
-END:   f= 0.94362086 at 1.000, 1.000, 1.000, 1.000, 1.000, 0.000, 1.000, 1.000, 0.000, 1.000, 1.000, 1.000, 1.000, 0.837, 0.000, 1.000, 1.000, 0.000
-Minimization completed: minValue=0.9436209, edm=0.0000000, #calls=1039     
+END:   f= 0.94361820 at 1.000, 1.000, 1.000, 1.000, 1.000, 0.000, 1.000, 0.000, 0.000, 1.000, 1.000, 1.000, 1.000, 0.837, 0.000, 1.000, 1.000, 0.000
+Minimization completed: minValue=0.9436182, edm=0.0000000, #calls=855      
 ROOT minimizer Minuit2 found a minimum
 
 DERIVATIVE ANALYSIS
@@ -115,81 +115,80 @@ DERIVATIVE ANALYSIS
  Stat             |  Stat |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
  iJES             |  iJES |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
  aJES             |  aJES |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
- bJES             |  bJES |  1.0000 +-  0.8560 | -0.8963 -> -0.0582 ->  0.0487 | 
+ bJES             |  bJES |  1.0000 +-  0.8562 | -0.8963 -> -0.0582 ->  0.0487 | 
  cJES             |  cJES |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
- dJES             |  dJES |      ~0 +-  0.8671 | -0.4907 ->  0.0017 ->  0.0517 | 
+ dJES             |  dJES |      ~0 +-  0.8840 | -0.4907 ->  0.0017 ->  0.0517 | 
  rJES             |  rJES |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
- Lept             |  Lept |  1.0000 +-     N/A | -0.0006 ->      ~0 -> -0.0001 | %FIXED%
+ Lept             |  Lept |      ~0 +-  0.9925 | -0.0006 ->      ~0 -> -0.0001 | 
  MC               |    MC |      ~0 +-  0.5284 | -0.0217 ->  0.0029 ->  0.0090 | 
  Rad              |   Rad |  1.0000 +-  0.9912 | -0.8110 -> -0.0426 ->  0.0499 | 
- CR               |    CR |  1.0000 +-     N/A | -0.3164 -> -0.0455 -> -0.0317 | %FIXED%
- PDF              |   PDF |  1.0000 +-  0.5026 | -0.0450 -> -0.0006 ->  0.0038 | 
- DTMO             |  DTMO |  1.0000 +-  0.7451 | -0.0949 -> -0.0003 ->  0.0184 | 
- UE               |    UE |  0.8372 +-  0.7873 | -0.1538 ->      ~0 ->  0.0347 | 
+ CR               |    CR |  1.0000 +-  0.9997 | -0.3164 -> -0.0455 -> -0.0317 | 
+ PDF              |   PDF |  1.0000 +-  0.5038 | -0.0450 -> -0.0006 ->  0.0038 | 
+ DTMO             |  DTMO |  1.0000 +-  0.8937 | -0.0949 -> -0.0003 ->  0.0184 | 
+ UE               |    UE |  0.8373 +-  0.8827 | -0.1538 ->      ~0 ->  0.0347 | 
  BGMC             |  BGMC |      ~0 +-  0.5126 | -0.0216 ->  0.0041 ->  0.0120 | 
  BGDT             |  BGDT |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
  Meth             |  Meth |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
- MHI              |   MHI |      ~0 +-  0.6094 | -0.0555 ->  0.0069 ->  0.0241 | 
+ MHI              |   MHI |      ~0 +-  0.6085 | -0.0555 ->  0.0069 ->  0.0241 | 
 
 ------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | Stat iJES aJES bJES cJES dJES rJES Lept   MC  Rad   CR  PDF DTMO   UE BGMC BGDT Meth  MHI
 
    ALJ10 169.30 +-  6.37 |  -3.66 |   5.26 |   1.88 |   3.38 | 4.00 0.00 0.00 2.50 0.00 2.10 0.00 0.00 1.00 2.50 0.60 0.50 1.20 0.60 1.80 0.60 0.40 0.70
    ALJ11 174.50 +-  2.41 |  23.38 |  36.69 |   9.35 |  21.63 | 0.60 0.40 0.00 1.60 0.00 0.70 0.00 0.00 0.40 1.00 0.60 0.10 0.30 0.60 0.10 0.50 0.10 0.00
    AJT11 174.90 +-  4.46 |   0.59 |  10.75 |   0.03 |   0.55 | 2.10 0.00 0.00 1.40 0.00 2.10 0.00 0.00 0.50 1.70 0.60 0.60 0.50 0.60 0.00 1.90 1.00 0.00
-   CLL10 175.50 +-  6.50 |  -0.41 |   5.05 |   0.03 |   0.37 | 4.60 0.00 0.00 0.90 0.00 2.10 3.30 0.30 0.40 0.90 0.50 0.50 0.60 1.40 0.10 0.00 0.30 1.00
+   CLL10 175.50 +-  6.50 |  -0.40 |   5.05 |   0.03 |   0.37 | 4.60 0.00 0.00 0.90 0.00 2.10 3.30 0.30 0.40 0.90 0.50 0.50 0.60 1.40 0.10 0.00 0.30 1.00
    CLJ10 173.10 +-  3.43 |   2.03 |  18.17 |   0.19 |   1.88 | 2.10 0.00 0.00 0.90 0.00 2.10 0.00 0.00 0.00 1.20 0.50 0.10 0.40 0.20 0.20 0.40 0.10 0.10
    CLL11 173.30 +-  2.99 |   1.24 |  23.83 |   0.05 |   1.15 | 1.20 0.00 0.00 1.10 0.00 2.00 0.00 0.20 0.10 0.80 0.50 0.40 0.70 0.60 0.00 0.40 0.40 0.20
-   CMJ11 172.60 +-  1.55 |  76.81 |  88.59 |  42.26 |  71.04 | 0.40 0.40 0.00 0.70 0.00 0.20 0.00 0.00 0.00 0.80 0.50 0.10 0.30 0.60 0.10 0.00 0.20 0.40
+   CMJ11 172.60 +-  1.55 |  76.81 |  88.59 |  42.24 |  71.04 | 0.40 0.40 0.00 0.70 0.00 0.20 0.00 0.00 0.00 0.80 0.50 0.10 0.30 0.60 0.10 0.00 0.20 0.40
 ------------------------ | ------ | ------ | ------ | ------ | ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
-BLUE  mt 173.19 +-  1.46 | 100.00 | 188.35 |  53.79 | 100.00 | 0.37 0.32 0.00 0.75 0.00 0.24 0.01 0.00 0.10 0.73 0.52 0.09 0.25 0.48 0.10 0.12 0.16 0.31
-BLUE  mt (full precision): 173.18584 +- 1.46120
-Chi2 / d.o.f = 1.95722 / 6
+BLUE  mt 173.19 +-  1.46 | 100.00 | 188.35 |  53.77 | 100.00 | 0.37 0.32 0.00 0.75 0.00 0.24 0.01 0.00 0.10 0.73 0.52 0.09 0.25 0.48 0.10 0.12 0.16 0.31
+BLUE  mt (full precision): 173.18587 +- 1.46120
+Chi2 / d.o.f = 1.95779 / 6
 
    CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
   ALJ10   40.5700    7.5714    9.3114    2.8000    2.9750    2.8750    2.2250
   ALJ11    7.5714    5.8200    4.8114    1.5200    1.6300    1.6200    1.2700
   AJT11    9.3114    4.8114   19.8600    1.9950    2.0100    1.9900    1.5300
-  CLL10    2.8000    1.5200    1.9950   42.2500    2.6644    3.3433    2.5333
+  CLL10    2.8000    1.5200    1.9950   42.2500    2.6644    3.2833    2.5333
   CLJ10    2.9750    1.6300    2.0100    2.6644   11.7500    2.6205    2.0705
-  CLL11    2.8750    1.6200    1.9900    3.3433    2.6205    8.9600    2.2114
+  CLL11    2.8750    1.6200    1.9900    3.2833    2.6205    8.9600    2.2114
   CMJ11    2.2250    1.2700    1.5300    2.5333    2.0705    2.2114    2.4100
 
 4. MINIMIZE WRT OFF DIAGONAL ELEMENTS
 
 DERIVATIVE ANALYSIS
-Vary parameters if 1/I*dI/dX@1 > 0.001 and dI/dX@0 < 0
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
 ----------------- | ----- | ------------------ |-------------------------------|
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
 ----------------- | ----- | ------------------ |-------------------------------|
  ALJ11/ALJ10      |    #0 |     ??? +-     ??? | -0.1652 ->     ??? ->  0.2094 | ==> Vary in minimization #0
- AJT11/ALJ10      |    #1 |     ??? +-     ??? | -0.0714 ->     ??? -> -0.0057 | %FIXED%
- AJT11/ALJ11      |    #2 |     ??? +-     ??? | -0.2280 ->     ??? ->  0.0111 | ==> Vary in minimization #1
- CLL10/ALJ10      |    #3 |     ??? +-     ??? | -0.0091 ->     ??? -> -0.0049 | %FIXED%
- CLL10/ALJ11      |    #4 |     ??? +-     ??? | -0.0264 ->     ??? ->  0.0087 | ==> Vary in minimization #2
- CLL10/AJT11      |    #5 |     ??? +-     ??? | -0.0101 ->     ??? -> -0.0002 | %FIXED%
- CLJ10/ALJ10      |    #6 |     ??? +-     ??? | -0.0288 ->     ??? ->  0.0024 | ==> Vary in minimization #3
- CLJ10/ALJ11      |    #7 |     ??? +-     ??? | -0.0972 ->     ??? -> -0.0050 | %FIXED%
- CLJ10/AJT11      |    #8 |     ??? +-     ??? | -0.0347 ->     ??? ->  0.0001 | %FIXED%
- CLJ10/CLL10      |    #9 |     ??? +-     ??? | -0.0588 ->     ??? ->  0.0013 | ==> Vary in minimization #4
- CLL11/ALJ10      |   #10 |     ??? +-     ??? | -0.0340 ->     ??? -> -0.0114 | %FIXED%
- CLL11/ALJ11      |   #11 |     ??? +-     ??? | -0.1267 ->     ??? ->  0.0261 | ==> Vary in minimization #5
- CLL11/AJT11      |   #12 |     ??? +-     ??? | -0.0456 ->     ??? -> -0.0006 | %FIXED%
- CLL11/CLL10      |   #13 |     ??? +-     ??? | -0.0843 ->     ??? -> -0.0074 | %FIXED%
- CLL11/CLJ10      |   #14 |     ??? +-     ??? | -0.2626 ->     ??? ->  0.0035 | ==> Vary in minimization #6
- CMJ11/ALJ10      |   #15 |     ??? +-     ??? | -0.1107 ->     ??? ->  0.1584 | ==> Vary in minimization #7
- CMJ11/ALJ11      |   #16 |     ??? +-     ??? | -0.3677 ->     ??? -> -0.3227 | %FIXED%
- CMJ11/AJT11      |   #17 |     ??? +-     ??? | -0.1288 ->     ??? ->  0.0071 | ==> Vary in minimization #8
- CMJ11/CLL10      |   #18 |     ??? +-     ??? | -0.1385 ->     ??? ->  0.0518 | ==> Vary in minimization #9
- CMJ11/CLJ10      |   #19 |     ??? +-     ??? | -0.3657 ->     ??? -> -0.0211 | %FIXED%
- CMJ11/CLL11      |   #20 |     ??? +-     ??? | -0.5132 ->     ??? ->  0.1194 | ==> Vary in minimization #10
+ AJT11/ALJ10      |    #1 |     ??? +-     ??? | -0.0714 ->     ??? -> -0.0057 | ==> Vary in minimization #1
+ AJT11/ALJ11      |    #2 |     ??? +-     ??? | -0.2280 ->     ??? ->  0.0111 | ==> Vary in minimization #2
+ CLL10/ALJ10      |    #3 |     ??? +-     ??? | -0.0091 ->     ??? -> -0.0049 | ==> Vary in minimization #3
+ CLL10/ALJ11      |    #4 |     ??? +-     ??? | -0.0264 ->     ??? ->  0.0087 | ==> Vary in minimization #4
+ CLL10/AJT11      |    #5 |     ??? +-     ??? | -0.0101 ->     ??? -> -0.0002 | ==> Vary in minimization #5
+ CLJ10/ALJ10      |    #6 |     ??? +-     ??? | -0.0288 ->     ??? ->  0.0024 | ==> Vary in minimization #6
+ CLJ10/ALJ11      |    #7 |     ??? +-     ??? | -0.0972 ->     ??? -> -0.0050 | ==> Vary in minimization #7
+ CLJ10/AJT11      |    #8 |     ??? +-     ??? | -0.0347 ->     ??? ->  0.0001 | ==> Vary in minimization #8
+ CLJ10/CLL10      |    #9 |     ??? +-     ??? | -0.0588 ->     ??? ->  0.0013 | ==> Vary in minimization #9
+ CLL11/ALJ10      |   #10 |     ??? +-     ??? | -0.0340 ->     ??? -> -0.0114 | ==> Vary in minimization #10
+ CLL11/ALJ11      |   #11 |     ??? +-     ??? | -0.1267 ->     ??? ->  0.0261 | ==> Vary in minimization #11
+ CLL11/AJT11      |   #12 |     ??? +-     ??? | -0.0456 ->     ??? -> -0.0006 | ==> Vary in minimization #12
+ CLL11/CLL10      |   #13 |     ??? +-     ??? | -0.0843 ->     ??? -> -0.0074 | ==> Vary in minimization #13
+ CLL11/CLJ10      |   #14 |     ??? +-     ??? | -0.2626 ->     ??? ->  0.0035 | ==> Vary in minimization #14
+ CMJ11/ALJ10      |   #15 |     ??? +-     ??? | -0.1107 ->     ??? ->  0.1584 | ==> Vary in minimization #15
+ CMJ11/ALJ11      |   #16 |     ??? +-     ??? | -0.3677 ->     ??? -> -0.3227 | ==> Vary in minimization #16
+ CMJ11/AJT11      |   #17 |     ??? +-     ??? | -0.1288 ->     ??? ->  0.0071 | ==> Vary in minimization #17
+ CMJ11/CLL10      |   #18 |     ??? +-     ??? | -0.1385 ->     ??? ->  0.0518 | ==> Vary in minimization #18
+ CMJ11/CLJ10      |   #19 |     ??? +-     ??? | -0.3657 ->     ??? -> -0.0211 | ==> Vary in minimization #19
+ CMJ11/CLL11      |   #20 |     ??? +-     ??? | -0.5132 ->     ??? ->  0.1194 | ==> Vary in minimization #20
 
 MINIMIZE USING ROOT Minuit2
-Off-Diag Elem (%=FIXED)    #0,   %#1,    #2,   %#3,    #4,   %#5,    #6,   %#7,   %#8,    #9,  %#10,   #11,  %#12,  %#13,   #14,   #15,  %#16,   #17,   #18,  %#19,   #20
+Off-Diag Elem (%=FIXED)    #0,    #1,    #2,    #3,    #4,    #5,    #6,    #7,    #8,    #9,   #10,   #11,   #12,   #13,   #14,   #15,   #16,   #17,   #18,   #19,   #20
 START: f= 0.00000000 at 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000, 1.000
-Info in <Minuit2>: Minuit2Minimizer::Minimize : Covar was made pos def
-END:   f= 0.92406482 at 0.533, 1.000, 0.860, 1.000, 0.822, 1.000, 0.035, 1.000, 1.000, 0.082, 1.000, 0.988, 1.000, 1.000, 0.204, 0.520, 1.000, 0.873, 0.670, 1.000, 0.834
-Minimization completed: minValue=0.9240648, edm=0.0000000, #calls=393      
+END:   f= 0.92215266 at 0.482, 0.212, 0.801, 0.872, 0.985, 0.711, 0.756, 0.996, 0.098, 0.887, 0.999, 0.989, 0.077, 0.785, 0.998, 0.583, 1.000, 0.930, 0.666, 0.902, 0.845
+Minimization completed: minValue=0.9221527, edm=0.0000000, #calls=630      
 ROOT minimizer Minuit2 found a minimum
 
 DERIVATIVE ANALYSIS
@@ -197,50 +196,50 @@ DERIVATIVE ANALYSIS
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
 ----------------- | ----- | ------------------ |-------------------------------|
- ALJ11/ALJ10      |    #0 |  0.5334 +-  0.7602 | -0.1652 ->      ~0 ->  0.2094 | 
- AJT11/ALJ10      |    #1 |  1.0000 +-     N/A | -0.0714 ->      ~0 -> -0.0057 | %FIXED%
- AJT11/ALJ11      |    #2 |  0.8607 +-  0.5640 | -0.2280 ->      ~0 ->  0.0111 | 
- CLL10/ALJ10      |    #3 |  1.0000 +-     N/A | -0.0091 ->      ~0 -> -0.0049 | %FIXED%
- CLL10/ALJ11      |    #4 |  0.8226 +-  0.7332 | -0.0264 ->      ~0 ->  0.0087 | 
- CLL10/AJT11      |    #5 |  1.0000 +-     N/A | -0.0101 ->      ~0 -> -0.0002 | %FIXED%
- CLJ10/ALJ10      |    #6 |  0.0359 +-  0.8975 | -0.0288 ->      ~0 ->  0.0024 | 
- CLJ10/ALJ11      |    #7 |  1.0000 +-     N/A | -0.0972 ->  0.0063 -> -0.0050 | %FIXED%
- CLJ10/AJT11      |    #8 |  1.0000 +-     N/A | -0.0347 ->      ~0 ->  0.0001 | %FIXED%
- CLJ10/CLL10      |    #9 |  0.0823 +-  0.8546 | -0.0588 ->      ~0 ->  0.0013 | 
- CLL11/ALJ10      |   #10 |  1.0000 +-     N/A | -0.0340 ->      ~0 -> -0.0114 | %FIXED%
- CLL11/ALJ11      |   #11 |  0.9880 +-  0.8327 | -0.1267 ->      ~0 ->  0.0261 | 
- CLL11/AJT11      |   #12 |  1.0000 +-     N/A | -0.0456 ->      ~0 -> -0.0006 | %FIXED%
- CLL11/CLL10      |   #13 |  1.0000 +-     N/A | -0.0843 ->      ~0 -> -0.0074 | %FIXED%
- CLL11/CLJ10      |   #14 |  0.2043 +-  0.5783 | -0.2626 ->      ~0 ->  0.0035 | 
- CMJ11/ALJ10      |   #15 |  0.5207 +-  0.5200 | -0.1107 ->      ~0 ->  0.1584 | 
- CMJ11/ALJ11      |   #16 |  1.0000 +-     N/A | -0.3677 -> -0.1785 -> -0.3227 | %FIXED%
- CMJ11/AJT11      |   #17 |  0.8734 +-  0.9055 | -0.1288 ->      ~0 ->  0.0071 | 
- CMJ11/CLL10      |   #18 |  0.6702 +-  0.7850 | -0.1385 ->      ~0 ->  0.0518 | 
- CMJ11/CLJ10      |   #19 |  1.0000 +-     N/A | -0.3657 ->  0.0401 -> -0.0211 | %FIXED%
- CMJ11/CLL11      |   #20 |  0.8347 +-  0.9150 | -0.5132 ->      ~0 ->  0.1194 | 
+ ALJ11/ALJ10      |    #0 |  0.4826 +-  0.5272 | -0.1652 ->      ~0 ->  0.2094 | 
+ AJT11/ALJ10      |    #1 |  0.2125 +-  0.8902 | -0.0714 ->      ~0 -> -0.0057 | 
+ AJT11/ALJ11      |    #2 |  0.8020 +-  0.8872 | -0.2280 ->      ~0 ->  0.0111 | 
+ CLL10/ALJ10      |    #3 |  0.8722 +-  0.9260 | -0.0091 ->      ~0 -> -0.0049 | 
+ CLL10/ALJ11      |    #4 |  0.9859 +-  0.6128 | -0.0264 ->      ~0 ->  0.0087 | 
+ CLL10/AJT11      |    #5 |  0.7116 +-  0.8450 | -0.0101 ->      ~0 -> -0.0002 | 
+ CLJ10/ALJ10      |    #6 |  0.7569 +-  0.5617 | -0.0288 ->      ~0 ->  0.0024 | 
+ CLJ10/ALJ11      |    #7 |  0.9961 +-  0.5016 | -0.0972 ->      ~0 -> -0.0050 | 
+ CLJ10/AJT11      |    #8 |  0.0986 +-  0.7955 | -0.0347 ->      ~0 ->  0.0001 | 
+ CLJ10/CLL10      |    #9 |  0.8878 +-  0.6243 | -0.0588 ->      ~0 ->  0.0013 | 
+ CLL11/ALJ10      |   #10 |  0.9995 +-  0.7767 | -0.0340 ->      ~0 -> -0.0114 | 
+ CLL11/ALJ11      |   #11 |  0.9897 +-  0.7718 | -0.1267 ->      ~0 ->  0.0261 | 
+ CLL11/AJT11      |   #12 |  0.0774 +-  0.6108 | -0.0456 ->      ~0 -> -0.0006 | 
+ CLL11/CLL10      |   #13 |  0.7859 +-  0.5415 | -0.0843 ->      ~0 -> -0.0074 | 
+ CLL11/CLJ10      |   #14 |  0.9981 +-  0.9959 | -0.2626 ->      ~0 ->  0.0035 | 
+ CMJ11/ALJ10      |   #15 |  0.5831 +-  0.7876 | -0.1107 ->      ~0 ->  0.1584 | 
+ CMJ11/ALJ11      |   #16 |  1.0000 +-  0.6803 | -0.3677 -> -0.1724 -> -0.3227 | 
+ CMJ11/AJT11      |   #17 |  0.9301 +-  0.5226 | -0.1288 ->      ~0 ->  0.0071 | 
+ CMJ11/CLL10      |   #18 |  0.6667 +-  0.8301 | -0.1385 ->      ~0 ->  0.0518 | 
+ CMJ11/CLJ10      |   #19 |  0.9026 +-  0.7819 | -0.3657 ->      ~0 -> -0.0211 | 
+ CMJ11/CLL11      |   #20 |  0.8453 +-  0.5210 | -0.5132 ->      ~0 ->  0.1194 | 
 
 ------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | Stat iJES aJES bJES cJES dJES rJES Lept   MC  Rad   CR  PDF DTMO   UE BGMC BGDT Meth  MHI
 
-   ALJ10 169.30 +-  6.37 |  -0.00 |   5.37 |   0.00 |   0.00 | 4.00 0.00 0.00 2.50 0.00 2.10 0.00 0.00 1.00 2.50 0.60 0.50 1.20 0.60 1.80 0.60 0.40 0.70
-   ALJ11 174.50 +-  2.41 |  20.01 |  37.46 |   7.04 |  19.15 | 0.60 0.40 0.00 1.60 0.00 0.70 0.00 0.00 0.40 1.00 0.60 0.10 0.30 0.60 0.10 0.50 0.10 0.00
-   AJT11 174.90 +-  4.46 |  -0.00 |  10.98 |   0.00 |   0.00 | 2.10 0.00 0.00 1.40 0.00 2.10 0.00 0.00 0.50 1.70 0.60 0.60 0.50 0.60 0.00 1.90 1.00 0.00
-   CLL10 175.50 +-  6.50 |  -0.00 |   5.16 |   0.00 |   0.00 | 4.60 0.00 0.00 0.90 0.00 2.10 3.30 0.30 0.40 0.90 0.50 0.50 0.60 1.40 0.10 0.00 0.30 1.00
-   CLJ10 173.10 +-  3.43 |  -2.24 |  18.56 |   0.20 |   2.14 | 2.10 0.00 0.00 0.90 0.00 2.10 0.00 0.00 0.00 1.20 0.50 0.10 0.40 0.20 0.20 0.40 0.10 0.10
-   CLL11 173.30 +-  2.99 |  -0.00 |  24.33 |   0.00 |   0.00 | 1.20 0.00 0.00 1.10 0.00 2.00 0.00 0.20 0.10 0.80 0.50 0.40 0.70 0.60 0.00 0.40 0.40 0.20
-   CMJ11 172.60 +-  1.55 |  82.23 |  90.47 |  41.07 |  78.70 | 0.40 0.40 0.00 0.70 0.00 0.20 0.00 0.00 0.00 0.80 0.50 0.10 0.30 0.60 0.10 0.00 0.20 0.40
+   ALJ10 169.30 +-  6.37 |   0.00 |   5.39 |   0.00 |   0.00 | 4.00 0.00 0.00 2.50 0.00 2.10 0.00 0.00 1.00 2.50 0.60 0.50 1.20 0.60 1.80 0.60 0.40 0.70
+   ALJ11 174.50 +-  2.41 |  19.93 |  37.54 |   6.81 |  19.93 | 0.60 0.40 0.00 1.60 0.00 0.70 0.00 0.00 0.40 1.00 0.60 0.10 0.30 0.60 0.10 0.50 0.10 0.00
+   AJT11 174.90 +-  4.46 |   0.00 |  11.00 |   0.00 |   0.00 | 2.10 0.00 0.00 1.40 0.00 2.10 0.00 0.00 0.50 1.70 0.60 0.60 0.50 0.60 0.00 1.90 1.00 0.00
+   CLL10 175.50 +-  6.50 |  -0.00 |   5.17 |   0.00 |   0.00 | 4.60 0.00 0.00 0.90 0.00 2.10 3.30 0.30 0.40 0.90 0.50 0.50 0.60 1.40 0.10 0.00 0.30 1.00
+   CLJ10 173.10 +-  3.43 |  -0.00 |  18.59 |   0.00 |   0.00 | 2.10 0.00 0.00 0.90 0.00 2.10 0.00 0.00 0.00 1.20 0.50 0.10 0.40 0.20 0.20 0.40 0.10 0.10
+   CLL11 173.30 +-  2.99 |   0.00 |  24.38 |   0.00 |   0.00 | 1.20 0.00 0.00 1.10 0.00 2.00 0.00 0.20 0.10 0.80 0.50 0.40 0.70 0.60 0.00 0.40 0.40 0.20
+   CMJ11 172.60 +-  1.55 |  80.07 |  90.66 |  47.16 |  80.07 | 0.40 0.40 0.00 0.70 0.00 0.20 0.00 0.00 0.00 0.80 0.50 0.10 0.30 0.60 0.10 0.00 0.20 0.40
 ------------------------ | ------ | ------ | ------ | ------ | ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
-BLUE  mt 172.97 +-  1.48 | 100.00 | 192.33 |  48.31 | 100.00 | 0.35 0.34 0.00 0.77 0.00 0.18 0.00 0.00 0.08 0.75 0.52 0.10 0.25 0.50 0.10 0.10 0.17 0.33
-BLUE  mt (full precision): 172.96903 +- 1.47658
-Chi2 / d.o.f = 1.85116 / 6
+BLUE  mt 172.98 +-  1.48 | 100.00 | 192.73 |  53.97 | 100.00 | 0.34 0.33 0.00 0.77 0.00 0.21 0.00 0.00 0.08 0.76 0.52 0.10 0.25 0.50 0.10 0.10 0.16 0.32
+BLUE  mt (full precision): 172.97864 +- 1.47811
+Chi2 / d.o.f = 1.52196 / 6
 
    CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
-  ALJ10   40.5700    5.1636   14.2800    3.8800    0.1222    3.0650    1.3982
-  ALJ11    5.1636    5.8200    5.6293    1.3244    1.6500    1.6204    1.2800
-  AJT11   14.2800    5.6293   19.8600    2.0950    2.0100    2.0150    1.3363
-  CLL10    3.8800    1.3244    2.0950   42.2500    0.5961    7.9200    2.3456
-  CLJ10    0.1222    1.6500    2.0100    0.5961   11.7500    1.4012    2.5700
-  CLL11    3.0650    1.6204    2.0150    7.9200    1.4012    8.9600    2.2954
-  CMJ11    1.3982    1.2800    1.3363    2.3456    2.5700    2.2954    2.4100
+  ALJ10   40.5700    4.6720    3.0339    3.3841    2.5772    3.0634    1.5656
+  ALJ11    4.6720    5.8200    5.2450    1.5874    1.6435    1.6231    1.2800
+  AJT11    3.0339    5.2450   19.8600    1.4909    0.1982    0.1559    1.4231
+  CLL10    3.3841    1.5874    1.4909   42.2500    6.4278    6.2244    2.3336
+  CLJ10    2.5772    1.6435    0.1982    6.4278   11.7500    6.8473    2.3196
+  CLL11    3.0634    1.6231    0.1559    6.2244    6.8473    8.9600    2.3246
+  CMJ11    1.5656    1.2800    1.4231    2.3336    2.3196    2.3246    2.4100
 
 5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S
 
@@ -884,7 +883,7 @@ cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf
 s/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (58 pages, 444781 bytes).
+Output written on lhc2012.pdf (58 pages, 446213 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1134,7 +1133,7 @@ cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf
 s/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (58 pages, 444781 bytes).
+Output written on lhc2012.pdf (58 pages, 446213 bytes).
 Transcript written on lhc2012.log.
 WARNING! Re-gain A4 ratio: increase height by 29.9399pt instead
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
@@ -1211,7 +1210,7 @@ re/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky
 /cm/cmti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/t
 exmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt8.pfb>
-Output written on lhc2012.pdf (58 pages, 444129 bytes).
+Output written on lhc2012.pdf (58 pages, 445581 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1287,7 +1286,7 @@ re/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky
 /cm/cmti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/t
 exmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt8.pfb>
-Output written on lhc2012.pdf (58 pages, 444129 bytes).
+Output written on lhc2012.pdf (58 pages, 445581 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1362,7 +1361,7 @@ are/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesk
 y/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/
 texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (57 pages, 443004 bytes).
+Output written on lhc2012.pdf (57 pages, 444478 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1437,5 +1436,5 @@ are/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesk
 y/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/
 texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (57 pages, 443004 bytes).
+Output written on lhc2012.pdf (57 pages, 444478 bytes).
 Transcript written on lhc2012.log.
