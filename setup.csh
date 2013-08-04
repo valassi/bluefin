@@ -1,3 +1,2 @@
-here=`pwd`
-###echo eval \`make -f ${here}/Makefile setup_csh\`
-eval `make -f ${here}/Makefile setup_csh`
+set here=`pwd`
+eval `make -f ${here}/Makefile setup_csh | egrep -v '^LCG(APP|EXT)='`

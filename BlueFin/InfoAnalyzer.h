@@ -41,10 +41,14 @@ namespace bluefin
     /// Analysis and printout options (covariance)
     enum CovPrintoutOpts { COV_NONE=0, COV_TOTAL, COV_TOTAL_AND_PARTIAL };
         
+    /// Analysis and printout options (minimization)
+    enum MinimizationOpts { MIN_NONE=0, MIN_ADD_BYGF=1, MIN_ADD_BYES=2, MIN_ADD_BYOD=3, MIN_ADD_BYOE=4 };
+        
     /// Analysis and printout options (all)
     typedef struct
     {
       CovPrintoutOpts cov;
+      MinimizationOpts min;
     } PrintoutOpts;
 
     /// Analyse the BLUE combination and print the results to a text stream.
@@ -52,7 +56,7 @@ namespace bluefin
     static void printInfoAnalysis( const BlueFish& bf,
                                    std::ostream& tStr = std::cout, // text stream
                                    const std::string& outputLatexFile = "",
-                                   const PrintoutOpts& = (PrintoutOpts){COV_TOTAL_AND_PARTIAL} );
+                                   const PrintoutOpts& = (PrintoutOpts){COV_TOTAL_AND_PARTIAL,MIN_ADD_BYOD} );
 
   private:
 

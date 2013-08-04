@@ -56,19 +56,19 @@
 %%%{\it\tiny (BLUE Fisher Information aNalysis)}
 %%%\cfoot{} % Use default (\thepage)
 \cfoot{\thepage\\{\raisebox{1.4cm}[0pt][0pt]{\color{red}\em }}}
-%\rfoot{W branching ratio Ex2p15 ({\tt Ex2_p15.bfin})} % ERROR on Ex2_p15...
+%\rfoot{LHC top mass combination 2012 ({\tt lhc2012bJESonly.bfin})} % ERROR on Ex2_p15...
 % See http://tex.stackexchange.com/questions/203
 \newsavebox\myverbsavebox
 \newenvironment{myverbboxenv}{\lrbox\myverbsavebox}{\endlrbox}
-\begin{myverbboxenv}\verb"Ex2_p15.bfin"\end{myverbboxenv}
-\rfoot{W branching ratio Ex2p15 (\usebox\myverbsavebox)}
+\begin{myverbboxenv}\verb"lhc2012bJESonly.bfin"\end{myverbboxenv}
+\rfoot{LHC top mass combination 2012 (\usebox\myverbsavebox)}
 
 \pagestyle{fancyplain} % Use fancy for all pages except chapter start
 
 % Decrease horizontal space between array columns
 \setlength\arraycolsep{2pt}
 
-\include{Ex2_p15_body}
+\include{lhc2012bJESonly_body}
 
 \appendix
 \renewcommand\thesection{Appendix A\arabic{section}.}
@@ -80,10 +80,10 @@
 %%%\lstset{title=\lstname} % It works but prints the title in a strange place
 \begin{center}
 %%%\lstset{breaklines=false,breakatwhitespace=false,numbers=left,basicstyle=\tiny\ttfamily}
-%%%\fbox{\lstinputlisting{Ex2_p15.bfin}}\\
+%%%\fbox{\lstinputlisting{lhc2012bJESonly.bfin}}\\
 %\lstset{breaklines=false,breakatwhitespace=false,numbers=left,basicstyle=\scriptsize\ttfamily,frame=single} %OLD 0.03
 \lstset{breaklines=true,breakatwhitespace=false,numbers=left,basicstyle=\scriptsize\ttfamily,frame=single} %NEW 0.04
-\lstinputlisting{Ex2_p15.bfin}
+\lstinputlisting{lhc2012bJESonly.bfin}
 Input data file: {\tt\lstname}.
 \end{center}
 

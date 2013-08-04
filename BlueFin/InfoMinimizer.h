@@ -48,9 +48,10 @@ namespace bluefin
     /// The supported functional dependencies
     enum FcnType
       {
-        ByErrorSourceMD=1,  // by error source (matrix derivatives)
-        ByOffDiagElemMD=2,  // by off diagonal elements (matrix derivatives)
-        ByGlobalFactorMD=3  // by global factor (matrix derivatives)
+        ByGlobalFactorMD=1,     // by global factor (matrix derivatives)
+        ByErrorSourceMD=2,      // by error source (matrix derivatives)
+        ByOffDiagElemMD=3,      // by off diagonal elements (matrix derivatives)
+        ByOffDiagPerErrSrcMD=4  // by off diag per error src (matrix derivatives)
       };
 
     // Should all parameters be varied?
@@ -71,6 +72,10 @@ namespace bluefin
         return "ByErrorSource";
       case ByOffDiagElemMD:
         return "ByOffDiagElem";
+        /*
+      case ByOffDiagPerErrSrcMD:
+        return "ByOffDiagPerErrSrc";
+        */
       case ByGlobalFactorMD:
         return "ByGlobalFactor";
       default:
@@ -87,6 +92,10 @@ namespace bluefin
         return bf.nErr();
       case ByOffDiagElemMD:
         return nOffDiag( bf.meaCov() );
+        /*
+      case ByOffDiagPerErrSrcMD:
+        return bf.nErr() * nOffDiag( bf.meaCov() );
+        */
       case ByGlobalFactorMD:
         return 1;
       default:
@@ -106,6 +115,14 @@ namespace bluefin
           std::pair<size_t,size_t> ij = offDiagToIJ( bf.meaCov(), iPar );
           return bf.meaName(ij.first) + "/" + bf.meaName(ij.second);
         }
+        /*
+      case ByOffDiagPerErrSrcMD:
+        {
+          std::pair<size_t,size_t> ij = offDiagToIJ( bf.meaCov(), iPar );
+          return bf.meaName(ij.first) + "/" + bf.meaName(ij.second)
+            + "@" + bf.errNames()[iPar];
+        }
+        */
       case ByGlobalFactorMD:
         return "GlobalScaleFact";
       default:
@@ -206,18 +223,24 @@ namespace bluefin
     /// Return the normalised info derivatives at minimum-info correlations (computed on demand).
     const std::vector<Number>& d1NInfosMinCor() const; // size: ALL parameters
 
+    /// Return all sub-minimizers (only for ByOffDiagPerErrSrcMD)
+    const std::vector<InfoMinimizer*>& subMinimizers() const;
+
   protected:
 
     /// Minimize using ROOT. Throws if minimization failed with an error.
+    /// The input runSfs for one par is used as upper(lower) bound in downFromFrom1(upFrom0).
+    /// The input runSfsStart is used as starting point; it must be == runSfs if the par is fixed.
     /// Return value: true if a minimum was found, false otherwise.
     bool minimizeUsingROOT( Number& runMinVal,
-                            std::vector<Number>& runSfsALL, // size: ALL parameters
-                            std::vector<Number>& runDSfsALL, // size: ALL parameters
+                            std::vector<Number>& runSfs, // size: ALL par
+                            std::vector<Number>& runDSfs, // size: ALL par
                             unsigned& runNCalls,
-                            const std::set<size_t>& parsTV, // size: VARIED parameters
-                            bool downFromNomCor, // alternative: upFromZerCor...
+                            const std::set<size_t>& parsTV, // size: VARIED par
+                            const bool downFromNomCor, // alternative: upFromZerCor...
+                            const std::vector<Number>& runSfsStart, // size: ALL par
                             std::ostream& tStr = std::cout, // text stream
-                            bool debugROOT = false ) const; // debug ROOT (std::cout only)
+                            const bool debugROOT = false ) const; // debug ROOT (std::cout only)
 
     /// Compute the function and all first derivatives.
     /// Input: vector of N scale factors in [0,1]: 0=no correlation, 1=full nominal correlation.
@@ -296,6 +319,9 @@ namespace bluefin
 
     /// The BLUE at minimum-info correlations
     mutable BlueFish1Obs m_minBf;
+
+    /// The sub-minimizers (only for ByOffDiagPerErrSrcMD)
+    mutable std::vector<InfoMinimizer*> m_subMinimizers;
 
   };
 }

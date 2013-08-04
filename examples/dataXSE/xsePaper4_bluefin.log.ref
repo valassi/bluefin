@@ -31,11 +31,12 @@ Vary parameters unless dI/dX@0 == dI/dX@1 == 0
  GlobalScaleFact  |    #0 |     ??? +-     ??? | -0.7109 ->     ??? ->  0.3209 | ==> Vary in minimization #0
 
 MINIMIZE USING ROOT Minuit2
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
 Parameters    (%=FIXED)    #0
-START: f= 0.00000000 at 1.000
+START: f= 0.99691691 at 0.990
 END:   f= 0.97263682 at 0.798
-Minimization completed: minValue=0.9726368, edm=0.0000000, #calls=18       
-ROOT minimizer Minuit2 found a minimum
+Minimization completed: minValue=0.9726368, edm=0.0000000, #calls=30       
+ROOT minimizer Minuit2 (Migrad) found a minimum
 
 DERIVATIVE ANALYSIS
 ----------------- | ----- | ------------------ |-------------------------------|
@@ -52,13 +53,13 @@ DERIVATIVE ANALYSIS
      DXS 122.00 +- 25.00 |  26.88 |  26.88 |  26.88 |  24.13 | 25.0 0.00 0.00
 ------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
 BLUE  xs 105.18 +- 12.96 | 100.00 | 126.47 |  80.48 | 100.00 | 9.87 4.08 7.34
-BLUE  xs (full precision): 105.17953 +- 12.9623
-Chi2 / d.o.f = 3.1221 / 3
+BLUE  xs (full precision): 105.17950 +- 12.9623
+Chi2 / d.o.f = 3.12211 / 3
 
    CovM       AXS       BXS       CXS       DXS
-    AXS  321.0000  442.2818  111.7680    0.0000
-    BXS  442.2818 1992.0000  207.5691    0.0000
-    CXS  111.7680  207.5691  433.0000    0.0000
+    AXS  321.0000  442.2831  111.7683    0.0000
+    BXS  442.2831 1992.0000  207.5697    0.0000
+    CXS  111.7683  207.5697  433.0000    0.0000
     DXS    0.0000    0.0000    0.0000  625.0000
 
 3. MINIMIZE WRT ERROR SOURCES
@@ -74,11 +75,13 @@ Vary parameters unless dI/dX@0 == dI/dX@1 == 0
  Lumi             |  Lumi |     ??? +-     ??? | -0.3904 ->     ??? -> -0.0190 | ==> Vary in minimization #1
 
 MINIMIZE USING ROOT Minuit2
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
 Error sources (%=FIXED)  %Unc,  Bkgd,  Lumi
-START: f= 0.00000000 at 1.000, 1.000, 1.000
+START: f= 0.99691691 at 1.000, 0.990, 0.990
 END:   f= 0.93314076 at 1.000, 0.467, 1.000
-Minimization completed: minValue=0.9331408, edm=0.0000000, #calls=50       
-ROOT minimizer Minuit2 found a minimum
+Minimization completed: minValue=0.9331408, edm=0.0000000, #calls=55       
+ROOT minimizer Minuit2 (Migrad) found a minimum
 
 DERIVATIVE ANALYSIS
 ----------------- | ----- | ------------------ |-------------------------------|
@@ -97,13 +100,13 @@ DERIVATIVE ANALYSIS
      DXS 122.00 +- 25.00 |  28.02 |  28.02 |  28.02 |  27.06 | 25.0 0.00 0.00
 ------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
 BLUE  xs 107.33 +- 13.23 | 100.00 | 131.82 |  74.47 | 100.00 | 9.78 4.69 7.58
-BLUE  xs (full precision): 107.33282 +- 13.2338
+BLUE  xs (full precision): 107.33279 +- 13.2338
 Chi2 / d.o.f = 2.62436 / 3
 
    CovM       AXS       BXS       CXS       DXS
-    AXS  321.0000  341.0273  124.0270    0.0000
-    BXS  341.0273 1992.0000  196.1082    0.0000
-    CXS  124.0270  196.1082  433.0000    0.0000
+    AXS  321.0000  341.0287  124.0272    0.0000
+    BXS  341.0287 1992.0000  196.1086    0.0000
+    CXS  124.0272  196.1086  433.0000    0.0000
     DXS    0.0000    0.0000    0.0000  625.0000
 
 4. MINIMIZE WRT OFF DIAGONAL ELEMENTS
@@ -123,38 +126,38 @@ Vary parameters unless dI/dX@0 == dI/dX@1 == 0
 
 MINIMIZE USING ROOT Minuit2
 Off-Diag Elem (%=FIXED)    #0,    #1,    #2,   %#3,   %#4,   %#5
-START: f= 0.00000000 at 1.000, 1.000, 1.000, 1.000, 1.000, 1.000
-END:   f= 0.91029528 at 0.550, 1.000, 0.639, 1.000, 1.000, 1.000
-Minimization completed: minValue=0.9102953, edm=0.0000000, #calls=57       
-ROOT minimizer Minuit2 found a minimum
+START: f= 0.95638803 at 0.398, 0.778, 0.419, 1.000, 1.000, 1.000
+END:   f= 0.91029528 at 0.491, 1.000, 0.843, 1.000, 1.000, 1.000
+Minimization completed: minValue=0.9102953, edm=0.0000000, #calls=67       
+ROOT minimizer Minuit2 (Migrad) found a minimum
 
 DERIVATIVE ANALYSIS
 ----------------- | ----- | ------------------ |-------------------------------|
   Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
                   |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
 ----------------- | ----- | ------------------ |-------------------------------|
- BXS/AXS          |    #0 |  0.5501 +-  0.7368 | -0.2832 ->      ~0 ->  0.4873 | 
+ BXS/AXS          |    #0 |  0.4910 +-  0.6788 | -0.2832 ->      ~0 ->  0.4873 | 
  CXS/AXS          |    #1 |  1.0000 +-  0.7164 | -0.3292 -> -0.1702 -> -0.2624 | 
- CXS/BXS          |    #2 |  0.6396 +-  0.5570 | -0.0985 ->      ~0 ->  0.0960 | 
+ CXS/BXS          |    #2 |  0.8435 +-  0.5418 | -0.0985 ->      ~0 ->  0.0960 | 
  DXS/AXS          |    #3 |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
  DXS/BXS          |    #4 |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
  DXS/CXS          |    #5 |  1.0000 +-     N/A |      ~0 ->      ~0 ->      ~0 | %FIXED%
 
 ------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
 
-     AXS  95.00 +- 17.92 |  44.06 |  55.93 |  26.28 |  44.06 | 10.0 10.0 11.0
+     AXS  95.00 +- 17.92 |  44.06 |  55.93 |  27.49 |  44.06 | 10.0 10.0 11.0
      BXS 144.00 +- 44.63 |  -0.00 |   9.01 |   0.00 |   0.00 | 14.0 40.0 14.0
-     CXS 115.00 +- 20.81 |  27.22 |  41.46 |  15.32 |  27.22 | 18.0 3.00 10.0
+     CXS 115.00 +- 20.81 |  27.22 |  41.46 |  15.11 |  27.22 | 18.0 3.00 10.0
      DXS 122.00 +- 25.00 |  28.72 |  28.72 |  28.72 |  28.72 | 25.0 0.00 0.00
 ------------------------ | ------ | ------ | ------ | ------ | ---- ---- ----
-BLUE  xs 108.20 +- 13.40 | 100.00 | 135.13 |  70.33 | 100.00 | 9.75 5.22 7.57
-BLUE  xs (full precision): 108.19892 +- 13.3989
-Chi2 / d.o.f = 2.58253 / 3
+BLUE  xs 108.20 +- 13.40 | 100.00 | 135.13 |  71.32 | 100.00 | 9.75 5.22 7.57
+BLUE  xs (full precision): 108.19903 +- 13.3989
+Chi2 / d.o.f = 2.36694 / 3
 
    CovM       AXS       BXS       CXS       DXS
-    AXS  321.0000  304.7698  140.0000    0.0000
-    BXS  304.7698 1992.0000  166.2957    0.0000
-    CXS  140.0000  166.2957  433.0000    0.0000
+    AXS  321.0000  272.0192  140.0000    0.0000
+    BXS  272.0192 1992.0000  219.2982    0.0000
+    CXS  140.0000  219.2982  433.0000    0.0000
     DXS    0.0000    0.0000    0.0000  625.0000
 
 5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S
@@ -174,7 +177,7 @@ Chi2 / d.o.f = 1.27144 / 2
     CXS  140.0000  433.0000    0.0000
     DXS    0.0000    0.0000  625.0000
 
-6. ONIONIZE
+7. ONIONIZE
 
 Onionize source #0 (Unc)
  CovOld       AXS       BXS       CXS       DXS
@@ -229,7 +232,7 @@ Chi2 / d.o.f = 2.21319 / 3
     CXS  109.0000  109.0000  433.0000    0.0000
     DXS    0.0000    0.0000    0.0000  625.0000
 
-7. NO CORRELATIONS
+8. NO CORRELATIONS
 
 ------------------------ | CVW xs | FIW xs | MIW xs | RIW xs |  Unc Bkgd Lumi
 
@@ -309,7 +312,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper4.pdf (19 pages, 305980 bytes).
+Output written on xsePaper4.pdf (19 pages, 306300 bytes).
 Transcript written on xsePaper4.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -368,7 +371,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper4.pdf (19 pages, 305980 bytes).
+Output written on xsePaper4.pdf (19 pages, 306300 bytes).
 Transcript written on xsePaper4.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -427,7 +430,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper4.pdf (19 pages, 305980 bytes).
+Output written on xsePaper4.pdf (19 pages, 306300 bytes).
 Transcript written on xsePaper4.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -486,7 +489,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper4.pdf (19 pages, 305980 bytes).
+Output written on xsePaper4.pdf (19 pages, 306300 bytes).
 Transcript written on xsePaper4.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -545,7 +548,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper4.pdf (19 pages, 305980 bytes).
+Output written on xsePaper4.pdf (19 pages, 306300 bytes).
 Transcript written on xsePaper4.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -604,5 +607,5 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper4.pdf (19 pages, 305980 bytes).
+Output written on xsePaper4.pdf (19 pages, 306300 bytes).
 Transcript written on xsePaper4.log.

@@ -47,8 +47,10 @@ namespace bluefin
         << "                   [default: use the input directory <indir>]\n"
         << "    -t <texdir>  - store/overwrite tex and other temporary files in <texdir>\n"
         << "                   [default: use a temporary directory]\n"
-        << "    -c (0|1|2)   - covariance printout: 0=none, 1=full, 2=all (full and partial)\n"
+        << "    -c (0..2)    - covariance printout: 0=none, 1=full, 2=all (full and partial)\n"
         << "                   [default: 2=all]\n"
+        << "    -M (0..4)    - minimizations: 0=none, 1+=ByGlobFac, 2+=ByErrSrc, 3+=ByOffDiag, 4+=ByOffDiagPerErrSrc\n"
+        << "                   [default: 3=all but the experimental ByOffDiagPerErrSrc]\n"
       ;
   }
 }
@@ -64,9 +66,10 @@ int main( int argc, char** argv )
     std::string texFileDir;
     std::string outFileDir;
     InfoAnalyzer::CovPrintoutOpts covPrintoutOpts = InfoAnalyzer::COV_TOTAL_AND_PARTIAL;
+    InfoAnalyzer::MinimizationOpts minimizationOpts = InfoAnalyzer::MIN_ADD_BYOD;
     {
       int c;
-      while ( ( c = ::getopt( argc, argv, "ho:t:c:" ) ) != -1 )
+      while ( ( c = ::getopt( argc, argv, "ho:t:c:M:" ) ) != -1 )
       {
         switch ( c )
         {
@@ -92,6 +95,23 @@ int main( int argc, char** argv )
             return 1;
           }
           break;
+        case 'M':
+          if ( ::strcmp ( ::optarg, "0" ) == 0 )
+            minimizationOpts = InfoAnalyzer::MIN_NONE;
+          else if ( ::strcmp ( ::optarg, "1" ) == 0 )
+            minimizationOpts = InfoAnalyzer::MIN_ADD_BYGF;
+          else if ( ::strcmp ( ::optarg, "2" ) == 0 )
+            minimizationOpts = InfoAnalyzer::MIN_ADD_BYES;
+          else if ( ::strcmp ( ::optarg, "3" ) == 0 )
+            minimizationOpts = InfoAnalyzer::MIN_ADD_BYOD;
+          else if ( ::strcmp ( ::optarg, "4" ) == 0 )
+            minimizationOpts = InfoAnalyzer::MIN_ADD_BYOE;
+          else
+          {
+            usage( argv[0], std::cerr );
+            return 1;
+          }
+          break;
         default:
           usage( argv[0], std::cerr );
           return 1;
@@ -101,7 +121,7 @@ int main( int argc, char** argv )
     // There should be exactly one positional argument
     if ( argc - ::optind != 1 )
     {
-      std::cerr << "ERROR! Expect exactly one argument\n" ;
+      //std::cerr << "ERROR! Expect exactly one argument\n" ;
       usage( argv[0], std::cerr );
       return 1;
     }
@@ -269,15 +289,20 @@ int main( int argc, char** argv )
     BlueFish bf = InputParser::createBlueFishFromInputData( inFileName );
     std::ofstream tStr; // text stream
     tStr.open ( logFileName.c_str() );
-    InfoAnalyzer::PrintoutOpts printoutOpts = { covPrintoutOpts };
+    InfoAnalyzer::PrintoutOpts printoutOpts = { covPrintoutOpts, minimizationOpts };
     InfoAnalyzer::printInfoAnalysis( bf, tStr, texBodyName, printoutOpts );
     tStr.close();
+    // Warning message (reserved option)
+    std::string extraFooter;
+    std::string extraFootMM = "0mm";
+    if ( ::getenv( "BFEXTRAFOOTER" ) )
+    {
+      extraFooter = std::string( ::getenv( "BFEXTRAFOOTER" ) );
+      extraFootMM = "4mm";
+    }
     // Fine tuning of text width and height
     std::string wAddPt = ""; // not yet determined
     std::string hAddPt = ""; // not yet determined
-    // Warning message (reserved option)
-    std::string extraFooter;
-    if ( ::getenv( "BFEXTRAFOOTER" ) ) extraFooter = std::string( ::getenv( "BFEXTRAFOOTER" ) );
     do
     {
       // Create a tex wrapper from BlueFinReport.tex
@@ -290,6 +315,7 @@ int main( int argc, char** argv )
       cmd += " | sed \"s|BFMYCOMBNAME|" + bf.combName() + "|\"";
       cmd += " | sed \"s|BFVERS|" + blueFinVersion + "|\"";
       cmd += " | sed \"s|BFEXTRAFOOTER|" + extraFooter + "|\"";
+      cmd += " | sed \"s|BFEXTRAFOOTMM|" + extraFootMM + "|\"";
       cmd += " > " + texFileName;
       if ( ::system( cmd.c_str() ) )
       {

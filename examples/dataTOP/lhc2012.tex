@@ -25,6 +25,7 @@
 \setlength{\oddsidemargin}{0mm}
 \setlength{\evensidemargin}{0mm}
 \setlength{\topmargin}{0mm}
+\addtolength{\textheight}{-4mm} % Make space for extra footer
 
 % IMPROVE FLOAT HANDLING - but using [H] makes totalnumber and \textfraction unnecessary
 \setcounter{totalnumber}{100} % ALLOW MANY TABLES ON ONE PAGE
@@ -48,9 +49,10 @@
 
 % FOOTER
 \setlength{\footskip}{30pt} % Make room for fancyhdr
+\addtolength{\footskip}{4mm} % Make space for extra footer
 %%%\renewcommand{\footrulewidth}{0pt} % No horizontal line in footer
 \renewcommand{\footrulewidth}{0.4pt} % Thickness of horizontal line in footer
-\lfoot{\raisebox{-0.35cm}{\includegraphics[height=1cm]{BlueFinLogo.jpg}}\hspace*{3mm}{\sc BlueFin 01.00.01}}
+\lfoot{\raisebox{-0.35cm}{\includegraphics[height=1cm]{BlueFinLogo.jpg}}\hspace*{3mm}{\sc BlueFin 01.00.02}}
 %%%{\it\tiny (BLUE Fisher Information aNalysis)}
 %%%\cfoot{} % Use default (\thepage)
 \cfoot{\thepage\\{\raisebox{1.4cm}[0pt][0pt]{\color{red}\em WARNING! This is an example where inputs are taken from Table 4 in CMS PAS TOP-12-001. The output results differ because of rounding errors in those inputs.}}}

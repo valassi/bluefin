@@ -1,0 +1,689 @@
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1. NOMINAL CORRELATIONS
+
+------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | bJES
+
+   ALJ10 169.30 +-  2.50 | -27.78 |   3.10 |  18.48 |   8.36 | 2.50
+   ALJ11 174.50 +-  1.60 |  11.04 |   7.56 |   1.20 |   3.32 | 1.60
+   AJT11 174.90 +-  1.40 |  37.32 |   9.88 |  10.45 |  11.23 | 1.40
+   CLL10 175.50 +-  0.90 |  -6.11 |  23.90 |   0.10 |   1.84 | 0.90
+   CLJ10 173.10 +-  0.90 |  -6.11 |  23.90 |   0.10 |   1.84 | 0.90
+   CLL11 173.30 +-  1.10 | -76.11 |  16.00 |  24.00 |  22.91 | 1.10
+   CMJ11 172.60 +-  0.70 | 167.76 |  39.51 |  47.21 |  50.49 | 0.70
+------------------------ | ------ | ------ | ------ | ------ | ----
+BLUE  mt 173.84 +-  0.44 | 100.00 | 123.86 | 101.55 | 100.00 | 0.44
+BLUE  mt (full precision): 173.84439 +- 0.44001
+Chi2 / d.o.f = 219.596 / 6
+
+   CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    3.8000    3.3250    1.0687    1.0687    1.3062    0.8312
+  ALJ11    3.8000    2.5600    2.1280    0.6840    0.6840    0.8360    0.5320
+  AJT11    3.3250    2.1280    1.9600    0.5985    0.5985    0.7315    0.4655
+  CLL10    1.0687    0.6840    0.5985    0.8100    0.7695    0.9405    0.5985
+  CLJ10    1.0687    0.6840    0.5985    0.7695    0.8100    0.9405    0.5985
+  CLL11    1.3062    0.8360    0.7315    0.9405    0.9405    1.2100    0.7315
+  CMJ11    0.8312    0.5320    0.4655    0.5985    0.5985    0.7315    0.4900
+
+2. MINIMIZE WRT GLOBAL FACTOR
+
+DERIVATIVE ANALYSIS
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ GlobalScaleFact  |    #0 |     ??? +-     ??? | -4.6629 ->     ??? -> 13.8369 | ==> Vary in minimization #0
+
+MINIMIZE USING ROOT Minuit2
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+Parameters    (%=FIXED)    #0
+START: f= 0.88405010 at 0.990
+END:   f= 0.44785221 at 0.707
+Minimization completed: minValue=0.4478522, edm=0.0000000, #calls=32       
+ROOT minimizer Minuit2 (Migrad) found a minimum
+
+DERIVATIVE ANALYSIS
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ GlobalScaleFact  |    #0 |  0.7076 +-  0.8534 | -4.6629 ->      ~0 -> 13.8369 | 
+
+------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | bJES
+
+   ALJ10 169.30 +-  2.50 |  -8.83 |   6.92 |   5.10 |   6.12 | 2.50
+   ALJ11 174.50 +-  1.60 |   4.75 |  16.89 |   0.60 |   3.29 | 1.60
+   AJT11 174.90 +-  1.40 |  13.84 |  22.06 |   3.93 |   9.59 | 1.40
+   CLL10 175.50 +-  0.90 |  13.31 |  53.37 |   1.39 |   9.23 | 0.90
+   CLJ10 173.10 +-  0.90 |  13.31 |  53.37 |   1.39 |   9.23 | 0.90
+   CLL11 173.30 +-  1.10 | -13.33 |  35.73 |   2.08 |   9.24 | 1.10
+   CMJ11 172.60 +-  0.70 |  76.94 |  88.23 |  28.06 |  53.31 | 0.70
+------------------------ | ------ | ------ | ------ | ------ | ----
+BLUE  mt 173.66 +-  0.66 | 100.00 | 276.56 |  42.56 | 100.00 | 0.66
+BLUE  mt (full precision): 173.65942 +- 0.65751
+Chi2 / d.o.f = 33.544 / 6
+
+   CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    2.6889    2.3528    0.7563    0.7563    0.9243    0.5882
+  ALJ11    2.6889    2.5600    1.5058    0.4840    0.4840    0.5916    0.3764
+  AJT11    2.3528    1.5058    1.9600    0.4235    0.4235    0.5176    0.3294
+  CLL10    0.7563    0.4840    0.4235    0.8100    0.5445    0.6655    0.4235
+  CLJ10    0.7563    0.4840    0.4235    0.5445    0.8100    0.6655    0.4235
+  CLL11    0.9243    0.5916    0.5176    0.6655    0.6655    1.2100    0.5176
+  CMJ11    0.5882    0.3764    0.3294    0.4235    0.4235    0.5176    0.4900
+
+3. MINIMIZE WRT ERROR SOURCES
+
+DERIVATIVE ANALYSIS
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ bJES             |  bJES |     ??? +-     ??? | -4.6629 ->     ??? -> 13.8369 | ==> Vary in minimization #0
+
+MINIMIZE USING ROOT Minuit2
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+Error sources (%=FIXED)  bJES
+START: f= 0.88405010 at 0.990
+END:   f= 0.44785221 at 0.707
+Minimization completed: minValue=0.4478522, edm=0.0000000, #calls=32       
+ROOT minimizer Minuit2 (Migrad) found a minimum
+
+DERIVATIVE ANALYSIS
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ bJES             |  bJES |  0.7076 +-  0.8534 | -4.6629 ->      ~0 -> 13.8369 | 
+
+------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | bJES
+
+   ALJ10 169.30 +-  2.50 |  -8.83 |   6.92 |   5.10 |   6.12 | 2.50
+   ALJ11 174.50 +-  1.60 |   4.75 |  16.89 |   0.60 |   3.29 | 1.60
+   AJT11 174.90 +-  1.40 |  13.84 |  22.06 |   3.93 |   9.59 | 1.40
+   CLL10 175.50 +-  0.90 |  13.31 |  53.37 |   1.39 |   9.23 | 0.90
+   CLJ10 173.10 +-  0.90 |  13.31 |  53.37 |   1.39 |   9.23 | 0.90
+   CLL11 173.30 +-  1.10 | -13.33 |  35.73 |   2.08 |   9.24 | 1.10
+   CMJ11 172.60 +-  0.70 |  76.94 |  88.23 |  28.06 |  53.31 | 0.70
+------------------------ | ------ | ------ | ------ | ------ | ----
+BLUE  mt 173.66 +-  0.66 | 100.00 | 276.56 |  42.56 | 100.00 | 0.66
+BLUE  mt (full precision): 173.65942 +- 0.65751
+Chi2 / d.o.f = 33.544 / 6
+
+   CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    2.6889    2.3528    0.7563    0.7563    0.9243    0.5882
+  ALJ11    2.6889    2.5600    1.5058    0.4840    0.4840    0.5916    0.3764
+  AJT11    2.3528    1.5058    1.9600    0.4235    0.4235    0.5176    0.3294
+  CLL10    0.7563    0.4840    0.4235    0.8100    0.5445    0.6655    0.4235
+  CLJ10    0.7563    0.4840    0.4235    0.5445    0.8100    0.6655    0.4235
+  CLL11    0.9243    0.5916    0.5176    0.6655    0.6655    1.2100    0.5176
+  CMJ11    0.5882    0.3764    0.3294    0.4235    0.4235    0.5176    0.4900
+
+4. MINIMIZE WRT OFF DIAGONAL ELEMENTS
+
+DERIVATIVE ANALYSIS
+Vary parameters unless dI/dX@0 == dI/dX@1 == 0
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ ALJ11/ALJ10      |    #0 |     ??? +-     ??? | -0.0920 ->     ??? ->  1.2043 | ==> Vary in minimization #0
+ AJT11/ALJ10      |    #1 |     ??? +-     ??? | -0.1051 ->     ??? ->  3.5609 | ==> Vary in minimization #1
+ AJT11/ALJ11      |    #2 |     ??? +-     ??? | -0.1642 ->     ??? -> -0.9058 | ==> Vary in minimization #2
+ CLL10/ALJ10      |    #3 |     ??? +-     ??? | -0.0817 ->     ??? -> -0.1874 | ==> Vary in minimization #3
+ CLL10/ALJ11      |    #4 |     ??? +-     ??? | -0.1277 ->     ??? ->  0.0477 | ==> Vary in minimization #4
+ CLL10/AJT11      |    #5 |     ??? +-     ??? | -0.1460 ->     ??? ->  0.1409 | ==> Vary in minimization #5
+ CLJ10/ALJ10      |    #6 |     ??? +-     ??? | -0.0817 ->     ??? -> -0.1874 | ==> Vary in minimization #6
+ CLJ10/ALJ11      |    #7 |     ??? +-     ??? | -0.1277 ->     ??? ->  0.0477 | ==> Vary in minimization #7
+ CLJ10/AJT11      |    #8 |     ??? +-     ??? | -0.1460 ->     ??? ->  0.1409 | ==> Vary in minimization #8
+ CLJ10/CLL10      |    #9 |     ??? +-     ??? | -0.4542 ->     ??? -> -0.0297 | ==> Vary in minimization #9
+ CLL11/ALJ10      |   #10 |     ??? +-     ??? | -0.0669 ->     ??? -> -2.8534 | ==> Vary in minimization #10
+ CLL11/ALJ11      |   #11 |     ??? +-     ??? | -0.1045 ->     ??? ->  0.7259 | ==> Vary in minimization #11
+ CLL11/AJT11      |   #12 |     ??? +-     ??? | -0.1194 ->     ??? ->  2.1462 | ==> Vary in minimization #12
+ CLL11/CLL10      |   #13 |     ??? +-     ??? | -0.3716 ->     ??? -> -0.4518 | ==> Vary in minimization #13
+ CLL11/CLJ10      |   #14 |     ??? +-     ??? | -0.3716 ->     ??? -> -0.4518 | ==> Vary in minimization #14
+ CMJ11/ALJ10      |   #15 |     ??? +-     ??? | -0.1051 ->     ??? ->  4.0021 | ==> Vary in minimization #15
+ CMJ11/ALJ11      |   #16 |     ??? +-     ??? | -0.1642 ->     ??? -> -1.0181 | ==> Vary in minimization #16
+ CMJ11/AJT11      |   #17 |     ??? +-     ??? | -0.1877 ->     ??? -> -3.0102 | ==> Vary in minimization #17
+ CMJ11/CLL10      |   #18 |     ??? +-     ??? | -0.5839 ->     ??? ->  0.6336 | ==> Vary in minimization #18
+ CMJ11/CLJ10      |   #19 |     ??? +-     ??? | -0.5839 ->     ??? ->  0.6336 | ==> Vary in minimization #19
+ CMJ11/CLL11      |   #20 |     ??? +-     ??? | -0.4777 ->     ??? ->  9.6485 | ==> Vary in minimization #20
+
+MINIMIZE USING ROOT Minuit2
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+WARNING! UpperBound=1 == StartValue=1 : redefine StartValue=0.99
+Off-Diag Elem (%=FIXED)    #0,    #1,    #2,    #3,    #4,    #5,    #6,    #7,    #8,    #9,   #10,   #11,   #12,   #13,   #14,   #15,   #16,   #17,   #18,   #19,   #20
+START: f= 0.39668824 at 0.673, 0.589, 0.921, 0.757, 0.990, 0.990, 0.757, 0.990, 0.990, 0.990, 0.926, 0.990, 0.990, 0.861, 0.861, 0.589, 0.921, 0.990, 0.818, 0.818, 0.669
+WARNING! Negative determinant -0.00019425 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00019425 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00007420 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00044778 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00002671 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00002671 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00055905 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00055905 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00000092 in correlation matrix (total covariance)
+WARNING! Negative determinant -0.00000092 in correlation matrix (total covariance)
+Info in <Minuit2>: Minuit2Minimizer::Minimize : Covar was made pos def
+END:   f= 0.39544688 at 0.660, 0.557, 0.848, 0.569, 0.988, 0.994, 0.569, 0.988, 0.994, 0.998, 0.926, 0.995, 0.945, 0.853, 0.853, 0.562, 0.879, 1.000, 0.815, 0.815, 0.664
+Minimization completed: minValue=0.3954469, edm=0.0000000, #calls=1255     
+ROOT minimizer Minuit2 (Migrad) found a minimum
+
+DERIVATIVE ANALYSIS
+----------------- | ----- | ------------------ |-------------------------------|
+  Parameter name  | ParID |   Parameter value  |           1/I*dI/dX           |
+                  |       | ScaleFactor X @MIN |   @0    ->    @MIN ->      @1 |
+----------------- | ----- | ------------------ |-------------------------------|
+ ALJ11/ALJ10      |    #0 |  0.6606 +-      ~0 | -0.0920 ->      ~0 ->  1.2043 | 
+ AJT11/ALJ10      |    #1 |  0.5574 +-      ~0 | -0.1051 ->      ~0 ->  3.5609 | 
+ AJT11/ALJ11      |    #2 |  0.8483 +-      ~0 | -0.1642 ->      ~0 -> -0.9058 | 
+ CLL10/ALJ10      |    #3 |  0.5697 +-      ~0 | -0.0817 ->      ~0 -> -0.1874 | 
+ CLL10/ALJ11      |    #4 |  0.9888 +-      ~0 | -0.1277 ->      ~0 ->  0.0477 | 
+ CLL10/AJT11      |    #5 |  0.9949 +-      ~0 | -0.1460 ->      ~0 ->  0.1409 | 
+ CLJ10/ALJ10      |    #6 |  0.5697 +-      ~0 | -0.0817 ->      ~0 -> -0.1874 | 
+ CLJ10/ALJ11      |    #7 |  0.9888 +-      ~0 | -0.1277 ->      ~0 ->  0.0477 | 
+ CLJ10/AJT11      |    #8 |  0.9949 +-      ~0 | -0.1460 ->      ~0 ->  0.1409 | 
+ CLJ10/CLL10      |    #9 |  0.9982 +-      ~0 | -0.4542 ->      ~0 -> -0.0297 | 
+ CLL11/ALJ10      |   #10 |  0.9263 +-      ~0 | -0.0669 ->      ~0 -> -2.8534 | 
+ CLL11/ALJ11      |   #11 |  0.9953 +-      ~0 | -0.1045 ->      ~0 ->  0.7259 | 
+ CLL11/AJT11      |   #12 |  0.9453 +-      ~0 | -0.1194 ->      ~0 ->  2.1462 | 
+ CLL11/CLL10      |   #13 |  0.8539 +-      ~0 | -0.3716 ->      ~0 -> -0.4518 | 
+ CLL11/CLJ10      |   #14 |  0.8539 +-  0.0001 | -0.3716 ->      ~0 -> -0.4518 | 
+ CMJ11/ALJ10      |   #15 |  0.5622 +-      ~0 | -0.1051 ->      ~0 ->  4.0021 | 
+ CMJ11/ALJ11      |   #16 |  0.8798 +-      ~0 | -0.1642 ->      ~0 -> -1.0181 | 
+ CMJ11/AJT11      |   #17 |  1.0000 +-      ~0 | -0.1877 -> -0.0119 -> -3.0102 | 
+ CMJ11/CLL10      |   #18 |  0.8152 +-      ~0 | -0.5839 ->      ~0 ->  0.6336 | 
+ CMJ11/CLJ10      |   #19 |  0.8152 +-      ~0 | -0.5839 ->      ~0 ->  0.6336 | 
+ CMJ11/CLL11      |   #20 |  0.6648 +-      ~0 | -0.4777 ->      ~0 ->  9.6485 | 
+
+------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | bJES
+
+   ALJ10 169.30 +-  2.50 |  -0.00 |   7.83 |   0.00 |   0.00 | 2.50
+   ALJ11 174.50 +-  1.60 |  -0.00 |  19.13 |   0.00 |   0.00 | 1.60
+   AJT11 174.90 +-  1.40 |   1.61 |  24.98 |   0.03 |   1.61 | 1.40
+   CLL10 175.50 +-  0.90 |   0.00 |  60.45 |   0.00 |   0.00 | 0.90
+   CLJ10 173.10 +-  0.90 |   0.00 |  60.45 |   0.00 |   0.00 | 0.90
+   CLL11 173.30 +-  1.10 |  -0.00 |  40.46 |   0.00 |   0.00 | 1.10
+   CMJ11 172.60 +-  0.70 |  98.39 |  99.92 |  35.52 |  98.38 | 0.70
+------------------------ | ------ | ------ | ------ | ------ | ----
+BLUE  mt 172.64 +-  0.70 | 100.00 | 313.21 |  35.56 | 100.00 | 0.70
+BLUE  mt (full precision): 172.63721 +- 0.69972
+Chi2 / d.o.f = 87.8964 / 6
+
+   CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    2.5103    1.8535    0.6088    0.6088    1.2100    0.4673
+  ALJ11    2.5103    2.5600    1.8052    0.6763    0.6763    0.8321    0.4681
+  AJT11    1.8535    1.8052    1.9600    0.5955    0.5955    0.6915    0.4655
+  CLL10    0.6088    0.6763    0.5955    0.8100    0.7681    0.8031    0.4879
+  CLJ10    0.6088    0.6763    0.5955    0.7681    0.8100    0.8031    0.4879
+  CLL11    1.2100    0.8321    0.6915    0.8031    0.8031    1.2100    0.4863
+  CMJ11    0.4673    0.4681    0.4655    0.4879    0.4879    0.4863    0.4900
+
+5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S
+
+------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | bJES
+
+   AJT11 174.90 +-  1.40 |   1.61 |  24.98 |   0.08 |   1.61 | 1.40
+   CMJ11 172.60 +-  0.70 |  98.39 |  99.92 |  75.02 |  98.39 | 0.70
+------------------------ | ------ | ------ | ------ | ------ | ----
+BLUE  mt 172.64 +-  0.70 | 100.00 | 124.90 |  75.10 | 100.00 | 0.70
+BLUE  mt (full precision): 172.63710 +- 0.69972
+Chi2 / d.o.f = 3.48255 / 1
+
+   CovM     AJT11     CMJ11
+  AJT11    1.9600    0.4655
+  CMJ11    0.4655    0.4900
+
+7. ONIONIZE
+
+Onionize source #0 (bJES)
+ CovOld     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    3.8000    3.3250    1.0687    1.0687    1.3062    0.8312
+  ALJ11    3.8000    2.5600    2.1280    0.6840    0.6840    0.8360    0.5320
+  AJT11    3.3250    2.1280    1.9600    0.5985    0.5985    0.7315    0.4655
+  CLL10    1.0687    0.6840    0.5985    0.8100    0.7695    0.9405    0.5985
+  CLJ10    1.0687    0.6840    0.5985    0.7695    0.8100    0.9405    0.5985
+  CLL11    1.3062    0.8360    0.7315    0.9405    0.9405    1.2100    0.7315
+  CMJ11    0.8312    0.5320    0.4655    0.5985    0.5985    0.7315    0.4900
+ CovNew     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    2.5600    1.9600    0.8100    0.8100    1.2100    0.4900
+  ALJ11    2.5600    2.5600    1.9600    0.6840    0.6840    0.8360    0.4900
+  AJT11    1.9600    1.9600    1.9600    0.5985    0.5985    0.7315    0.4655
+  CLL10    0.8100    0.6840    0.5985    0.8100    0.7695    0.8100    0.4900
+  CLJ10    0.8100    0.6840    0.5985    0.7695    0.8100    0.8100    0.4900
+  CLL11    1.2100    0.8360    0.7315    0.8100    0.8100    1.2100    0.4900
+  CMJ11    0.4900    0.4900    0.4655    0.4900    0.4900    0.4900    0.4900
+
+------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | bJES
+
+   ALJ10 169.30 +-  2.50 |   0.02 |   7.82 |   0.00 |   0.02 | 2.50
+   ALJ11 174.50 +-  1.60 |  -4.04 |  19.09 |   0.17 |   3.71 | 1.60
+   AJT11 174.90 +-  1.40 |   5.59 |  24.93 |   0.28 |   5.14 | 1.40
+   CLL10 175.50 +-  0.90 |   0.25 |  60.32 |   0.00 |   0.23 | 0.90
+   CLJ10 173.10 +-  0.90 |   0.25 |  60.32 |   0.00 |   0.23 | 0.90
+   CLL11 173.30 +-  1.10 |  -0.37 |  40.38 |   0.00 |   0.34 | 1.10
+   CMJ11 172.60 +-  0.70 |  98.29 |  99.72 |  35.01 |  90.33 | 0.70
+------------------------ | ------ | ------ | ------ | ------ | ----
+BLUE  mt 172.66 +-  0.70 | 100.00 | 312.59 |  35.46 | 100.00 | 0.70
+BLUE  mt (full precision): 172.65716 +- 0.69902
+Chi2 / d.o.f = 94.6925 / 6
+
+   CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    2.5600    1.9600    0.8100    0.8100    1.2100    0.4900
+  ALJ11    2.5600    2.5600    1.9600    0.6840    0.6840    0.8360    0.4900
+  AJT11    1.9600    1.9600    1.9600    0.5985    0.5985    0.7315    0.4655
+  CLL10    0.8100    0.6840    0.5985    0.8100    0.7695    0.8100    0.4900
+  CLJ10    0.8100    0.6840    0.5985    0.7695    0.8100    0.8100    0.4900
+  CLL11    1.2100    0.8360    0.7315    0.8100    0.8100    1.2100    0.4900
+  CMJ11    0.4900    0.4900    0.4655    0.4900    0.4900    0.4900    0.4900
+
+8. NO CORRELATIONS
+
+------------------------ | CVW mt | FIW mt | MIW mt | RIW mt | bJES
+
+   ALJ10 169.30 +-  2.50 |   2.50 |   2.50 |   2.50 |   2.50 | 2.50
+   ALJ11 174.50 +-  1.60 |   6.11 |   6.11 |   6.11 |   6.11 | 1.60
+   AJT11 174.90 +-  1.40 |   7.98 |   7.98 |   7.98 |   7.98 | 1.40
+   CLL10 175.50 +-  0.90 |  19.30 |  19.30 |  19.30 |  19.30 | 0.90
+   CLJ10 173.10 +-  0.90 |  19.30 |  19.30 |  19.30 |  19.30 | 0.90
+   CLL11 173.30 +-  1.10 |  12.92 |  12.92 |  12.92 |  12.92 | 1.10
+   CMJ11 172.60 +-  0.70 |  31.90 |  31.90 |  31.90 |  31.90 | 0.70
+------------------------ | ------ | ------ | ------ | ------ | ----
+BLUE  mt 173.56 +-  0.40 | 100.00 | 100.00 | 100.00 | 100.00 | 0.40
+BLUE  mt (full precision): 173.56350 +- 0.39537
+Chi2 / d.o.f = 11.0092 / 6
+
+   CovM     ALJ10     ALJ11     AJT11     CLL10     CLJ10     CLL11     CMJ11
+  ALJ10    6.2500    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000
+  ALJ11    0.0000    2.5600    0.0000    0.0000    0.0000    0.0000    0.0000
+  AJT11    0.0000    0.0000    1.9600    0.0000    0.0000    0.0000    0.0000
+  CLL10    0.0000    0.0000    0.0000    0.8100    0.0000    0.0000    0.0000
+  CLJ10    0.0000    0.0000    0.0000    0.0000    0.8100    0.0000    0.0000
+  CLL11    0.0000    0.0000    0.0000    0.0000    0.0000    1.2100    0.0000
+  CMJ11    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.4900
+
+--------------------------------------------------------------------
+
+Create latex report: /afs/cern.ch/user/a/avalassi/blue2/sw/examples/dataTOP/lhc2012bJESonly_body.tex
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./lhc2012bJESonly.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty)
+No file lhc2012bJESonly.aux.
+(/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./lhc2012bJESonly_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16] <use BlueFinLogo.jpg> [17]
+<use BlueFinLogo.jpg> [18] <use BlueFinLogo.jpg> [19] <use BlueFinLogo.jpg>
+[20]) <use BlueFinLogo.jpg> [21] <use BlueFinLogo.jpg> [22]
+(./lhc2012bJESonly.bfin <use BlueFinLogo.jpg> [23]) <use BlueFinLogo.jpg>
+[24] (./lhc2012bJESonly.aux (./lhc2012bJESonly_body.aux)) )</usr/share/texmf/fo
+nts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc1
+0.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
+onts/type1/bluesky/cm/cmtt8.pfb>
+Output written on lhc2012bJESonly.pdf (24 pages, 319068 bytes).
+Transcript written on lhc2012bJESonly.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./lhc2012bJESonly.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./lhc2012bJESonly.aux
+(./lhc2012bJESonly_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./lhc2012bJESonly_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16] <use BlueFinLogo.jpg> [17]
+<use BlueFinLogo.jpg> [18] <use BlueFinLogo.jpg> [19] <use BlueFinLogo.jpg>
+[20]) <use BlueFinLogo.jpg> [21] <use BlueFinLogo.jpg> [22]
+(./lhc2012bJESonly.bfin <use BlueFinLogo.jpg> [23]) <use BlueFinLogo.jpg>
+[24] (./lhc2012bJESonly.aux (./lhc2012bJESonly_body.aux)) )</usr/share/texmf/fo
+nts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc1
+0.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
+onts/type1/bluesky/cm/cmtt8.pfb>
+Output written on lhc2012bJESonly.pdf (24 pages, 319068 bytes).
+Transcript written on lhc2012bJESonly.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./lhc2012bJESonly.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./lhc2012bJESonly.aux
+(./lhc2012bJESonly_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./lhc2012bJESonly_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16] <use BlueFinLogo.jpg> [17]
+<use BlueFinLogo.jpg> [18] <use BlueFinLogo.jpg> [19] <use BlueFinLogo.jpg>
+[20]) <use BlueFinLogo.jpg> [21] <use BlueFinLogo.jpg> [22]
+(./lhc2012bJESonly.bfin <use BlueFinLogo.jpg> [23]) <use BlueFinLogo.jpg>
+[24] (./lhc2012bJESonly.aux (./lhc2012bJESonly_body.aux)) )</usr/share/texmf/fo
+nts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc1
+0.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
+onts/type1/bluesky/cm/cmtt8.pfb>
+Output written on lhc2012bJESonly.pdf (24 pages, 319068 bytes).
+Transcript written on lhc2012bJESonly.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./lhc2012bJESonly.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./lhc2012bJESonly.aux
+(./lhc2012bJESonly_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./lhc2012bJESonly_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16] <use BlueFinLogo.jpg> [17]
+<use BlueFinLogo.jpg> [18] <use BlueFinLogo.jpg> [19] <use BlueFinLogo.jpg>
+[20]) <use BlueFinLogo.jpg> [21] <use BlueFinLogo.jpg> [22]
+(./lhc2012bJESonly.bfin <use BlueFinLogo.jpg> [23]) <use BlueFinLogo.jpg>
+[24] (./lhc2012bJESonly.aux (./lhc2012bJESonly_body.aux)) )</usr/share/texmf/fo
+nts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc1
+0.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
+onts/type1/bluesky/cm/cmtt8.pfb>
+Output written on lhc2012bJESonly.pdf (24 pages, 319068 bytes).
+Transcript written on lhc2012bJESonly.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./lhc2012bJESonly.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./lhc2012bJESonly.aux
+(./lhc2012bJESonly_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./lhc2012bJESonly_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16] <use BlueFinLogo.jpg> [17]
+<use BlueFinLogo.jpg> [18] <use BlueFinLogo.jpg> [19] <use BlueFinLogo.jpg>
+[20]) <use BlueFinLogo.jpg> [21] <use BlueFinLogo.jpg> [22]
+(./lhc2012bJESonly.bfin <use BlueFinLogo.jpg> [23]) <use BlueFinLogo.jpg>
+[24] (./lhc2012bJESonly.aux (./lhc2012bJESonly_body.aux)) )</usr/share/texmf/fo
+nts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc1
+0.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
+onts/type1/bluesky/cm/cmtt8.pfb>
+Output written on lhc2012bJESonly.pdf (24 pages, 319068 bytes).
+Transcript written on lhc2012bJESonly.log.
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ %&-line parsing enabled.
+entering extended mode
+(./lhc2012bJESonly.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size11.clo))
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
+(/usr/share/texmf/tex/latex/graphics/keyval.sty))
+(/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty)
+(/usr/share/texmf/tex/latex/config/graphics.cfg)
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def)))
+(/usr/share/texmf/tex/latex/listings/listings.sty
+(/usr/share/texmf/tex/latex/listings/lstpatch.sty)
+(/usr/share/texmf/tex/latex/listings/lstmisc.sty)
+(/usr/share/texmf/tex/latex/listings/listings.cfg))
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texmf/tex/latex/config/color.cfg)
+(/usr/share/texmf/tex/latex/xcolor/x11nam.def))
+(/usr/share/texmf/tex/latex/caption/caption.sty
+(/usr/share/texmf/tex/latex/caption/caption3.sty))
+(/usr/share/texmf/tex/latex/multirow/multirow.sty)
+(/usr/share/texmf/tex/latex/float/float.sty) (./lhc2012bJESonly.aux
+(./lhc2012bJESonly_body.aux)) (/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+(/usr/share/texmf/tex/latex/everysel/everysel.sty)) (./lhc2012bJESonly_body.tex
+<BlueFinLogo.jpg, id=1, 862.72313pt x 614.295pt> <use BlueFinLogo.jpg> [1{/usr/
+share/texmf/fonts/map/pdftex/updmap/pdftex.map} <./BlueFinLogo.jpg>]
+<use BlueFinLogo.jpg> [2] <use BlueFinLogo.jpg> [3] <use BlueFinLogo.jpg>
+[4] <use BlueFinLogo.jpg> [5] <use BlueFinLogo.jpg> [6] <use BlueFinLogo.jpg>
+[7] <use BlueFinLogo.jpg> [8] <use BlueFinLogo.jpg> [9] <use BlueFinLogo.jpg>
+[10] <use BlueFinLogo.jpg> [11] <use BlueFinLogo.jpg> [12]
+<use BlueFinLogo.jpg> [13] <use BlueFinLogo.jpg> [14] <use BlueFinLogo.jpg>
+[15] <use BlueFinLogo.jpg> [16] <use BlueFinLogo.jpg> [17]
+<use BlueFinLogo.jpg> [18] <use BlueFinLogo.jpg> [19] <use BlueFinLogo.jpg>
+[20]) <use BlueFinLogo.jpg> [21] <use BlueFinLogo.jpg> [22]
+(./lhc2012bJESonly.bfin <use BlueFinLogo.jpg> [23]) <use BlueFinLogo.jpg>
+[24] (./lhc2012bJESonly.aux (./lhc2012bJESonly_body.aux)) )</usr/share/texmf/fo
+nts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc1
+0.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fon
+ts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/c
+m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
+onts/type1/bluesky/cm/cmtt8.pfb>
+Output written on lhc2012bJESonly.pdf (24 pages, 319068 bytes).
+Transcript written on lhc2012bJESonly.log.

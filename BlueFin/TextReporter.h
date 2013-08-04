@@ -80,7 +80,8 @@ namespace bluefin
     static void printMinimization( const InfoMinimizer& im,
                                    const bool preOnly = false,
                                    std::ostream& ostr = std::cout,
-                                   bool latex = false );
+                                   bool latex = false,
+                                   const std::string& caption = "" );
 
     /// Print details about the combination with only posiive CVWs
     static void printPosCvwsBF1( const BlueFish1Obs& bf1PosCvws,

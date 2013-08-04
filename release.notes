@@ -9,25 +9,80 @@
 !-----------------------------------------------------------------------------
 
 ==============================================================================
+! 2013.08.04 - BlueFin 01.00.02
+==============================================================================
+
+- This is the software that was used to prepare the second version of the 
+  article by Andrea and Roberto (http://arxiv.org/abs/1307.4003v2).
+
+- Fix setup target in Makefile when LD_LIBRARY_PATH is not defined.
+  Fix setup scripts to exclude debug printouts from the Makefile.
+
+- Fix: throw exception if correlations are outside [-1,1] in input data file.
+
+- Fix: reset s_imForROOT to 0 if exception is thrown during minimization.
+
+- Fix printouts of parameters and function before and after minimization.
+
+- Consider a matrix non-positive-definite also when submatrix determinants
+  are positive but compatible with 0 (i.e. smaller than 1E-8 the product of 
+  the diagonal elements). Add the option to print a warning if those
+  determinants are negative (smaller than -1E-8 the diagonal product).
+
+- Add the -M option to bluefin to control which minimizations to include.
+  Add experimental ByOffDiagPerErrSrcMD minimization: this is 
+  disabled by default in bluefin (-M3) but can be disabled by -M4.
+  Add a lhc2012bJESonly example to study one error source in detail.
+
+- Help minimizations to converge by artificially inflating information
+  when covariance matrices become non-positive-definite. This helps in
+  particular for ByOffDiagPerErrSrcMD minimizations (e.g. lhc2012bJESonly)
+
+- Improve choice of starting values for all minimizations.
+  > Add method arguments to allow different starting values in each case.
+  > Keep starting values away from lower/upper bounds else ROOT starts half way
+    (which may imply a non-positive-definite covariance right from the start).
+  > Use onionized covariance as starting point for ByOffDiagElem minimization.
+    
+- Use smaller initial steps for all minimizations.
+  This increases #calls and parameter errors but improves convergence.
+
+- Improve exception handling and printouts when minimizations fail
+  (e.g. start with non positive-definite covariances or edm is NAN).
+
+- Print a warning to the log file if negative determinants are found
+  during the analysis with nominal and modified correlations.
+
+- Add vertical space to make room for warnings in extra footer if needed.
+
+- Add optional message to CovarianceNotPosDef exception.
+  Avoid hardcoded error message to std::cout in BlueFish ctor.
+
+- Add first implementation fragments (commented out) for checking that
+  partial covariance matrices in BlueFish ctor have no negative eigenvalues.
+
+- Relax numerical precision for some internal assertions.
+
+==============================================================================
 ! 2013.07.27 - BlueFin 01.00.01
 ==============================================================================
 
-Vary all parameters in all minimizations (unless dI/dX@0 == dI/dX@1 == 0).
-The lhc2012 ByOD minimization now gives CVW=0 for all 5 measurements with 
-CVW<0 (in 01.00.00 only 4 measurements had CVW=0 while one had CVW>0).
-Change table captions accordingly.
+- Vary all parameters in all minimizations (unless dI/dX@0 == dI/dX@1 == 0).
+  The lhc2012 ByOD minimization now gives CVW=0 for all 5 measurements with 
+  CVW<0 (in 01.00.00 only 4 measurements had CVW=0 while one had CVW>0).
+  Change table captions accordingly.
 
-Display in the pdf report whether a minimum was found.
-Relax tolerance for EDM from 1E-7 to 1E-6. The lhc2012 ByOD minimization
-now finds a minimum (in 01.00.00 the edm was larger than the tolerance).
+- Display in the pdf report whether a minimum was found.
+  Relax tolerance for EDM from 1E-7 to 1E-6. The lhc2012 ByOD minimization
+  now finds a minimum (in 01.00.00 the edm was larger than the tolerance).
 
 ==============================================================================
-! 2013.07.21 - BlueFin 01.00.00 (git 7f60b13a751c782eaafdf432f6ad02bbf3940fee)
+! 2013.07.21 - BlueFin 01.00.00
 ==============================================================================
 
 First public release on SVN.
 
-This is the software that was used to prepare the first version of the 
-article by Andrea and Roberto (http://arxiv.org/abs/1307.4003v1).
+- This is the software that was used to prepare the first version of the 
+  article by Andrea and Roberto (http://arxiv.org/abs/1307.4003v1).
 
 ==============================================================================
