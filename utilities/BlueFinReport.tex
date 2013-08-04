@@ -25,6 +25,7 @@
 \setlength{\oddsidemargin}{0mm}
 \setlength{\evensidemargin}{0mm}
 \setlength{\topmargin}{0mm}
+\addtolength{\textheight}{-BFEXTRAFOOTMM} % Make space for extra footer
 
 % IMPROVE FLOAT HANDLING - but using [H] makes totalnumber and \textfraction unnecessary
 \setcounter{totalnumber}{100} % ALLOW MANY TABLES ON ONE PAGE
@@ -48,6 +49,7 @@
 
 % FOOTER
 \setlength{\footskip}{30pt} % Make room for fancyhdr
+\addtolength{\footskip}{BFEXTRAFOOTMM} % Make space for extra footer
 %%%\renewcommand{\footrulewidth}{0pt} % No horizontal line in footer
 \renewcommand{\footrulewidth}{0.4pt} % Thickness of horizontal line in footer
 \lfoot{\raisebox{-0.35cm}{\includegraphics[height=1cm]{BlueFinLogo.jpg}}\hspace*{3mm}{\sc BlueFin BFVERS}}

@@ -20,6 +20,7 @@
 #define BLUEFIN_BLUEFISH_H 1
 
 // Include files
+//#include <set>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -324,7 +325,10 @@ namespace bluefin
     {
     public:
       virtual ~CovarianceNotPosDef() throw () {}
-      CovarianceNotPosDef() : std::runtime_error( "Covariance is not positive definite" ) {}
+      CovarianceNotPosDef()
+        : std::runtime_error( "Covariance is not positive definite" ) {}
+      CovarianceNotPosDef( const std::string& msg ) 
+        : std::runtime_error( "Covariance is not positive definite (" + msg + ")" ) {}
     };
 
   protected:
@@ -385,9 +389,15 @@ namespace bluefin
     /// These are used to compute matrix derivatives for the information splitup
     std::vector<SymmetricMatrix> m_errMeaCovsOffDiag;
 
-    /// The nMea by nMea measurement full covariance matrix
+    /// The nMea by nMea off-diagonal measurement full covariance matrix
     /// This is used to compute matrix derivatives for the information splitup
     SymmetricMatrix m_meaCovOffDiag;
+
+    /// The nErr sets of (0...nMea) measurements with non-zero variances (one per error source)
+    //std::vector<std::set<size_t> > m_errMeaSetsPosVar;
+
+    /// The nErr reduced covariances for measurements with non-zero variances (one per error source)
+    //std::vector<SymmetricMatrix> m_errMeaCovsPosVar;
 
     /// The nMea by nMea measurement full correlation matrix
     SymmetricMatrix m_meaCor;

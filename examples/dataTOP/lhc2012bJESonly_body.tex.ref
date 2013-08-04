@@ -1,0 +1,877 @@
+\section{Nominal correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny bJES}\\
+\hline
+ALJ10 &     169.30 $\pm$       2.50 &     -27.78 &       3.10 &      18.48 &       8.36 &       2.50\\
+ALJ11 &     174.50 $\pm$       1.60 &      11.04 &       7.56 &       1.20 &       3.32 &       1.60\\
+AJT11 &     174.90 $\pm$       1.40 &      37.32 &       9.88 &      10.45 &      11.23 &       1.40\\
+CLL10 &     175.50 $\pm$       0.90 &      -6.11 &      23.90 &       0.10 &       1.84 &       0.90\\
+CLJ10 &     173.10 $\pm$       0.90 &      -6.11 &      23.90 &       0.10 &       1.84 &       0.90\\
+CLL11 &     173.30 $\pm$       1.10 &     -76.11 &      16.00 &      24.00 &      22.91 &       1.10\\
+CMJ11 &     172.60 $\pm$       0.70 &     167.76 &      39.51 &      47.21 &      50.49 &       0.70\\
+Correlations & --- & --- &     -23.86 & --- & --- & ---\\
+\hline
+BLUE {\tiny mt} &     173.84 $\pm$       0.44 &     100.00 &     100.00 &     101.55 &     100.00 &       0.44\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=    219.60/6).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny bJES} & OffDiag\\
+\hline
+ALJ11 / ALJ10 &  \colorbox{Tomato1}{    1.204} &  \colorbox{Tomato1}{    1.204} \\
+AJT11 / ALJ10 &  \colorbox{Tomato1}{    3.561} &  \colorbox{Tomato1}{    3.561} \\
+AJT11 / ALJ11 &     -0.906 &     -0.906 \\
+CLL10 / ALJ10 &     -0.187 &     -0.187 \\
+CLL10 / ALJ11 &      0.048 &      0.048 \\
+CLL10 / AJT11 &  \colorbox{Orange1}{    0.141} &  \colorbox{Orange1}{    0.141} \\
+CLJ10 / ALJ10 &     -0.187 &     -0.187 \\
+CLJ10 / ALJ11 &      0.048 &      0.048 \\
+CLJ10 / AJT11 &  \colorbox{Orange1}{    0.141} &  \colorbox{Orange1}{    0.141} \\
+CLJ10 / CLL10 &     -0.030 &     -0.030 \\
+CLL11 / ALJ10 &     -2.853 &     -2.853 \\
+CLL11 / ALJ11 &  \colorbox{Tomato1}{    0.726} &  \colorbox{Tomato1}{    0.726} \\
+CLL11 / AJT11 &  \colorbox{Tomato1}{    2.146} &  \colorbox{Tomato1}{    2.146} \\
+CLL11 / CLL10 &     -0.452 &     -0.452 \\
+CLL11 / CLJ10 &     -0.452 &     -0.452 \\
+CMJ11 / ALJ10 &  \colorbox{Tomato1}{    4.002} &  \colorbox{Tomato1}{    4.002} \\
+CMJ11 / ALJ11 &     -1.018 &     -1.018 \\
+CMJ11 / AJT11 &     -3.010 &     -3.010 \\
+CMJ11 / CLL10 &  \colorbox{Tomato1}{    0.634} &  \colorbox{Tomato1}{    0.634} \\
+CMJ11 / CLJ10 &  \colorbox{Tomato1}{    0.634} &  \colorbox{Tomato1}{    0.634} \\
+CMJ11 / CLL11 &  \colorbox{Tomato1}{    9.648} &  \colorbox{Tomato1}{    9.648} \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ \colorbox{Tomato1}{   13.837}} & GlobFact\\
+ & &  \colorbox{Tomato1}{   13.837} \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: nominal correlations). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &       3.80 &       3.32 &       1.07 &       1.07 &       1.31 &       0.83 \\
+\mathrm{ALJ11} \hspace*{2pt} &       3.80 &       2.56 &       2.13 &       0.68 &       0.68 &       0.84 &       0.53 \\
+\mathrm{AJT11} \hspace*{2pt} &       3.32 &       2.13 &       1.96 &       0.60 &       0.60 &       0.73 &       0.47 \\
+\mathrm{CLL10} \hspace*{2pt} &       1.07 &       0.68 &       0.60 &       0.81 &       0.77 &       0.94 &       0.60 \\
+\mathrm{CLJ10} \hspace*{2pt} &       1.07 &       0.68 &       0.60 &       0.77 &       0.81 &       0.94 &       0.60 \\
+\mathrm{CLL11} \hspace*{2pt} &       1.31 &       0.84 &       0.73 &       0.94 &       0.94 &       1.21 &       0.73 \\
+\mathrm{CMJ11} \hspace*{2pt} &       0.83 &       0.53 &       0.47 &       0.60 &       0.60 &       0.73 &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &       3.80 &       3.32 &       1.07 &       1.07 &       1.31 &       0.83 \\
+\mathrm{ALJ11} \hspace*{2pt} &       3.80 &       2.56 &       2.13 &       0.68 &       0.68 &       0.84 &       0.53 \\
+\mathrm{AJT11} \hspace*{2pt} &       3.32 &       2.13 &       1.96 &       0.60 &       0.60 &       0.73 &       0.47 \\
+\mathrm{CLL10} \hspace*{2pt} &       1.07 &       0.68 &       0.60 &       0.81 &       0.77 &       0.94 &       0.60 \\
+\mathrm{CLJ10} \hspace*{2pt} &       1.07 &       0.68 &       0.60 &       0.77 &       0.81 &       0.94 &       0.60 \\
+\mathrm{CLL11} \hspace*{2pt} &       1.31 &       0.84 &       0.73 &       0.94 &       0.94 &       1.21 &       0.73 \\
+\mathrm{CMJ11} \hspace*{2pt} &       0.83 &       0.53 &       0.47 &       0.60 &       0.60 &       0.73 &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: bJES.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\section{Modified correlations.}
+\subsection{Summary of results.}
+\begin{table}[h]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|l|c|c|c|}
+\hline
+Combination & BLUE & {\tiny bJES} & {\tiny$\chi^2$/ndof} \\
+\hline
+Nominal correlations &     173.84 $\pm$      0.44 &       0.44 &     219.60/6\\
+\hline
+Minimize by global factor &     173.66 $\pm$      0.66 &       0.66 &      33.54/6\\
+Minimize by error sources &     173.66 $\pm$      0.66 &       0.66 &      33.54/6\\
+Minimize by off-diagonal elements &     172.64 $\pm$      0.70 &       0.70 &      87.90/6\\
+Remove negative CVWs &     172.64 $\pm$      0.70 &       0.70 &       3.48/1\\
+Onionize &     172.66 $\pm$      0.70 &       0.70 &      94.69/6\\
+\hline
+NO correlations &     173.56 $\pm$      0.40 &       0.40 &      11.01/6\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Summary table. BLUE's of the combinations performed with nominal and modified correlations.}
+\end{center}
+\end{table}
+
+\clearpage
+\subsection{Minimize correlations by a global rescaling factor.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny bJES}\\
+\hline
+ALJ10 &     169.30 $\pm$       2.50 &      -8.83 &       6.92 &       5.10 &       6.12 &       2.50\\
+ALJ11 &     174.50 $\pm$       1.60 &       4.75 &      16.89 &       0.60 &       3.29 &       1.60\\
+AJT11 &     174.90 $\pm$       1.40 &      13.84 &      22.06 &       3.93 &       9.59 &       1.40\\
+CLL10 &     175.50 $\pm$       0.90 &      13.31 &      53.37 &       1.39 &       9.23 &       0.90\\
+CLJ10 &     173.10 $\pm$       0.90 &      13.31 &      53.37 &       1.39 &       9.23 &       0.90\\
+CLL11 &     173.30 $\pm$       1.10 &     -13.33 &      35.73 &       2.08 &       9.24 &       1.10\\
+CMJ11 &     172.60 $\pm$       0.70 &      76.94 &      88.23 &      28.06 &      53.31 &       0.70\\
+Correlations & --- & --- &    -176.56 & --- & --- & ---\\
+\hline
+BLUE {\tiny mt} &     173.66 $\pm$       0.66 &     100.00 &     100.00 &      42.56 &     100.00 &       0.66\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=     33.54/6).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny GlobalScaleFact} & \#0 &    0.7076 $\pm$    0.8534 &   -4.6629 & {\tiny $\sim$ }0 &   13.8369 & Variable \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at 1) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny bJES} & OffDiag\\
+\hline
+ALJ11 / ALJ10 &  \colorbox{Yellow1}{    0.052} &  \colorbox{Yellow1}{    0.052} \\
+AJT11 / ALJ10 &  \colorbox{Orange1}{    0.133} &  \colorbox{Orange1}{    0.133} \\
+AJT11 / ALJ11 &     -0.046 &     -0.046 \\
+CLL10 / ALJ10 &      0.041 &      0.041 \\
+CLL10 / ALJ11 &     -0.014 &     -0.014 \\
+CLL10 / AJT11 &     -0.036 &     -0.036 \\
+CLJ10 / ALJ10 &      0.041 &      0.041 \\
+CLJ10 / ALJ11 &     -0.014 &     -0.014 \\
+CLJ10 / AJT11 &     -0.036 &     -0.036 \\
+CLJ10 / CLL10 &     -0.045 &     -0.045 \\
+CLL11 / ALJ10 &     -0.050 &     -0.050 \\
+CLL11 / ALJ11 &      0.017 &      0.017 \\
+CLL11 / AJT11 &      0.044 &      0.044 \\
+CLL11 / CLL10 &  \colorbox{Yellow1}{    0.055} &  \colorbox{Yellow1}{    0.055} \\
+CLL11 / CLJ10 &  \colorbox{Yellow1}{    0.055} &  \colorbox{Yellow1}{    0.055} \\
+CMJ11 / ALJ10 &  \colorbox{Tomato1}{    0.185} &  \colorbox{Tomato1}{    0.185} \\
+CMJ11 / ALJ11 &     -0.064 &     -0.064 \\
+CMJ11 / AJT11 &     -0.162 &     -0.162 \\
+CMJ11 / CLL10 &     -0.201 &     -0.201 \\
+CMJ11 / CLJ10 &     -0.201 &     -0.201 \\
+CMJ11 / CLL11 &  \colorbox{Tomato1}{    0.246} &  \colorbox{Tomato1}{    0.246} \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ {\tiny $\sim$ }0} & GlobFact\\
+ & &  {\tiny $\sim$ }0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by global factor). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.69$} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.69$} &       2.56 &  \colorbox{Green1}{$      1.51$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      1.51$} &       1.96 &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.33$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &       0.81 &  \colorbox{Green1}{$      0.54$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.54$} &       0.81 &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.67$} &       1.21 &  \colorbox{Green1}{$      0.52$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} &  \colorbox{Green1}{$      0.33$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.69$} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.69$} &       2.56 &  \colorbox{Green1}{$      1.51$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      1.51$} &       1.96 &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.33$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &       0.81 &  \colorbox{Green1}{$      0.54$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.54$} &       0.81 &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.67$} &       1.21 &  \colorbox{Green1}{$      0.52$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} &  \colorbox{Green1}{$      0.33$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: bJES. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Minimize correlations by one factor per error source.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny bJES}\\
+\hline
+ALJ10 &     169.30 $\pm$       2.50 &      -8.83 &       6.92 &       5.10 &       6.12 &       2.50\\
+ALJ11 &     174.50 $\pm$       1.60 &       4.75 &      16.89 &       0.60 &       3.29 &       1.60\\
+AJT11 &     174.90 $\pm$       1.40 &      13.84 &      22.06 &       3.93 &       9.59 &       1.40\\
+CLL10 &     175.50 $\pm$       0.90 &      13.31 &      53.37 &       1.39 &       9.23 &       0.90\\
+CLJ10 &     173.10 $\pm$       0.90 &      13.31 &      53.37 &       1.39 &       9.23 &       0.90\\
+CLL11 &     173.30 $\pm$       1.10 &     -13.33 &      35.73 &       2.08 &       9.24 &       1.10\\
+CMJ11 &     172.60 $\pm$       0.70 &      76.94 &      88.23 &      28.06 &      53.31 &       0.70\\
+Correlations & --- & --- &    -176.56 & --- & --- & ---\\
+\hline
+BLUE {\tiny mt} &     173.66 $\pm$       0.66 &     100.00 &     100.00 &      42.56 &     100.00 &       0.66\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=     33.54/6).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny bJES} & \#0 &    0.7076 $\pm$    0.8534 &   -4.6629 & {\tiny $\sim$ }0 &   13.8369 & Variable \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at 1) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny bJES} & OffDiag\\
+\hline
+ALJ11 / ALJ10 &  \colorbox{Yellow1}{    0.052} &  \colorbox{Yellow1}{    0.052} \\
+AJT11 / ALJ10 &  \colorbox{Orange1}{    0.133} &  \colorbox{Orange1}{    0.133} \\
+AJT11 / ALJ11 &     -0.046 &     -0.046 \\
+CLL10 / ALJ10 &      0.041 &      0.041 \\
+CLL10 / ALJ11 &     -0.014 &     -0.014 \\
+CLL10 / AJT11 &     -0.036 &     -0.036 \\
+CLJ10 / ALJ10 &      0.041 &      0.041 \\
+CLJ10 / ALJ11 &     -0.014 &     -0.014 \\
+CLJ10 / AJT11 &     -0.036 &     -0.036 \\
+CLJ10 / CLL10 &     -0.045 &     -0.045 \\
+CLL11 / ALJ10 &     -0.050 &     -0.050 \\
+CLL11 / ALJ11 &      0.017 &      0.017 \\
+CLL11 / AJT11 &      0.044 &      0.044 \\
+CLL11 / CLL10 &  \colorbox{Yellow1}{    0.055} &  \colorbox{Yellow1}{    0.055} \\
+CLL11 / CLJ10 &  \colorbox{Yellow1}{    0.055} &  \colorbox{Yellow1}{    0.055} \\
+CMJ11 / ALJ10 &  \colorbox{Tomato1}{    0.185} &  \colorbox{Tomato1}{    0.185} \\
+CMJ11 / ALJ11 &     -0.064 &     -0.064 \\
+CMJ11 / AJT11 &     -0.162 &     -0.162 \\
+CMJ11 / CLL10 &     -0.201 &     -0.201 \\
+CMJ11 / CLJ10 &     -0.201 &     -0.201 \\
+CMJ11 / CLL11 &  \colorbox{Tomato1}{    0.246} &  \colorbox{Tomato1}{    0.246} \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ {\tiny $\sim$ }0} & GlobFact\\
+ & &  {\tiny $\sim$ }0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by error source). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.69$} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.69$} &       2.56 &  \colorbox{Green1}{$      1.51$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      1.51$} &       1.96 &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.33$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &       0.81 &  \colorbox{Green1}{$      0.54$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.54$} &       0.81 &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.67$} &       1.21 &  \colorbox{Green1}{$      0.52$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} &  \colorbox{Green1}{$      0.33$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.69$} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.69$} &       2.56 &  \colorbox{Green1}{$      1.51$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      2.35$} &  \colorbox{Green1}{$      1.51$} &       1.96 &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.33$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &       0.81 &  \colorbox{Green1}{$      0.54$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.76$} &  \colorbox{Green1}{$      0.48$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.54$} &       0.81 &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.42$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      0.92$} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.52$} &  \colorbox{Green1}{$      0.67$} &  \colorbox{Green1}{$      0.67$} &       1.21 &  \colorbox{Green1}{$      0.52$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.59$} &  \colorbox{Green1}{$      0.38$} &  \colorbox{Green1}{$      0.33$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.42$} &  \colorbox{Green1}{$      0.52$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: bJES. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Minimize correlations by one factor per off-diagonal element.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny bJES}\\
+\hline
+ALJ10 &     169.30 $\pm$       2.50 &  {\tiny $\sim$ }0 &       7.83 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       2.50\\
+ALJ11 &     174.50 $\pm$       1.60 &  {\tiny $\sim$ }0 &      19.13 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       1.60\\
+AJT11 &     174.90 $\pm$       1.40 &       1.61 &      24.98 &       0.03 &       1.61 &       1.40\\
+CLL10 &     175.50 $\pm$       0.90 &  {\tiny $\sim$ }0 &      60.45 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       0.90\\
+CLJ10 &     173.10 $\pm$       0.90 &  {\tiny $\sim$ }0 &      60.45 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       0.90\\
+CLL11 &     173.30 $\pm$       1.10 &  {\tiny $\sim$ }0 &      40.46 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       1.10\\
+CMJ11 &     172.60 $\pm$       0.70 &      98.39 &      99.92 &      35.52 &      98.38 &       0.70\\
+Correlations & --- & --- &    -213.21 & --- & --- & ---\\
+\hline
+BLUE {\tiny mt} &     172.64 $\pm$       0.70 &     100.00 &     100.00 &      35.56 &     100.00 &       0.70\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=     87.90/6).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny ALJ11/ALJ10} & \#0 &    0.6606 $\pm$ {\tiny $\sim$ }0 &   -0.0920 & {\tiny $\sim$ }0 &    1.2043 & Variable \\
+ {\tiny AJT11/ALJ10} & \#1 &    0.5574 $\pm$ {\tiny $\sim$ }0 &   -0.1051 & {\tiny $\sim$ }0 &    3.5609 & Variable \\
+ {\tiny AJT11/ALJ11} & \#2 &    0.8483 $\pm$ {\tiny $\sim$ }0 &   -0.1642 & {\tiny $\sim$ }0 &   -0.9058 & Variable \\
+ {\tiny CLL10/ALJ10} & \#3 &    0.5697 $\pm$ {\tiny $\sim$ }0 &   -0.0817 & {\tiny $\sim$ }0 &   -0.1874 & Variable \\
+ {\tiny CLL10/ALJ11} & \#4 &    0.9888 $\pm$ {\tiny $\sim$ }0 &   -0.1277 & {\tiny $\sim$ }0 &    0.0477 & Variable \\
+ {\tiny CLL10/AJT11} & \#5 &    0.9949 $\pm$ {\tiny $\sim$ }0 &   -0.1460 & {\tiny $\sim$ }0 &    0.1409 & Variable \\
+ {\tiny CLJ10/ALJ10} & \#6 &    0.5697 $\pm$ {\tiny $\sim$ }0 &   -0.0817 & {\tiny $\sim$ }0 &   -0.1874 & Variable \\
+ {\tiny CLJ10/ALJ11} & \#7 &    0.9888 $\pm$ {\tiny $\sim$ }0 &   -0.1277 & {\tiny $\sim$ }0 &    0.0477 & Variable \\
+ {\tiny CLJ10/AJT11} & \#8 &    0.9949 $\pm$ {\tiny $\sim$ }0 &   -0.1460 & {\tiny $\sim$ }0 &    0.1409 & Variable \\
+ {\tiny CLJ10/CLL10} & \#9 &    0.9982 $\pm$ {\tiny $\sim$ }0 &   -0.4542 & {\tiny $\sim$ }0 &   -0.0297 & Variable \\
+ {\tiny CLL11/ALJ10} & \#10 &    0.9263 $\pm$ {\tiny $\sim$ }0 &   -0.0669 & {\tiny $\sim$ }0 &   -2.8534 & Variable \\
+ {\tiny CLL11/ALJ11} & \#11 &    0.9953 $\pm$ {\tiny $\sim$ }0 &   -0.1045 & {\tiny $\sim$ }0 &    0.7259 & Variable \\
+ {\tiny CLL11/AJT11} & \#12 &    0.9453 $\pm$ {\tiny $\sim$ }0 &   -0.1194 & {\tiny $\sim$ }0 &    2.1462 & Variable \\
+ {\tiny CLL11/CLL10} & \#13 &    0.8539 $\pm$ {\tiny $\sim$ }0 &   -0.3716 & {\tiny $\sim$ }0 &   -0.4518 & Variable \\
+ {\tiny CLL11/CLJ10} & \#14 &    0.8539 $\pm$    0.0001 &   -0.3716 & {\tiny $\sim$ }0 &   -0.4518 & Variable \\
+ {\tiny CMJ11/ALJ10} & \#15 &    0.5622 $\pm$ {\tiny $\sim$ }0 &   -0.1051 & {\tiny $\sim$ }0 &    4.0021 & Variable \\
+ {\tiny CMJ11/ALJ11} & \#16 &    0.8798 $\pm$ {\tiny $\sim$ }0 &   -0.1642 & {\tiny $\sim$ }0 &   -1.0181 & Variable \\
+ {\tiny CMJ11/AJT11} & \#17 &    1.0000 $\pm$ {\tiny $\sim$ }0 &   -0.1877 &   -0.0119 &   -3.0102 & Variable \\
+ {\tiny CMJ11/CLL10} & \#18 &    0.8152 $\pm$ {\tiny $\sim$ }0 &   -0.5839 & {\tiny $\sim$ }0 &    0.6336 & Variable \\
+ {\tiny CMJ11/CLJ10} & \#19 &    0.8152 $\pm$ {\tiny $\sim$ }0 &   -0.5839 & {\tiny $\sim$ }0 &    0.6336 & Variable \\
+ {\tiny CMJ11/CLL11} & \#20 &    0.6648 $\pm$ {\tiny $\sim$ }0 &   -0.4777 & {\tiny $\sim$ }0 &    9.6485 & Variable \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at onionized covariances) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny bJES} & OffDiag\\
+\hline
+ALJ11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+AJT11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+AJT11 / ALJ11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL10 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL10 / ALJ11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL10 / AJT11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / ALJ11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / AJT11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / CLL10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / ALJ11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / AJT11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / CLL10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / CLJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CMJ11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CMJ11 / ALJ11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CMJ11 / AJT11 &     -0.030 &     -0.030 \\
+CMJ11 / CLL10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CMJ11 / CLJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CMJ11 / CLL11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{    -0.030} & GlobFact\\
+ & &     -0.030 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by off-diagonal elements). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.51$} &  \colorbox{Green1}{$      1.85$} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      1.21$} &  \colorbox{Green1}{$      0.47$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.51$} &       2.56 &  \colorbox{Green1}{$      1.81$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.83$} &  \colorbox{Green1}{$      0.47$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      1.85$} &  \colorbox{Green1}{$      1.81$} &       1.96 &  \colorbox{Green1}{$      0.60$} &  \colorbox{Green1}{$      0.60$} &  \colorbox{Green1}{$      0.69$} &  \colorbox{Green1}{$      0.47$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.60$} &       0.81 &  \colorbox{Green1}{$      0.77$} &  \colorbox{Green1}{$      0.80$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.60$} &  \colorbox{Green1}{$      0.77$} &       0.81 &  \colorbox{Green1}{$      0.80$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      1.21$} &  \colorbox{Green1}{$      0.83$} &  \colorbox{Green1}{$      0.69$} &  \colorbox{Green1}{$      0.80$} &  \colorbox{Green1}{$      0.80$} &       1.21 &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.47$} &  \colorbox{Green1}{$      0.47$} &  \colorbox{Green1}{$      0.47$} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.51$} &  \colorbox{Green1}{$      1.85$} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      1.21$} &  \colorbox{Green1}{$      0.47$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.51$} &       2.56 &  \colorbox{Green1}{$      1.81$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.83$} &  \colorbox{Green1}{$      0.47$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      1.85$} &  \colorbox{Green1}{$      1.81$} &       1.96 &  \colorbox{Green1}{$      0.60$} &  \colorbox{Green1}{$      0.60$} &  \colorbox{Green1}{$      0.69$} &  \colorbox{Green1}{$      0.47$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.60$} &       0.81 &  \colorbox{Green1}{$      0.77$} &  \colorbox{Green1}{$      0.80$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.61$} &  \colorbox{Green1}{$      0.68$} &  \colorbox{Green1}{$      0.60$} &  \colorbox{Green1}{$      0.77$} &       0.81 &  \colorbox{Green1}{$      0.80$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      1.21$} &  \colorbox{Green1}{$      0.83$} &  \colorbox{Green1}{$      0.69$} &  \colorbox{Green1}{$      0.80$} &  \colorbox{Green1}{$      0.80$} &       1.21 &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.47$} &  \colorbox{Green1}{$      0.47$} &  \colorbox{Green1}{$      0.47$} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: bJES. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Remove measurements with negative central value weights.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny bJES}\\
+\hline
+AJT11 &     174.90 $\pm$       1.40 &       1.61 &      24.98 &       0.08 &       1.61 &       1.40\\
+CMJ11 &     172.60 $\pm$       0.70 &      98.39 &      99.92 &      75.02 &      98.39 &       0.70\\
+Correlations & --- & --- &     -24.90 & --- & --- & ---\\
+\hline
+BLUE {\tiny mt} &     172.64 $\pm$       0.70 &     100.00 &     100.00 &      75.10 &     100.00 &       0.70\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      3.48/1).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+N {\tiny meas} & \multicolumn{3}{c|}{Measurement removed in iteration} & \multirow{2}{*}{BLUE} & \multirow{2}{*}{\tiny bJES} & \multirow{2}{*}{\tiny$\chi^2$/ndof}\\
+\cline{2-4}
+{\tiny in BLUE} & Removed & CVW/\% & MIW/\% & & & \\\hline
+7 & CLL11 &     -76.11 &      24.00 &     173.84 $\pm$      0.44 &       0.44 &     219.60/6 \\
+6 & CLJ10 &     -47.91 &       5.41 &     173.58 $\pm$      0.50 &       0.50 &     218.42/5 \\
+5 & CLL10 &     -75.13 &      16.42 &     173.17 $\pm$      0.52 &       0.52 &     207.20/4 \\
+4 & ALJ10 &     -46.92 &      31.66 &     175.88 $\pm$      0.57 &       0.57 &      68.81/3 \\
+3 & ALJ11 &     -26.49 &       3.69 &     172.78 $\pm$      0.69 &       0.69 &       4.67/2 \\
+\hline
+2 & {\em NONE} & N/A & N/A & 
+    172.64 $\pm$      0.70 &       0.70 &       3.48/1 \\
+\hline
+\end{tabular}
+\caption{From the original combination of 7 with nominal correlations, a new combination where all remaining 2 measurements have central value weights CVW$>$0 was derived by removing measurements iteratively. At each step of the iteration, the measurement with the most negative CVW$<=$0 in the combination with N measurements was removed until all remainining measurements had CVW$>$0 in the combination of N-1 measurements. For each iteration and for the final result, the results of the BLUE and the name, CVW and MIW of the measurement removed in that iteration are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny bJES} & OffDiag\\
+\hline
+CMJ11 / AJT11 &     -0.030 &     -0.030 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{    -0.030} & GlobFact\\
+ & &     -0.030 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in combination with CVW$>$0 measurements). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AJT11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{AJT11} \hspace*{2pt} &       1.96 &       0.47 \\
+\mathrm{CMJ11} \hspace*{2pt} &       0.47 &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|cc}
+ & \mathrm{AJT11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{AJT11} \hspace*{2pt} &       1.96 &       0.47 \\
+\mathrm{CMJ11} \hspace*{2pt} &       0.47 &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: bJES.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Onionize correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny bJES}\\
+\hline
+ALJ10 &     169.30 $\pm$       2.50 &       0.02 &       7.82 &  {\tiny $\sim$ }0 &       0.02 &       2.50\\
+ALJ11 &     174.50 $\pm$       1.60 &      -4.04 &      19.09 &       0.17 &       3.71 &       1.60\\
+AJT11 &     174.90 $\pm$       1.40 &       5.59 &      24.93 &       0.28 &       5.14 &       1.40\\
+CLL10 &     175.50 $\pm$       0.90 &       0.25 &      60.32 &  {\tiny $\sim$ }0 &       0.23 &       0.90\\
+CLJ10 &     173.10 $\pm$       0.90 &       0.25 &      60.32 &  {\tiny $\sim$ }0 &       0.23 &       0.90\\
+CLL11 &     173.30 $\pm$       1.10 &      -0.37 &      40.38 &  {\tiny $\sim$ }0 &       0.34 &       1.10\\
+CMJ11 &     172.60 $\pm$       0.70 &      98.29 &      99.72 &      35.01 &      90.33 &       0.70\\
+Correlations & --- & --- &    -212.59 & --- & --- & ---\\
+\hline
+BLUE {\tiny mt} &     172.66 $\pm$       0.70 &     100.00 &     100.00 &      35.46 &     100.00 &       0.70\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=     94.69/6).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny bJES} & OffDiag\\
+\hline
+ALJ11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+AJT11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+AJT11 / ALJ11 &      0.018 &      0.018 \\
+CLL10 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL10 / ALJ11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL10 / AJT11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / ALJ11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / AJT11 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLJ10 / CLL10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / ALJ11 &     -0.001 &     -0.001 \\
+CLL11 / AJT11 &      0.001 &      0.001 \\
+CLL11 / CLL10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CLL11 / CLJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CMJ11 / ALJ10 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+CMJ11 / ALJ11 &  \colorbox{Yellow1}{    0.080} &  \colorbox{Yellow1}{    0.080} \\
+CMJ11 / AJT11 &     -0.105 &     -0.105 \\
+CMJ11 / CLL10 &     -0.005 &     -0.005 \\
+CMJ11 / CLJ10 &     -0.005 &     -0.005 \\
+CMJ11 / CLL11 &      0.007 &      0.007 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{    -0.010} & GlobFact\\
+ & &     -0.010 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in onionization 1st recipe). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.56$} &  \colorbox{Green1}{$      1.96$} &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      1.21$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.56$} &       2.56 &  \colorbox{Green1}{$      1.96$} &       0.68 &       0.68 &       0.84 &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      1.96$} &  \colorbox{Green1}{$      1.96$} &       1.96 &       0.60 &       0.60 &       0.73 &       0.47 \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.81$} &       0.68 &       0.60 &       0.81 &       0.77 &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.81$} &       0.68 &       0.60 &       0.77 &       0.81 &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      1.21$} &       0.84 &       0.73 &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.81$} &       1.21 &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &       0.47 &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{Green1}{$      2.56$} &  \colorbox{Green1}{$      1.96$} &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      1.21$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{Green1}{$      2.56$} &       2.56 &  \colorbox{Green1}{$      1.96$} &       0.68 &       0.68 &       0.84 &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{Green1}{$      1.96$} &  \colorbox{Green1}{$      1.96$} &       1.96 &       0.60 &       0.60 &       0.73 &       0.47 \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{Green1}{$      0.81$} &       0.68 &       0.60 &       0.81 &       0.77 &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{Green1}{$      0.81$} &       0.68 &       0.60 &       0.77 &       0.81 &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{Green1}{$      1.21$} &       0.84 &       0.73 &  \colorbox{Green1}{$      0.81$} &  \colorbox{Green1}{$      0.81$} &       1.21 &  \colorbox{Green1}{$      0.49$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &       0.47 &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &  \colorbox{Green1}{$      0.49$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: bJES. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Zero correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny bJES}\\
+\hline
+ALJ10 &     169.30 $\pm$       2.50 &       2.50 &       2.50 &       2.50 &       2.50 &       2.50\\
+ALJ11 &     174.50 $\pm$       1.60 &       6.11 &       6.11 &       6.11 &       6.11 &       1.60\\
+AJT11 &     174.90 $\pm$       1.40 &       7.98 &       7.98 &       7.98 &       7.98 &       1.40\\
+CLL10 &     175.50 $\pm$       0.90 &      19.30 &      19.30 &      19.30 &      19.30 &       0.90\\
+CLJ10 &     173.10 $\pm$       0.90 &      19.30 &      19.30 &      19.30 &      19.30 &       0.90\\
+CLL11 &     173.30 $\pm$       1.10 &      12.92 &      12.92 &      12.92 &      12.92 &       1.10\\
+CMJ11 &     172.60 $\pm$       0.70 &      31.90 &      31.90 &      31.90 &      31.90 &       0.70\\
+Correlations & --- & --- &  0 & --- & --- & ---\\
+\hline
+BLUE {\tiny mt} &     173.56 $\pm$       0.40 &     100.00 &     100.00 &     100.00 &     100.00 &       0.40\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=     11.01/6).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|r|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny bJES} & OffDiag\\
+\hline
+ALJ11 / ALJ10 &  0 &  0 \\
+AJT11 / ALJ10 &  0 &  0 \\
+AJT11 / ALJ11 &  0 &  0 \\
+CLL10 / ALJ10 &  0 &  0 \\
+CLL10 / ALJ11 &  0 &  0 \\
+CLL10 / AJT11 &  0 &  0 \\
+CLJ10 / ALJ10 &  0 &  0 \\
+CLJ10 / ALJ11 &  0 &  0 \\
+CLJ10 / AJT11 &  0 &  0 \\
+CLJ10 / CLL10 &  0 &  0 \\
+CLL11 / ALJ10 &  0 &  0 \\
+CLL11 / ALJ11 &  0 &  0 \\
+CLL11 / AJT11 &  0 &  0 \\
+CLL11 / CLL10 &  0 &  0 \\
+CLL11 / CLJ10 &  0 &  0 \\
+CMJ11 / ALJ10 &  0 &  0 \\
+CMJ11 / ALJ11 &  0 &  0 \\
+CMJ11 / AJT11 &  0 &  0 \\
+CMJ11 / CLL10 &  0 &  0 \\
+CMJ11 / CLJ10 &  0 &  0 \\
+CMJ11 / CLL11 &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: zero correlations). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &       2.56 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       1.96 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.81 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.81 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       1.21 &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccccccc}
+ & \mathrm{ALJ10} & 
+\mathrm{ALJ11} & 
+\mathrm{AJT11} & 
+\mathrm{CLL10} & 
+\mathrm{CLJ10} & 
+\mathrm{CLL11} & 
+\mathrm{CMJ11} \\
+\hline
+\mathrm{ALJ10} \hspace*{2pt} &       6.25 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{ALJ11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &       2.56 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{AJT11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       1.96 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CLL10} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.81 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CLJ10} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.81 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CLL11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       1.21 &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{CMJ11} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.49 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: bJES. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}

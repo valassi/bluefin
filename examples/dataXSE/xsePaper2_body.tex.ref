@@ -277,7 +277,7 @@ B2XS / B1XS &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
 \multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Error}\\
 \hline
 B1XS &      99.00 $\pm$       4.00 &     100.00 &     100.00 &      75.00 &     100.00 &       4.00\\
-B2XS &     101.00 $\pm$       8.00 &  {\tiny $\sim$ }0 &      25.00 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       8.00\\
+B2XS &     101.00 $\pm$       8.00 &  {\tiny $\sim$ }0 &      25.00 &  0 &  {\tiny $\sim$ }0 &       8.00\\
 Correlations & --- & --- &     -25.00 & --- & --- & ---\\
 \hline
 BLUE {\tiny xs} &      99.00 $\pm$       4.00 &     100.00 &     100.00 &      75.00 &     100.00 &       4.00\\
@@ -297,11 +297,11 @@ BLUE {\tiny xs} &      99.00 $\pm$       4.00 &     100.00 &     100.00 &      7
 Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
  & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
 \hline
- {\tiny B2XS/B1XS} & \#0 &    0.5714 $\pm$    0.7071 &   -0.5469 & {\tiny $\sim$ }0 &    4.2000 & Variable \\
+ {\tiny B2XS/B1XS} & \#0 &    0.5714 $\pm$    0.7071 &   -0.5469 & 0 &    4.2000 & Variable \\
 \hline
 \end{tabular}
 \renewcommand{\arraystretch}{1}
-\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at 1) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at onionized covariances) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
 \end{center}
 \end{table}
 \begin{table}[H]
@@ -312,10 +312,10 @@ Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}
 \hline
  OffDiag \& ErrSrc & {\tiny Error} & OffDiag\\
 \hline
-B2XS / B1XS &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+B2XS / B1XS &  0 &  0 \\
 \hline
-\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ {\tiny $\sim$ }0} & GlobFact\\
- & &  {\tiny $\sim$ }0 \\
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & GlobFact\\
+ & &  0 \\
 \hline
 \end{tabular}
 \renewcommand{\arraystretch}{1}

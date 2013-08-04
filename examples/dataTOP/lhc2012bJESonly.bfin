@@ -1,0 +1,69 @@
+#==============================================================================
+#==== BlueFin input data file =================================================
+#==============================================================================
+
+# The file is expected to have the following format.
+# Blank lines and lines with only empty spaces are ignored.
+# Lines starting by '#' are reserved for comments and are ignored.
+# Data lines are composed of fields separated by one or more empty spaces.
+# Fields cannot contain empty spaces, with the exception of the title line.
+
+# The next line must have 2 fields: 'TITLE' and the title of the
+# BlueFin combination, which must be enclosed within double quotes
+# and may contain only alphanumeric characters or spaces or hyphens.
+TITLE "LHC top mass combination 2012"
+
+# The next line must have 2 fields: 'NOBS' and the number of observables.
+NOBS 1
+
+# The next line must have 2 fields: 'NMEA' and the number of measurements.
+NMEA 7
+
+# The next line must have 2 fields: 'NERR' and the number of error sources.
+NERR 1
+
+# The next NERR+3 lines must have NMEA+1 fields in this format:
+# - in the 1st line: 'MEANAME' followed by NMEA distinct measurement names
+#   (measurement names may contain only alphanumeric characters or spaces);
+# - in the 2nd line: 'OBSNAME' followed by the NMEA names (with NOBS distinct
+#   values) of the observables measured by the corresponding measurements
+#   (observable names may contain only alphanumeric characters or spaces
+#   and should preferably be at most 3 characters long);
+# - in the 3rd line: 'MEAVAL' followed by the NMEA measured central values;
+# - in each of the last NERR lines: the error source name followed by the 
+#   NMEA partial errors for each measurement due to the given error source
+#   (error source names may contain only alphanumeric characters or spaces).
+MEANAME    ALJ10    ALJ11    AJT11    CLL10    CLJ10    CLL11    CMJ11
+OBSNAME       mt       mt       mt       mt       mt       mt       mt
+MEAVAL  169.3000 174.5000 174.9000 175.5000 173.1000 173.3000 172.6000
+bJES      2.5000   1.6000   1.4000   0.9000   0.9000   1.1000   0.7000
+
+# The next NMEA*(NMEA-1)/2+1 rows must have NERR+2 fields in this format:
+# - in the 1st line: 'CMEA1' 'CMEA2' (correlations between 2 measurements)
+#   followed by the NERR error source names in the same order used above;
+# - in each of the NMEA*(NMEA-1)/2 last lines: the names of two distinct
+#   measurements followed by the NERR correlations between the partial 
+#   errors on the two measurements due to corresponding error source.
+#   Measurements must appear in the same order listed above.
+CMEA1 CMEA2  bJES
+ALJ10 ALJ11 .9500
+ALJ10 AJT11 .9500
+ALJ10 CLL10 .4750
+ALJ10 CLJ10 .4750
+ALJ10 CLL11 .4750
+ALJ10 CMJ11 .4750
+ALJ11 AJT11 .9500
+ALJ11 CLL10 .4750
+ALJ11 CLJ10 .4750
+ALJ11 CLL11 .4750
+ALJ11 CMJ11 .4750
+AJT11 CLL10 .4750
+AJT11 CLJ10 .4750
+AJT11 CLL11 .4750
+AJT11 CMJ11 .4750
+CLL10 CLJ10 .9500
+CLL10 CLL11 .9500
+CLL10 CMJ11 .9500
+CLJ10 CLL11 .9500
+CLJ10 CMJ11 .9500
+CLL11 CMJ11 .9500

@@ -44,6 +44,10 @@ BlueFish::BlueFish()
   , m_meaCov()
   , m_errMeaCovsOffDiag()
   , m_meaCovOffDiag()
+    /*
+  , m_errMeaSetsPosVar()
+  , m_errMeaCovsPosVar()
+    */
   , m_meaCor()
   , m_meaCovInv()
   , m_uMapTrByMeaCovInv()
@@ -84,6 +88,10 @@ BlueFish::BlueFish( const std::string& combName,
   , m_meaCov()
   , m_errMeaCovsOffDiag()
   , m_meaCovOffDiag()
+    /*
+  , m_errMeaSetsPosVar()
+  , m_errMeaCovsPosVar()
+    */
   , m_meaCor()
   , m_meaCovInv()
   , m_uMapTrByMeaCovInv()
@@ -193,12 +201,56 @@ BlueFish::BlueFish( const std::string& combName,
     m_meaCov += m_errMeaCovs[iErr];
     m_meaCovOffDiag += m_errMeaCovsOffDiag[iErr];
   }
-  // Check that the full covariance matrix is positive definite
-  // (do not check each error source individually - some may be 0)
-  if ( !isPositiveDefinite( m_meaCov ) )
+  /*
+  // For each error source find the measurements with variance>0
+  // Compute their reduced covariance and check that it is positive definite
+  for ( size_t iErr=0; iErr<nErr(); ++iErr )
   {
-    std::cout << "ERROR! Covariance matrix is not positive definite " << m_meaCov << std::endl;
-    throw CovarianceNotPosDef();
+    std::set<size_t> errMeaSetPosVar;
+    for ( size_t iMea=0; iMea<nMea(); ++iMea )
+    {
+      if ( m_errMeaCovs[iErr](iMea,iMea) < 0 )
+        throw std::runtime_error( "Variance<0 in error source " + errName(iErr) );
+      if ( m_errMeaCovs[iErr](iMea,iMea) > 0 )
+        errMeaSetPosVar.insert( iMea );
+    }
+    m_errMeaSetsPosVar.push_back( errMeaSetPosVar );
+    SymmetricMatrix errMeaCovPosVar = ZeroMatrix( errMeaSetPosVar.size() );
+    for ( size_t iMea=0, iMea2=0; iMea<nMea(); ++iMea )
+    {
+      if ( errMeaSetPosVar.find(iMea) != errMeaSetPosVar.end() )
+      {
+        errMeaCovPosVar(iMea2,iMea2) = m_errMeaCovs[iErr](iMea,iMea);
+        for ( size_t jMea=0, jMea2=0; jMea<iMea; ++jMea )
+        {
+          if ( errMeaSetPosVar.find(jMea) != errMeaSetPosVar.end() )
+          {
+            errMeaCovPosVar(iMea2,jMea2) = m_errMeaCovs[iErr](iMea,jMea);
+            errMeaCovPosVar(jMea2,iMea2) = m_errMeaCovs[iErr](iMea,jMea);
+            ++jMea2;
+          }
+        }
+        ++iMea2;
+      }
+    }
+    if ( !isPositiveDefinite( errMeaCovPosVar, "covariance for error "+errName(iErr) ) )
+    {
+      //std::ostream* str = errorStreamForPositiveDefiniteCheck();
+      //if ( str )
+      //  *str << "WARNING! Reduced covariance matrix for error source " << errName(iErr)
+      //       << " is not positive definite " << errMeaCovPosVar << std::endl;
+      // TODO: throw an exception if any eigenvalue is < 0?
+    }
+    m_errMeaCovsPosVar.push_back( errMeaCovPosVar );
+  }
+  */
+  // Check that the full covariance matrix is positive definite
+  // (TODO: check that partial covariance matrices have no negative eigenvalues)
+  if ( !isPositiveDefinite( m_meaCov, "total covariance" ) )
+  {
+    std::stringstream msg;
+    msg << "Total covariance matrix is not positive definite " << m_meaCov;
+    throw CovarianceNotPosDef( msg.str() );
   }
   // Compute the full input correlation matrix
   m_meaCor = ZeroMatrix( nMea(), nMea() );
@@ -308,6 +360,10 @@ BlueFish::BlueFish( const BlueFish& rhs )
   , m_meaCov( rhs.m_meaCov )
   , m_errMeaCovsOffDiag( rhs.m_errMeaCovsOffDiag )
   , m_meaCovOffDiag( rhs.m_meaCovOffDiag )
+    /*
+  , m_errMeaSetsPosVar( rhs.m_errMeaSetsPosVar )
+  , m_errMeaCovsPosVar( rhs.m_errMeaCovsPosVar )
+    */
   , m_meaCor( rhs.m_meaCor )
   , m_meaCovInv( rhs.m_meaCovInv )
   , m_uMapTrByMeaCovInv( rhs.m_uMapTrByMeaCovInv )
@@ -343,6 +399,10 @@ BlueFish::operator=( const BlueFish& rhs )
   m_meaCov = rhs.m_meaCov;
   m_errMeaCovsOffDiag = rhs.m_errMeaCovsOffDiag;
   m_meaCovOffDiag = rhs.m_meaCovOffDiag;
+  /*
+  m_errMeaSetsPosVar = rhs.m_errMeaSetsPosVar;
+  m_errMeaCovsPosVar = rhs.m_errMeaCovsPosVar;
+  */
   m_meaCor = rhs.m_meaCor;
   m_meaCovInv = rhs.m_meaCovInv;
   m_uMapTrByMeaCovInv = rhs.m_uMapTrByMeaCovInv;

@@ -135,7 +135,7 @@ Nominal correlations &     101.30 $\pm$     12.78 &      10.14 &       2.04 &   
 \hline
 Minimize by global factor &     105.18 $\pm$     12.96 &       9.87 &       4.08 &       7.34 &       3.12/3\\
 Minimize by error sources &     107.33 $\pm$     13.23 &       9.78 &       4.69 &       7.58 &       2.62/3\\
-Minimize by off-diagonal elements &     108.20 $\pm$     13.40 &       9.75 &       5.22 &       7.57 &       2.58/3\\
+Minimize by off-diagonal elements &     108.20 $\pm$     13.40 &       9.75 &       5.22 &       7.57 &       2.37/3\\
 Remove negative CVWs &     108.20 $\pm$     13.40 &       9.75 &       5.22 &       7.57 &       1.27/2\\
 Onionize &     109.20 $\pm$     13.07 &       9.51 &       4.85 &       7.55 &       2.21/3\\
 \hline
@@ -277,8 +277,8 @@ DXS / CXS &  0 &  0 &  0 &  0 \\
 \mathrm{CXS} & 
 \mathrm{DXS} \\
 \hline
-\mathrm{AXS} \hspace*{2pt} &     121.00 &  \colorbox{Green1}{$    122.94$} &  \colorbox{Green1}{$     87.82$} &  0 \\
-\mathrm{BXS} \hspace*{2pt} &  \colorbox{Green1}{$    122.94$} &     196.00 &  \colorbox{Green1}{$    111.77$} &  0 \\
+\mathrm{AXS} \hspace*{2pt} &     121.00 &  \colorbox{Green1}{$    122.95$} &  \colorbox{Green1}{$     87.82$} &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  \colorbox{Green1}{$    122.95$} &     196.00 &  \colorbox{Green1}{$    111.77$} &  0 \\
 \mathrm{CXS} \hspace*{2pt} &  \colorbox{Green1}{$     87.82$} &  \colorbox{Green1}{$    111.77$} &     100.00 &  0 \\
 \mathrm{DXS} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
 \end{array}\right)\end{math}
@@ -437,16 +437,16 @@ DXS / CXS &  0 &  0 &  0 &  0 \\
 \hline
 \multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Unc} & {\tiny Bkgd} & {\tiny Lumi}\\
 \hline
-AXS &      95.00 $\pm$      17.92 &      44.06 &      55.93 &      26.28 &      44.06 &      10.00 &      10.00 &      11.00\\
+AXS &      95.00 $\pm$      17.92 &      44.06 &      55.93 &      27.49 &      44.06 &      10.00 &      10.00 &      11.00\\
 BXS &     144.00 $\pm$      44.63 &  {\tiny $\sim$ }0 &       9.01 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &      14.00 &      40.00 &      14.00\\
-CXS &     115.00 $\pm$      20.81 &      27.22 &      41.46 &      15.32 &      27.22 &      18.00 &       3.00 &      10.00\\
+CXS &     115.00 $\pm$      20.81 &      27.22 &      41.46 &      15.11 &      27.22 &      18.00 &       3.00 &      10.00\\
 DXS &     122.00 $\pm$      25.00 &      28.72 &      28.72 &      28.72 &      28.72 &      25.00 &  0 &  0\\
 Correlations & --- & --- &     -35.13 & --- & --- & --- & --- & ---\\
 \hline
-BLUE {\tiny xs} &     108.20 $\pm$      13.40 &     100.00 &     100.00 &      70.33 &     100.00 &       9.75 &       5.22 &       7.57\\
+BLUE {\tiny xs} &     108.20 $\pm$      13.40 &     100.00 &     100.00 &      71.32 &     100.00 &       9.75 &       5.22 &       7.57\\
 \hline
 \end{tabular}
-\caption{BLUE of the combination ($\chi^2$/ndof=      2.58/3).
+\caption{BLUE of the combination ($\chi^2$/ndof=      2.37/3).
  For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
 \renewcommand{\arraystretch}{1}
 \end{center}
@@ -460,16 +460,16 @@ BLUE {\tiny xs} &     108.20 $\pm$      13.40 &     100.00 &     100.00 &      7
 Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
  & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
 \hline
- {\tiny BXS/AXS} & \#0 &    0.5501 $\pm$    0.7368 &   -0.2832 & {\tiny $\sim$ }0 &    0.4873 & Variable \\
+ {\tiny BXS/AXS} & \#0 &    0.4910 $\pm$    0.6788 &   -0.2832 & {\tiny $\sim$ }0 &    0.4873 & Variable \\
  {\tiny CXS/AXS} & \#1 &    1.0000 $\pm$    0.7164 &   -0.3292 &   -0.1702 &   -0.2624 & Variable \\
- {\tiny CXS/BXS} & \#2 &    0.6396 $\pm$    0.5570 &   -0.0985 & {\tiny $\sim$ }0 &    0.0960 & Variable \\
+ {\tiny CXS/BXS} & \#2 &    0.8435 $\pm$    0.5418 &   -0.0985 & {\tiny $\sim$ }0 &    0.0960 & Variable \\
  {\tiny DXS/AXS} & \#3 &    1.0000 $\pm$ N/A & 0 & 0 & 0 & FIXED \\
  {\tiny DXS/BXS} & \#4 &    1.0000 $\pm$ N/A & 0 & 0 & 0 & FIXED \\
  {\tiny DXS/CXS} & \#5 &    1.0000 $\pm$ N/A & 0 & 0 & 0 & FIXED \\
 \hline
 \end{tabular}
 \renewcommand{\arraystretch}{1}
-\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at 1) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at onionized covariances) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
 \end{center}
 \end{table}
 \begin{table}[H]
@@ -505,9 +505,9 @@ DXS / CXS &  0 &  0 &  0 &  0 \\
 \mathrm{CXS} & 
 \mathrm{DXS} \\
 \hline
-\mathrm{AXS} \hspace*{2pt} &     321.00 &  \colorbox{Green1}{$    304.77$} &  \colorbox{Green1}{$    140.00$} &  0 \\
-\mathrm{BXS} \hspace*{2pt} &  \colorbox{Green1}{$    304.77$} &    1992.00 &  \colorbox{Green1}{$    166.30$} &  0 \\
-\mathrm{CXS} \hspace*{2pt} &  \colorbox{Green1}{$    140.00$} &  \colorbox{Green1}{$    166.30$} &     433.00 &  0 \\
+\mathrm{AXS} \hspace*{2pt} &     321.00 &  \colorbox{Cyan1}{$    272.02$} &  \colorbox{Green1}{$    140.00$} &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  \colorbox{Cyan1}{$    272.02$} &    1992.00 &  \colorbox{Green1}{$    219.30$} &  0 \\
+\mathrm{CXS} \hspace*{2pt} &  \colorbox{Green1}{$    140.00$} &  \colorbox{Green1}{$    219.30$} &     433.00 &  0 \\
 \mathrm{DXS} \hspace*{2pt} &  0 &  0 &  0 &     625.00 \\
 \end{array}\right)\end{math}
 \caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
@@ -543,9 +543,9 @@ DXS / CXS &  0 &  0 &  0 &  0 \\
 \mathrm{CXS} & 
 \mathrm{DXS} \\
 \hline
-\mathrm{AXS} \hspace*{2pt} &     100.00 &  \colorbox{Green1}{$    220.05$} &  \colorbox{Green1}{$     30.00$} &  0 \\
-\mathrm{BXS} \hspace*{2pt} &  \colorbox{Green1}{$    220.05$} &    1600.00 &  \colorbox{Green1}{$     76.75$} &  0 \\
-\mathrm{CXS} \hspace*{2pt} &  \colorbox{Green1}{$     30.00$} &  \colorbox{Green1}{$     76.75$} &       9.00 &  0 \\
+\mathrm{AXS} \hspace*{2pt} &     100.00 &  \colorbox{Cyan1}{$    196.40$} &  \colorbox{Green1}{$     30.00$} &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  \colorbox{Cyan1}{$    196.40$} &    1600.00 &  \colorbox{Green1}{$    101.21$} &  0 \\
+\mathrm{CXS} \hspace*{2pt} &  \colorbox{Green1}{$     30.00$} &  \colorbox{Green1}{$    101.21$} &       9.00 &  0 \\
 \mathrm{DXS} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
 \end{array}\right)\end{math}
 \caption{Partial input covariance between measurements. Error source \#1: Bkgd. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
@@ -562,9 +562,9 @@ DXS / CXS &  0 &  0 &  0 &  0 \\
 \mathrm{CXS} & 
 \mathrm{DXS} \\
 \hline
-\mathrm{AXS} \hspace*{2pt} &     121.00 &  \colorbox{Green1}{$     84.72$} &  \colorbox{Green1}{$    110.00$} &  0 \\
-\mathrm{BXS} \hspace*{2pt} &  \colorbox{Green1}{$     84.72$} &     196.00 &  \colorbox{Green1}{$     89.54$} &  0 \\
-\mathrm{CXS} \hspace*{2pt} &  \colorbox{Green1}{$    110.00$} &  \colorbox{Green1}{$     89.54$} &     100.00 &  0 \\
+\mathrm{AXS} \hspace*{2pt} &     121.00 &  \colorbox{Cyan1}{$     75.62$} &  \colorbox{Green1}{$    110.00$} &  0 \\
+\mathrm{BXS} \hspace*{2pt} &  \colorbox{Cyan1}{$     75.62$} &     196.00 &  \colorbox{Green1}{$    118.08$} &  0 \\
+\mathrm{CXS} \hspace*{2pt} &  \colorbox{Green1}{$    110.00$} &  \colorbox{Green1}{$    118.08$} &     100.00 &  0 \\
 \mathrm{DXS} \hspace*{2pt} &  0 &  0 &  0 &  0 \\
 \end{array}\right)\end{math}
 \caption{Partial input covariance between measurements. Error source \#2: Lumi. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}

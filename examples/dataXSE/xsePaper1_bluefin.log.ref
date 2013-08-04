@@ -106,7 +106,7 @@ Chi2 / d.o.f = 0.999989 / 1
     AXS   15.0001    0.0000
     BXS    0.0000   10.0001
 
-6. ONIONIZE
+7. ONIONIZE
 
 Onionize source #0 (Error)
  CovOld       AXS       BXS
@@ -129,7 +129,7 @@ Chi2 / d.o.f = 0.999989 / 1
     AXS   15.0001    0.0000
     BXS    0.0000   10.0001
 
-7. NO CORRELATIONS
+8. NO CORRELATIONS
 
 ------------------------ | CVW xs | FIW xs | MIW xs | RIW xs | Erro
 
@@ -203,7 +203,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper1.pdf (14 pages, 283874 bytes).
+Output written on xsePaper1.pdf (14 pages, 284080 bytes).
 Transcript written on xsePaper1.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -260,7 +260,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper1.pdf (14 pages, 283874 bytes).
+Output written on xsePaper1.pdf (14 pages, 284080 bytes).
 Transcript written on xsePaper1.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -317,7 +317,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper1.pdf (14 pages, 283874 bytes).
+Output written on xsePaper1.pdf (14 pages, 284080 bytes).
 Transcript written on xsePaper1.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -374,7 +374,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper1.pdf (14 pages, 283874 bytes).
+Output written on xsePaper1.pdf (14 pages, 284080 bytes).
 Transcript written on xsePaper1.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -431,7 +431,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper1.pdf (14 pages, 283874 bytes).
+Output written on xsePaper1.pdf (14 pages, 284080 bytes).
 Transcript written on xsePaper1.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -488,5 +488,5 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper1.pdf (14 pages, 283874 bytes).
+Output written on xsePaper1.pdf (14 pages, 284080 bytes).
 Transcript written on xsePaper1.log.

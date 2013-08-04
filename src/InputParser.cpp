@@ -330,7 +330,13 @@ BlueFish InputParser::createBlueFishFromInputData( const std::string& inputFileN
         {
           const std::vector<double>& errMeaVal = errMeaVals[iErr];
           SymmetricMatrix& errMeaCov = errMeaCovs[iErr];
-          errMeaCov(iMea1,iMea2) = errMeaVal[iMea1] * errMeaVal[iMea2] * atof( fields[2+iErr].c_str() );
+          double corr = atof( fields[2+iErr].c_str() );
+          if ( corr<-1 || 1<corr )
+          {
+            InputParserImpl::errorInLine( line, iLine );
+            throw std::runtime_error( "Invalid format (correlation <-1 or >1)" );
+          }
+          errMeaCov(iMea1,iMea2) = errMeaVal[iMea1] * errMeaVal[iMea2] * corr;
           errMeaCov(iMea2,iMea1) = errMeaCov(iMea1,iMea2);
         }
       }

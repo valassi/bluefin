@@ -298,6 +298,7 @@ bluefin : $(bindir)bluefin
 lib : libBlueFin.so
 
 setup_csh :
+	@echo "if ( \$${?LD_LIBRARY_PATH} == 0 ) setenv LD_LIBRARY_PATH ''; "
 	@echo "setenv ROOTSYS $(ROOTSYS); setenv PATH $(realpath $(bindir)):$(GCCHOME)/bin:\$${PATH}; setenv LD_LIBRARY_PATH $(LD_LIBRARY_PATH):\$${LD_LIBRARY_PATH}"
 
 setup_sh :

@@ -778,7 +778,8 @@ void
 TextReporter::printMinimization( const InfoMinimizer& im,
                                  const bool preOnly,
                                  std::ostream& ostr,
-                                 bool latex )
+                                 bool latex,
+                                 const std::string& msg )
 {
   const size_t nPar = im.nPar();
   char out[80];
@@ -973,7 +974,7 @@ TextReporter::printMinimization( const InfoMinimizer& im,
     lStr << "\\hline" << std::endl;
     lStr << "\\end{tabular}" << std::endl;
     lStr << "\\renewcommand{\\arraystretch}{1}" << std::endl;
-    lStr << "\\caption{Normalised Fisher information derivatives 1/I$^\\mathrm{nom}$*dI/dX ";
+    lStr << "\\caption{" << msg << "Normalised Fisher information derivatives 1/I$^\\mathrm{nom}$*dI/dX ";
     if ( !minimized ) lStr << "(before minimization). ";
     else lStr << "(before and after minimization) and minimization results. ";
     lStr << " The derivatives in the table are computed with respect to scale factors X,"
@@ -983,12 +984,14 @@ TextReporter::printMinimization( const InfoMinimizer& im,
          << " for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''),"
          << " for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'')"
          << " and for the scale factors minimizing Fisher information (''@MIN'').";
+    lStr << " In the minimization, the scale factors X were varied (between 0 and 1, ";
+    if ( im.type() == InfoMinimizer::ByGlobalFactorMD ||
+         im.type() == InfoMinimizer::ByErrorSourceMD ) lStr << "starting at 1)";
+    else lStr << "starting at onionized covariances)";
     if ( ! InfoMinimizer::varyAllParameters() )
-      lStr << " In the minimization, the scale factors X were varied (between 0 and 1, starting at 1)"
-           << " if 1/I$^\\mathrm{nom}$*dI/dX@1 $>$ " << im.varParD1NInfoNomCorThreshold() << " and dI/dX@0 $<$ 0.";
+      lStr << " if 1/I$^\\mathrm{nom}$*dI/dX@1 $>$ " << im.varParD1NInfoNomCorThreshold() << " and dI/dX@0 $<$ 0.";
     else
-      lStr << " In the minimization, the scale factors X were varied (between 0 and 1, starting at 1)"
-           << " unless dI/dX@0 == dI/dX@1 == 0.";
+      lStr << " unless dI/dX@0 == dI/dX@1 == 0.";
     if ( im.wasMinimumFound() )
       lStr << " A minimum was found in this minimization.";
     else if ( noParsWereVaried )

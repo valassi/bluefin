@@ -21,6 +21,7 @@
 
 // Include files
 #include <cmath>
+#include <cstdio>
 #include <stdexcept>
 #include <boost/numeric/ublas/io.hpp>
 #include <boost/numeric/ublas/lu.hpp>
@@ -103,12 +104,55 @@ namespace bluefin
     return det;
   }
 
-  /// Check positive definiteness (see http://en.wikipedia.org/wiki/Sylvester%27s_criterion)
-  inline bool isPositiveDefinite( const Matrix& A )
+  /// Get/set error stream for the positive definiteness check
+  inline std::ostream*& errorStreamForPositiveDefiniteCheck()
   {
+    static std::ostream* str = 0;
+    return str;
+  }
+
+  /// Check positive definiteness (see http://en.wikipedia.org/wiki/Sylvester%27s_criterion)
+  inline bool isPositiveDefinite( const Matrix& A, const std::string& txt = "" )
+  {
+    if ( A.size1() != A.size2() )
+      throw std::runtime_error( "non-symmetric matrix in isPositiveDefinite" );
     for ( size_t i=1; i<=A.size1(); i++ ) // 1..n (not 0..n-1)
-      if ( determinant( boost::numeric::ublas::subrange( A, 0, i, 0, i ) ) <= 0 )
+    {
+      const boost::numeric::ublas::matrix_range<const Matrix>& sub = boost::numeric::ublas::subrange( A, 0, i, 0, i );
+      Number det = determinant( sub );
+      // Compare the determinant to the product of diagonal elements
+      // (i.e. the determinant in the absence of correlations!)
+      Number detNoCor = 1;
+      for ( size_t j=0; j<=sub.size1()-1; ++j ) detNoCor*=sub(j,j);
+      // Determinant is negative - print a warning if below threshold
+      if ( det < 0 )
+      {
+        std::ostream* str = errorStreamForPositiveDefiniteCheck();
+        if ( str )
+        {
+          if ( detNoCor > 0 && det < -1E-8 * detNoCor )
+          {
+            char out[80];
+            snprintf( out, 12, "%11.8f", (double)(det/detNoCor) );
+            *str << "WARNING! Negative determinant " << out
+                 << " in correlation matrix"
+                 << ( txt != "" ? " ("+txt+")" : txt )
+                 << std::endl;
+          }
+        }
         return false;
+      }
+      // Determinant is zero - do not print any warning
+      else if ( det == 0 )
+      {
+        return false;
+      }
+      // Determinant is positive but compatible with zero!
+      else if ( det < 1E-8 * detNoCor )
+      {
+        return false;
+      }
+    }
     return true;
   }
 

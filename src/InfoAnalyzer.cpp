@@ -39,6 +39,7 @@ namespace bluefin
                           const std::string& outputLatexFile,
                           const InfoAnalyzer::PrintoutOpts& opts )
     {
+      errorStreamForPositiveDefiniteCheck() = &tStr;
       std::vector<std::pair<std::string,BlueFish1Obs> > bfs;
       bool latex = false;
       const bool partial = ( opts.cov == InfoAnalyzer::COV_TOTAL_AND_PARTIAL );
@@ -51,41 +52,56 @@ namespace bluefin
         TextReporter::printMeaCovs( bfNomCor, tStr, latex, partial );
       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( TextReporter::nominalCorrelationTag(), bfNomCor ) );
       // 2. MINIMIZE WRT GLOBAL FACTOR
-      tStr << std::endl << "2. MINIMIZE WRT GLOBAL FACTOR" << std::endl << std::endl;
       InfoMinimizer imByGF( bfNomCor, infoNomCor, InfoMinimizer::ByGlobalFactorMD );
-      BlueFish1Obs bfMinByGF = imByGF.minimizeBF1( tStr );
-      TextReporter::printBlueFish( bfMinByGF, tStr );
-      if ( opts.cov != InfoAnalyzer::COV_NONE )
-        TextReporter::printMeaCovs( bfMinByGF, tStr, latex, partial );
-      bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by global factor", bfMinByGF ) );
+      BlueFish1Obs bfMinByGF;
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYGF )
+      {
+        tStr << std::endl << "2. MINIMIZE WRT GLOBAL FACTOR" << std::endl << std::endl;
+        bfMinByGF = imByGF.minimizeBF1( tStr );
+        TextReporter::printBlueFish( bfMinByGF, tStr );
+        if ( opts.cov != InfoAnalyzer::COV_NONE )
+          TextReporter::printMeaCovs( bfMinByGF, tStr, latex, partial );
+        bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by global factor", bfMinByGF ) );
+      }
       // 3. MINIMIZE WRT ERROR SOURCES
-      tStr << std::endl << "3. MINIMIZE WRT ERROR SOURCES" << std::endl << std::endl;
       InfoMinimizer imByES( bfNomCor, infoNomCor, InfoMinimizer::ByErrorSourceMD );
-      BlueFish1Obs bfMinByES = imByES.minimizeBF1( tStr );
-      TextReporter::printBlueFish( bfMinByES, tStr );
-      if ( opts.cov != InfoAnalyzer::COV_NONE )
-        TextReporter::printMeaCovs( bfMinByES, tStr, latex, partial );
-      bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by error sources", bfMinByES ) );
+      BlueFish1Obs bfMinByES;
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYES )
+      {
+        tStr << std::endl << "3. MINIMIZE WRT ERROR SOURCES" << std::endl << std::endl;
+        bfMinByES = imByES.minimizeBF1( tStr );
+        TextReporter::printBlueFish( bfMinByES, tStr );
+        if ( opts.cov != InfoAnalyzer::COV_NONE )
+          TextReporter::printMeaCovs( bfMinByES, tStr, latex, partial );
+        bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by error sources", bfMinByES ) );
+      }
       // 4. MINIMIZE WRT OFF DIAGONAL ELEMENTS
-      tStr << std::endl << "4. MINIMIZE WRT OFF DIAGONAL ELEMENTS" << std::endl << std::endl;
       InfoMinimizer imByOD( bfNomCor, infoNomCor, InfoMinimizer::ByOffDiagElemMD );
       BlueFish1Obs bfMinByOD;
-      try
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYOD )
       {
-        bfMinByOD = imByOD.minimizeBF1( tStr );
-        TextReporter::printBlueFish( bfMinByOD, tStr );
-        if ( opts.cov != InfoAnalyzer::COV_NONE )
-          TextReporter::printMeaCovs( bfMinByOD, tStr, latex, partial );
+        tStr << std::endl << "4. MINIMIZE WRT OFF DIAGONAL ELEMENTS" << std::endl << std::endl;
+        try
+        {
+          bfMinByOD = imByOD.minimizeBF1( tStr );
+          TextReporter::printBlueFish( bfMinByOD, tStr );
+          if ( opts.cov != InfoAnalyzer::COV_NONE )
+            TextReporter::printMeaCovs( bfMinByOD, tStr, latex, partial );
+        }
+        catch( BlueFish::CovarianceNotPosDef& )
+        {
+          tStr << "ERROR! Minimization by off-diagonal element failed (covariance not pos def)" << std::endl;
+        }
+        catch( std::exception& e )
+        {
+          tStr << "ERROR! Minimization by off-diagonal element failed (" << e.what() << ")" << std::endl;
+        }
+        catch( ... )
+        {
+          tStr << "ERROR! Minimization by off-diagonal element failed (unknown cause)" << std::endl;
+        }
+        bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by off-diagonal elements", bfMinByOD ) );
       }
-      catch( BlueFish::CovarianceNotPosDef& )
-      {
-        tStr << "ERROR! Minimization by off-diagonal element failed (covariance not pos def)" << std::endl;
-      }
-      catch( ... )
-      {
-        tStr << "ERROR! Minimization by off-diagonal element failed (unknown cause)" << std::endl;
-      }
-      bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by off-diagonal elements", bfMinByOD ) );
       // 5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S
       tStr << std::endl << "5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S" << std::endl << std::endl;
       std::vector< std::pair<BlueFish1Obs,size_t> > bfPosCvwsRemoved;
@@ -94,29 +110,57 @@ namespace bluefin
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfPosCvws, tStr, latex, partial );
       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Remove negative CVWs", bfPosCvws ) );
-      // 6a. ONIONIZE (RC)
-      //tStr << std::endl << "6a. ONIONIZE (RC)" << std::endl << std::endl;
+      // 6. MINIMIZE WRT OFF DIAGONAL ELEMENTS PER ERROR SOURCE
+      InfoMinimizer imByOE( bfNomCor, infoNomCor, InfoMinimizer::ByOffDiagPerErrSrcMD );
+      BlueFish1Obs bfMinByOE;
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYOE )
+      {
+        tStr << std::endl << "6. MINIMIZE WRT OFF DIAGONAL ELEMENTS PER ERROR SOURCE" << std::endl << std::endl;
+        try
+        {
+          bfMinByOE = imByOE.minimizeBF1( tStr );
+          TextReporter::printBlueFish( bfMinByOE, tStr );
+          if ( opts.cov != InfoAnalyzer::COV_NONE )
+            TextReporter::printMeaCovs( bfMinByOE, tStr, latex, partial );
+        }
+        catch( BlueFish::CovarianceNotPosDef& )
+        {
+          tStr << "ERROR! Minimization by off-diagonal per error src failed (covariance not pos def)" << std::endl;
+        }
+        catch( std::exception& e )
+        {
+          tStr << "ERROR! Minimization by off-diagonal per error src failed (" << e.what() << ")" << std::endl;
+        }
+        catch( ... )
+        {
+          tStr << "ERROR! Minimization by off-diagonal per error src failed (unknown cause)" << std::endl;
+        }
+        bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by off-diagonal per error src", bfMinByOE ) );
+      }
+      // 7a. ONIONIZE (RC)
+      //tStr << std::endl << "7a. ONIONIZE (RC)" << std::endl << std::endl;
       //BlueFish1Obs bfOnionRC = bfNomCor.onionizeCorrsByErrorSourceBF1( true, &tStr ); // RC onionization
       //TextReporter::printBlueFish( bfOnionRC, tStr );
       //if ( opts.cov != InfoAnalyzer::COV_NONE )
       //  TextReporter::printMeaCovs( bfOnionRC, tStr, latex, partial );
       //bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Onionize (1--RC)", bfOnionRC ) );
-      // 6b. ONIONIZE (AV)
-      //tStr << std::endl << "6b. ONIONIZE (AV)" << std::endl << std::endl;
-      tStr << std::endl << "6. ONIONIZE" << std::endl << std::endl;
+      // 7b. ONIONIZE (AV)
+      //tStr << std::endl << "7b. ONIONIZE (AV)" << std::endl << std::endl;
+      tStr << std::endl << "7. ONIONIZE" << std::endl << std::endl;
       BlueFish1Obs bfOnionAV = bfNomCor.onionizeCorrsByErrorSourceBF1( false, &tStr ); // AV onionization
       TextReporter::printBlueFish( bfOnionAV, tStr );
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfOnionAV, tStr, latex, partial );
       //bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Onionize (2--AV)", bfOnionAV ) );
       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Onionize", bfOnionAV ) );
-      // 7. ZERO CORRELATIONS
+      // 8. ZERO CORRELATIONS
       const BlueFish1Obs bfZerCor = bfNomCor.keepCorrsForSource(-1); // zero correlations
-      tStr << std::endl << "7. NO CORRELATIONS" << std::endl << std::endl;
+      tStr << std::endl << "8. NO CORRELATIONS" << std::endl << std::endl;
       TextReporter::printBlueFish( bfZerCor, tStr );
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfZerCor, tStr, latex, partial );
       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( TextReporter::zeroCorrelationTag(), bfZerCor ) );
+      errorStreamForPositiveDefiniteCheck() = 0;
       // ==========================================================================
       // === CREATE LATEX REPORT
       // ==========================================================================
@@ -143,40 +187,49 @@ namespace bluefin
       TextReporter::printSummaryTableBF1( bfNomCor, bfs, lStr, latex );
       lStr << newPage << std::endl;
       // == 2.2 MINIMIZE BY GF
-      lStr << "\\subsection{Minimize correlations by a global rescaling factor.}" << std::endl;
-      TextReporter::printBlueFish( bfMinByGF, lStr, latex );
       const bool preOnly = false;
-      TextReporter::printMinimization( imByGF, preOnly, lStr, latex );
-      TextReporter::printNInfoDerivativesBF1( bfMinByGF, lStr, latex,
-                                              "correlations in minimization by global factor" );
-      if ( opts.cov != InfoAnalyzer::COV_NONE )
-        TextReporter::printMeaCovs( bfMinByGF, lStr, latex, partial, &bfNomCor );
-      lStr << newPage << std::endl;
-      // == 2.3 MINIMIZE BY ES
-      lStr << "\\subsection{Minimize correlations by one factor per error source.}" << std::endl;
-      TextReporter::printBlueFish( bfMinByES, lStr, latex );
-      TextReporter::printMinimization( imByES, preOnly, lStr, latex );
-      TextReporter::printNInfoDerivativesBF1( bfMinByES, lStr, latex,
-                                              "correlations in minimization by error source" );
-      if ( opts.cov != InfoAnalyzer::COV_NONE )
-        TextReporter::printMeaCovs( bfMinByES, lStr, latex, partial, &bfNomCor );
-      lStr << newPage << std::endl;
-      // == 2.4 MINIMIZE BY OD
-      lStr << "\\subsection{Minimize correlations by one factor per off-diagonal element.}" << std::endl;
-      if ( bfMinByOD.nObs() == 0 )
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYGF )
       {
-        lStr << "Not Available (minimization failed)." << std::endl;
-      }
-      else
-      {
-        TextReporter::printBlueFish( bfMinByOD, lStr, latex );
-        TextReporter::printMinimization( imByOD, preOnly, lStr, latex );
-        TextReporter::printNInfoDerivativesBF1( bfMinByOD, lStr, latex,
-                                                "correlations in minimization by off-diagonal elements" );
+        lStr << "\\subsection{Minimize correlations by a global rescaling factor.}" << std::endl;
+        TextReporter::printBlueFish( bfMinByGF, lStr, latex );
+        TextReporter::printMinimization( imByGF, preOnly, lStr, latex );
+        TextReporter::printNInfoDerivativesBF1( bfMinByGF, lStr, latex,
+                                                "correlations in minimization by global factor" );
         if ( opts.cov != InfoAnalyzer::COV_NONE )
-          TextReporter::printMeaCovs( bfMinByOD, lStr, latex, partial, &bfNomCor );
+          TextReporter::printMeaCovs( bfMinByGF, lStr, latex, partial, &bfNomCor );
+        lStr << newPage << std::endl;
       }
-      lStr << newPage << std::endl;
+      // == 2.3 MINIMIZE BY ES
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYES )
+      {
+        lStr << "\\subsection{Minimize correlations by one factor per error source.}" << std::endl;
+        TextReporter::printBlueFish( bfMinByES, lStr, latex );
+        TextReporter::printMinimization( imByES, preOnly, lStr, latex );
+        TextReporter::printNInfoDerivativesBF1( bfMinByES, lStr, latex,
+                                                "correlations in minimization by error source" );
+        if ( opts.cov != InfoAnalyzer::COV_NONE )
+          TextReporter::printMeaCovs( bfMinByES, lStr, latex, partial, &bfNomCor );
+        lStr << newPage << std::endl;
+      }
+      // == 2.4 MINIMIZE BY OD
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYOD )
+      {
+        lStr << "\\subsection{Minimize correlations by one factor per off-diagonal element.}" << std::endl;
+        if ( bfMinByOD.nObs() == 0 )
+        {
+          lStr << "Not Available (minimization failed)." << std::endl;
+        }
+        else
+        {
+          TextReporter::printBlueFish( bfMinByOD, lStr, latex );
+          TextReporter::printMinimization( imByOD, preOnly, lStr, latex );
+          TextReporter::printNInfoDerivativesBF1( bfMinByOD, lStr, latex,
+                                                  "correlations in minimization by off-diagonal elements" );
+          if ( opts.cov != InfoAnalyzer::COV_NONE )
+            TextReporter::printMeaCovs( bfMinByOD, lStr, latex, partial, &bfNomCor );
+        }
+        lStr << newPage << std::endl;
+      }
       // == 2.5 ONLY POSITIVE CVWS
       lStr << "\\subsection{Remove measurements with negative central value weights.}" << std::endl;
       TextReporter::printBlueFish( bfPosCvws, lStr, latex );
@@ -186,7 +239,28 @@ namespace bluefin
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfPosCvws, lStr, latex, partial, 0 ); // cannot compare (different nMea!)
       lStr << newPage << std::endl;
-      // == 2.6a ONIONIZE RC
+      // == 2.6 MINIMIZE BY OD PER ERRSRC
+      if ( opts.min >= InfoAnalyzer::MIN_ADD_BYOE )
+      {
+        lStr << "\\subsection{Minimize correlations by one factor per off-diagonal element per error source.}" << std::endl;
+        if ( bfMinByOE.nObs() == 0 )
+        {
+          lStr << "Not Available (minimization failed)." << std::endl;
+        }
+        else
+        {
+          TextReporter::printBlueFish( bfMinByOE, lStr, latex );
+          for ( std::vector<InfoMinimizer*>::const_iterator pim=imByOE.subMinimizers().begin();
+                pim!=imByOE.subMinimizers().end(); ++pim )
+            TextReporter::printMinimization( *(*pim), preOnly, lStr, latex, (*pim)->bf().combName()+". " );
+          TextReporter::printNInfoDerivativesBF1( bfMinByOE, lStr, latex,
+                                                  "correlations in minimization by off-diagonal elements per error source" );
+          if ( opts.cov != InfoAnalyzer::COV_NONE )
+            TextReporter::printMeaCovs( bfMinByOE, lStr, latex, partial, &bfNomCor );
+        }
+        lStr << newPage << std::endl;
+      }
+      // == 2.7a ONIONIZE RC
       //lStr << "\\subsection{Onionize correlations (first recipe -- RC).}" << std::endl;
       //TextReporter::printBlueFish( bfOnionRC, lStr, latex );
       //TextReporter::printNInfoDerivativesBF1( bfOnionRC, lStr, latex,
@@ -194,7 +268,7 @@ namespace bluefin
       //if ( opts.cov != InfoAnalyzer::COV_NONE )
       //  TextReporter::printMeaCovs( bfOnionRC, lStr, latex, partial, &bfNomCor );
       //lStr << newPage << std::endl;
-      // == 2.6b ONIONIZE AV
+      // == 2.7b ONIONIZE AV
       lStr << "\\subsection{Onionize correlations.}" << std::endl;
       //lStr << "\\subsection{Onionize correlations (second recipe -- AV).}" << std::endl;
       TextReporter::printBlueFish( bfOnionAV, lStr, latex );
@@ -203,7 +277,7 @@ namespace bluefin
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfOnionAV, lStr, latex, partial, &bfNomCor );
       lStr << newPage << std::endl;
-      // == 2.7 ZERO CORRELATIONS
+      // == 2.8 ZERO CORRELATIONS
       lStr << "\\subsection{Zero correlations.}" << std::endl;
       TextReporter::printBlueFish( bfZerCor, lStr, latex );
       TextReporter::printNInfoDerivativesBF1( bfZerCor, lStr, latex,
