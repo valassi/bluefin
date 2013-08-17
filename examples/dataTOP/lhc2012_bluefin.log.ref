@@ -644,7 +644,7 @@ Chi2 / d.o.f = 1.08686 / 6
 
 --------------------------------------------------------------------
 
-Create latex report: /afs/cern.ch/user/a/avalassi/blue2/sw/examples/dataTOP/lhc2012_body.tex
+Create latex report: /afs/cern.ch/user/a/avalassi/blue2/trunk/examples/dataTOP/lhc2012_body.tex
 WARNING! Overfull hbox: increase width by 42.20096pt
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -910,7 +910,7 @@ cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf
 s/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (63 pages, 453463 bytes).
+Output written on lhc2012.pdf (63 pages, 453495 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1175,7 +1175,7 @@ cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf
 s/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (63 pages, 453463 bytes).
+Output written on lhc2012.pdf (63 pages, 453495 bytes).
 Transcript written on lhc2012.log.
 WARNING! Re-gain A4 ratio: increase height by 29.9399pt instead
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
@@ -1254,7 +1254,7 @@ re/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky
 /cm/cmti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/t
 exmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt8.pfb>
-Output written on lhc2012.pdf (63 pages, 453021 bytes).
+Output written on lhc2012.pdf (63 pages, 453056 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1332,7 +1332,7 @@ re/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky
 /cm/cmti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/t
 exmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt8.pfb>
-Output written on lhc2012.pdf (63 pages, 453021 bytes).
+Output written on lhc2012.pdf (63 pages, 453056 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1407,7 +1407,7 @@ are/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesk
 y/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/
 texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (57 pages, 444802 bytes).
+Output written on lhc2012.pdf (57 pages, 444829 bytes).
 Transcript written on lhc2012.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -1482,5 +1482,5 @@ are/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesk
 y/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/
 texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm
 /cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012.pdf (57 pages, 444802 bytes).
+Output written on lhc2012.pdf (57 pages, 444829 bytes).
 Transcript written on lhc2012.log.
