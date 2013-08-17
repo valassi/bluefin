@@ -51,6 +51,13 @@ namespace bluefin
                      size_t iField,
                      const std::string& token )
     {
+      if ( iField >= fields.size() )
+      {
+        errorInLine( line, iLine );
+        std::stringstream msg;
+        msg << "INTERNAL ERROR! Invalid field #" << iField << " (out of " << fields.size() << " fields)";
+        throw std::runtime_error( msg.str() );
+      }
       if ( fields[iField] != token )
       {
         errorInLine( line, iLine );
@@ -116,13 +123,41 @@ BlueFish InputParser::createBlueFishFromInputData( const std::string& inputFileN
   size_t iLine = 0;
   for ( std::string line; std::getline( ifStream, line ); )
   {
+    // Sanity check - there should be no LF characters \\n
+    if ( line.find( "\n" ) != std::string::npos )
+    {
+      InputParserImpl::errorInLine( line, iLine );
+      std::stringstream msg;
+      msg << "INTERNAL ERROR! Line contains the LF character \\n after getline?" << std::endl;
+      throw std::runtime_error( msg.str() );
+    }
+    // dos2unix - remove CR characters \\r
+    if ( line.find( "\r" ) != std::string::npos )
+    {
+      if ( line.find( "\r" ) != line.find_last_of( "\r" ) )
+      {
+        InputParserImpl::errorInLine( line, iLine );
+        std::stringstream msg;
+        msg << "INTERNAL ERROR! Line contains the CR character \\r more than once after getline?" << std::endl;
+        throw std::runtime_error( msg.str() );
+      }
+      if ( line.find( "\r" ) != line.size()-1 )
+      {
+        InputParserImpl::errorInLine( line, iLine );
+        std::stringstream msg;
+        msg << "INTERNAL ERROR! Line contains the CR character \\r after getline but it is not the last character?" << std::endl;
+        throw std::runtime_error( msg.str() );
+      }
+      line = line.substr( 0, line.size()-1 );
+    }
+    // Skip empty lines, lines starting with # and lines containing only spaces
     if ( line.find_first_not_of( " " ) != std::string::npos &&
          line.find( "#" ) != 0 )
     {
       // Split line into space-separated fields
       std::vector<std::string> fields;
       std::stringstream lStream( line );
-      std::string buffer;
+      std::string buffer = "";
       while ( lStream >> buffer ) fields.push_back( buffer );
       // The next line must have 2 fields: 'TITLE' and the title of the BlueFin
       // combination, which may contain spaces, within double quotes.
