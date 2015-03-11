@@ -14,6 +14,8 @@
 
 - Port the configuration to gcc49 on SLC6.
 
+- Clean up Makefile: remove unused GSL configuration and BOOSTLINK options.
+
 ==============================================================================
 ! 2013.08.17 - BlueFin 01.00.03
 ==============================================================================

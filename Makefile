@@ -200,7 +200,6 @@ GCC := $(GCCHOME)/bin/gcc
 ###[add $(PYTHONHOME)/bin to PATH]
 
 # Set up Boost
-# [NB Boost libraries are only needed for the Boost timer functionalities]
 # [NB Boost matrix/vector are inlined in a header and require no libraries]
 ifeq ($(LCG_os),slc5)
 # Set up Boost 1.48 as in LCGCMT_64b on slc5
@@ -210,7 +209,6 @@ ifeq ($(shell ls -d $(BOOSTHOME)),)
   $(error INTERNAL ERROR! Directory "$(BOOSTHOME)" does not exist?)
 endif
 BOOSTINC := $(BOOSTHOME)/include/boost-1_48
-BOOSTLINK := -L$(BOOSTHOME)/lib -lboost_timer-$(LCG_compiler)-mt-1_48
 else
 ifeq ($(LCG_os),slc6)
 # Set up Boost 1.55 as in LCGCMT_72a on slc6
@@ -220,7 +218,6 @@ ifeq ($(shell ls -d $(BOOSTHOME)),)
   $(error INTERNAL ERROR! Directory "$(BOOSTHOME)" does not exist?)
 endif
 BOOSTINC := $(BOOSTHOME)/include/boost-1_55
-BOOSTLINK := -L$(BOOSTHOME)/lib -lboost_timer-$(LCG_compiler)-mt-1_55
 else
   $(error ERROR! O/S "$(RH)" is neither SLC/SL/RHEL5 nor SLC/SL/RHEL6)
 endif
