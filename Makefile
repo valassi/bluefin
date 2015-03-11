@@ -253,16 +253,6 @@ else
 endif
 endif
 
-# Set up GSL 1.10 as in LCGCMT_64b
-# See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_64b/lcgcmt/LCG_Configuration/cmt/requirements
-###GSLHOME := $(LCGEXT)/GSL/1.10/$(LCG_basesystem)
-###ifeq ($(shell ls -d $(GSLHOME)),)
-###  $(error INTERNAL ERROR! Directory "$(GSLHOME)" does not exist?)
-###endif
-###GSLINC := $(GSLHOME)/include
-###GSLLINK := -L$(GSLHOME)/lib -lgsl -lgslcblas
-###[add $(GSLHOME)/lib to LD_LIBRARY_PATH]
-
 # Set up LD_LIBRARY_PATH and export it to make it available while building in make
 # See http://www.cmcrossroads.com/article/basics-getting-environment-variables-gnu-make
 export LD_LIBRARY_PATH=$(GCCHOME)/lib64:$(ROOTSYS)/lib:$(BOOSTHOME)/lib:$(realpath $(bindir))
