@@ -16,9 +16,19 @@
 //   * Roberto Chierici (Univ. Lyon)
 //
 //============================================================================
-#ifndef BLUEFIN_VERSIONINFO_H 
-#define BLUEFIN_VERSIONINFO_H 1
+#ifndef BLUEFIN_BOOSTUBLASMATRIXHEADERS_H
+#define BLUEFIN_BOOSTUBLASMATRIXHEADERS_H 1
 
-#define BLUEFIN_VERSION "01.00.04"
-
+// Disable warnings triggered by Boost headers
+#if defined __GNUC__
+#pragma GCC system_header
 #endif
+
+// Include files
+#include <boost/numeric/ublas/io.hpp>
+#include <boost/numeric/ublas/lu.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/symmetric.hpp>
+#include <boost/numeric/ublas/triangular.hpp>
+
+#endif // BLUEFIN_BOOSTUBLASMATRIXHEADERS_H

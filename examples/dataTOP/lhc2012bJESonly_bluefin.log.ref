@@ -173,7 +173,6 @@ WARNING! Negative determinant -0.00055905 in correlation matrix (total covarianc
 WARNING! Negative determinant -0.00055905 in correlation matrix (total covariance)
 WARNING! Negative determinant -0.00000092 in correlation matrix (total covariance)
 WARNING! Negative determinant -0.00000092 in correlation matrix (total covariance)
-Info in <Minuit2>: Minuit2Minimizer::Minimize : Covar was made pos def
 END:   f= 0.39544688 at 0.660, 0.557, 0.848, 0.569, 0.988, 0.994, 0.569, 0.988, 0.994, 0.998, 0.926, 0.995, 0.945, 0.853, 0.853, 0.562, 0.879, 1.000, 0.815, 0.815, 0.664
 Minimization completed: minValue=0.3954469, edm=0.0000000, #calls=1255     
 ROOT minimizer Minuit2 (Migrad) found a minimum
@@ -313,7 +312,7 @@ Chi2 / d.o.f = 11.0092 / 6
 
 --------------------------------------------------------------------
 
-Create latex report: /afs/cern.ch/user/a/avalassi/blue2/trunk/examples/dataTOP/lhc2012bJESonly_body.tex
+Create latex report: /afs/cern.ch/user/a/avalassi/blue2/SVN16/bluefin/trunk/examples/dataTOP/lhc2012bJESonly_body.tex
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
 entering extended mode
@@ -375,7 +374,7 @@ m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
 mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
 ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
 onts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012bJESonly.pdf (24 pages, 319105 bytes).
+Output written on lhc2012bJESonly.pdf (24 pages, 319026 bytes).
 Transcript written on lhc2012bJESonly.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -437,7 +436,7 @@ m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
 mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
 ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
 onts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012bJESonly.pdf (24 pages, 319105 bytes).
+Output written on lhc2012bJESonly.pdf (24 pages, 319026 bytes).
 Transcript written on lhc2012bJESonly.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -499,7 +498,7 @@ m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
 mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
 ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
 onts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012bJESonly.pdf (24 pages, 319105 bytes).
+Output written on lhc2012bJESonly.pdf (24 pages, 319026 bytes).
 Transcript written on lhc2012bJESonly.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -561,7 +560,7 @@ m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
 mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
 ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
 onts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012bJESonly.pdf (24 pages, 319105 bytes).
+Output written on lhc2012bJESonly.pdf (24 pages, 319026 bytes).
 Transcript written on lhc2012bJESonly.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -623,7 +622,7 @@ m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
 mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
 ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
 onts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012bJESonly.pdf (24 pages, 319105 bytes).
+Output written on lhc2012bJESonly.pdf (24 pages, 319026 bytes).
 Transcript written on lhc2012bJESonly.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -685,5 +684,5 @@ m/cmsl10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/tex
 mf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
 ti8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt10.pfb></usr/share/texmf/f
 onts/type1/bluesky/cm/cmtt8.pfb>
-Output written on lhc2012bJESonly.pdf (24 pages, 319105 bytes).
+Output written on lhc2012bJESonly.pdf (24 pages, 319026 bytes).
 Transcript written on lhc2012bJESonly.log.

@@ -17,7 +17,7 @@
 //
 //============================================================================
 // Include files
-#include <boost/bind.hpp>
+#include "boost_bind_headers.h"
 #include "BlueFin/BlueFish.h"
 
 // Namespace

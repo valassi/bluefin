@@ -16,9 +16,15 @@
 //   * Roberto Chierici (Univ. Lyon)
 //
 //============================================================================
-#ifndef BLUEFIN_VERSIONINFO_H 
-#define BLUEFIN_VERSIONINFO_H 1
+#ifndef BLUEFIN_BOOSTUBLASVECTORHEADERS_H
+#define BLUEFIN_BOOSTUBLASVECTORHEADERS_H 1
 
-#define BLUEFIN_VERSION "01.00.04"
-
+// Disable warnings triggered by Boost headers
+#if defined __GNUC__
+#pragma GCC system_header
 #endif
+
+// Include files
+#include <boost/numeric/ublas/vector.hpp>
+
+#endif // BLUEFIN_BOOSTUBLASVECTORHEADERS_H

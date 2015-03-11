@@ -182,7 +182,7 @@ Chi2 / d.o.f = 0.05 / 1
 
 --------------------------------------------------------------------
 
-Create latex report: /afs/cern.ch/user/a/avalassi/blue2/trunk/examples/dataXSE/xsePaper2_body.tex
+Create latex report: /afs/cern.ch/user/a/avalassi/blue2/SVN16/bluefin/trunk/examples/dataXSE/xsePaper2_body.tex
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
 entering extended mode
@@ -239,7 +239,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper2.pdf (14 pages, 287053 bytes).
+Output written on xsePaper2.pdf (14 pages, 286982 bytes).
 Transcript written on xsePaper2.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -296,7 +296,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper2.pdf (14 pages, 287053 bytes).
+Output written on xsePaper2.pdf (14 pages, 286982 bytes).
 Transcript written on xsePaper2.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -353,7 +353,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper2.pdf (14 pages, 287053 bytes).
+Output written on xsePaper2.pdf (14 pages, 286982 bytes).
 Transcript written on xsePaper2.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -410,7 +410,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper2.pdf (14 pages, 287053 bytes).
+Output written on xsePaper2.pdf (14 pages, 286982 bytes).
 Transcript written on xsePaper2.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -467,7 +467,7 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper2.pdf (14 pages, 287053 bytes).
+Output written on xsePaper2.pdf (14 pages, 286982 bytes).
 Transcript written on xsePaper2.log.
 This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
  %&-line parsing enabled.
@@ -524,5 +524,5 @@ mf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr
 ts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmti8.pfb></usr/share/texmf/fonts/ty
 pe1/bluesky/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt8.pfb>
-Output written on xsePaper2.pdf (14 pages, 287053 bytes).
+Output written on xsePaper2.pdf (14 pages, 286982 bytes).
 Transcript written on xsePaper2.log.

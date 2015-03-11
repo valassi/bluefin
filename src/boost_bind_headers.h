@@ -16,9 +16,15 @@
 //   * Roberto Chierici (Univ. Lyon)
 //
 //============================================================================
-#ifndef BLUEFIN_VERSIONINFO_H 
-#define BLUEFIN_VERSIONINFO_H 1
+#ifndef BLUEFIN_BOOSTBINDHEADERS_H
+#define BLUEFIN_BOOSTBINDHEADERS_H 1
 
-#define BLUEFIN_VERSION "01.00.04"
-
+// Disable warnings triggered by Boost headers
+#if defined __GNUC__
+#pragma GCC system_header
 #endif
+
+// Include files
+#include <boost/bind.hpp>
+
+#endif // BLUEFIN_BOOSTBINDHEADERS_H

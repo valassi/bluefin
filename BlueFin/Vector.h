@@ -21,7 +21,7 @@
 
 // Include files
 #include <cmath>
-#include <boost/numeric/ublas/vector.hpp>
+#include "boost_ublas_vector_headers.h"
 
 namespace bluefin
 {

@@ -28,10 +28,10 @@ OPT_LCGEXT :=
 # Architecture (x86_64 or i686): use __ONLY__ 64-bit builds
 LCG_arch := x86_64
 
-# Compiler: use gcc43 on SLC5 and gcc46 on SLC6 (for better tests)
+# Compiler: use gcc43 on SLC5 and gcc49 on SLC6 (for better tests)
 # NB: gcc43 is only supported on SLC5 (use gcc46 or higher on SLC6)
 LCG_compiler_slc5 := gcc43
-LCG_compiler_slc6 := gcc46
+LCG_compiler_slc6 := gcc49
 
 #---------------------------------------------------------------------------
 
@@ -40,6 +40,7 @@ CVMFS_LCGAPP := /cvmfs/sft.cern.ch/lcg/app/releases
 CVMFS_LCGEXT := /cvmfs/sft.cern.ch/lcg/external
 AFS_LCGAPP := /afs/cern.ch/sw/lcg/app/releases
 AFS_LCGEXT := /afs/cern.ch/sw/lcg/external
+AFS_LCGREL := /afs/cern.ch/sw/lcg/releases
 
 # App release area - try user-defined directory if specified
 LCGAPP = 
@@ -63,7 +64,7 @@ ifeq ($(LCGAPP),)
   ifneq ($(shell ls -d $(AFS_LCGAPP)),)
     LCGAPP = $(AFS_LCGAPP)
   else
-    $(error ERROR! AFS app directory "$(CVMFS_LCGAPP)" does not exist)
+    $(error ERROR! AFS app directory "$(AFS_LCGAPP)" does not exist)
   endif
 endif
 # App release area - info
@@ -91,7 +92,7 @@ ifeq ($(LCGEXT),)
   ifneq ($(shell ls -d $(AFS_LCGEXT)),)
     LCGEXT = $(AFS_LCGEXT)
   else
-    $(error ERROR! AFS ext directory "$(CVMFS_LCGEXT)" does not exist)
+    $(error ERROR! AFS ext directory "$(AFS_LCGEXT)" does not exist)
   endif
 endif
 # External area - info
@@ -175,8 +176,10 @@ ifeq ($(LCG_compiler),gcc43)
     $(error ERROR! The "$(LCG_compiler)" compiler is not supported on $(LCG_os))
   endif
 else
-ifeq ($(LCG_compiler),gcc46)
-  GCCHOMESUFFIX := gcc/4.6.2/$(LCG_arch)-$(LCG_os)
+#ifeq ($(LCG_compiler),gcc46)
+#  GCCHOMESUFFIX := gcc/4.6.2/$(LCG_arch)-$(LCG_os)
+ifeq ($(LCG_compiler),gcc49)
+  GCCHOMESUFFIX := gcc/4.9.1/$(LCG_arch)-$(LCG_os)
 else
   $(error ERROR! The "$(LCG_compiler)" compiler is not supported)
 endif
@@ -196,17 +199,35 @@ GCC := $(GCCHOME)/bin/gcc
 ###[add $(PYTHONHOME)/lib to LD_LIBRARY_PATH]
 ###[add $(PYTHONHOME)/bin to PATH]
 
-# Set up Boost 1.48 as in LCGCMT_64b
-# See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_64b/lcgcmt/LCG_Configuration/cmt/requirements
+# Set up Boost
 # [NB Boost libraries are only needed for the Boost timer functionalities]
 # [NB Boost matrix/vector are inlined in a header and require no libraries]
+ifeq ($(LCG_os),slc5)
+# Set up Boost 1.48 as in LCGCMT_64b on slc5
+# See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_64b/lcgcmt/LCG_Configuration/cmt/requirements
 BOOSTHOME := $(LCGEXT)/Boost/1.48.0_python2.6/$(LCG_basesystem)
 ifeq ($(shell ls -d $(BOOSTHOME)),)
   $(error INTERNAL ERROR! Directory "$(BOOSTHOME)" does not exist?)
 endif
 BOOSTINC := $(BOOSTHOME)/include/boost-1_48
 BOOSTLINK := -L$(BOOSTHOME)/lib -lboost_timer-$(LCG_compiler)-mt-1_48
+else
+ifeq ($(LCG_os),slc6)
+# Set up Boost 1.55 as in LCGCMT_72a on slc6
+# See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_72a/lcgcmt/LCG_Configuration/cmt/requirements
+BOOSTHOME := $(AFS_LCGREL)/LCG_72a/Boost/1.55.0_python2.7/$(LCG_basesystem)
+ifeq ($(shell ls -d $(BOOSTHOME)),)
+  $(error INTERNAL ERROR! Directory "$(BOOSTHOME)" does not exist?)
+endif
+BOOSTINC := $(BOOSTHOME)/include/boost-1_55
+BOOSTLINK := -L$(BOOSTHOME)/lib -lboost_timer-$(LCG_compiler)-mt-1_55
+else
+  $(error ERROR! O/S "$(RH)" is neither SLC/SL/RHEL5 nor SLC/SL/RHEL6)
+endif
+endif
 
+# Set up ROOT
+ifeq ($(LCG_os),slc5)
 # Set up ROOT 5.34.03 as in LCGCMT_64b
 # See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_64b/lcgcmt/LCG_Configuration/cmt/requirements
 ROOTSYSSUFFIX := ROOT/5.34.03/$(LCG_system)/root
@@ -216,6 +237,21 @@ endif
 ROOTSYS := $(LCGAPP)/$(ROOTSYSSUFFIX)
 ROOTINC := $(ROOTSYS)/include
 ROOTLINK := -L$(ROOTSYS)/lib -lMinuit2
+else
+ifeq ($(LCG_os),slc6)
+# Set up ROOT 5.34.25 as in LCGCMT_72a on slc6
+# See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_72a/lcgcmt/LCG_Configuration/cmt/requirements
+ROOTSYSSUFFIX := ROOT/5.34.25/$(LCG_system)
+ifeq ($(shell ls -d $(ROOTSYS)),)
+  $(error INTERNAL ERROR! Directory "$(ROOTSYS)" does not exist?)
+endif
+ROOTSYS := $(AFS_LCGREL)/LCG_72a/$(ROOTSYSSUFFIX)
+ROOTINC := $(ROOTSYS)/include
+ROOTLINK := -L$(ROOTSYS)/lib -lMinuit2
+else
+  $(error ERROR! O/S "$(RH)" is neither SLC/SL/RHEL5 nor SLC/SL/RHEL6)
+endif
+endif
 
 # Set up GSL 1.10 as in LCGCMT_64b
 # See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_64b/lcgcmt/LCG_Configuration/cmt/requirements

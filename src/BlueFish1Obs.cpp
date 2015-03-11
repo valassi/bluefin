@@ -19,7 +19,7 @@
 // Include files
 #include <algorithm>
 #include <cstdio>
-#include <boost/bind.hpp>
+#include "boost_bind_headers.h"
 #include "BlueFin/BlueFish1Obs.h"
 #include "BlueFin/TextReporter.h"
 

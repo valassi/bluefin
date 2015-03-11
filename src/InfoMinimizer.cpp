@@ -24,7 +24,7 @@
 #include <memory>
 #include <fcntl.h>
 #include <unistd.h>
-#include <boost/bind.hpp>
+#include "boost_bind_headers.h"
 #include "Math/Factory.h"
 #include "Math/Functor.h"
 #include "Math/Minimizer.h"
