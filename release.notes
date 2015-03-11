@@ -12,6 +12,9 @@
 ! 2015.03.10 - BlueFin 01.00.04
 ==============================================================================
 
+- Add the -q option to omit the pdflatex logs.
+  Use it in the tests to make logs less verbose and allow comparisons to CC7.
+
 - Port the configuration to gcc49 on SLC6.
 
 - Clean up Makefile: remove unused GSL configuration and BOOSTLINK options.

@@ -40,10 +40,10 @@ for dataDir in $dataDirs; do
     echo Create $outfile and $outtexbody and $outpdffile
     if [ -f $outfile ]; then \rm -f $outfile; fi
     if [ -f $outtexfile ]; then \rm -f $outtexbody; fi
-    echo bluefin $infile -o $dataDir -t $dataDir -c2 $minOpts
-    bluefin $infile -o $dataDir -t $dataDir -c2 $minOpts
+    echo bluefin -q $infile -o $dataDir -t $dataDir -c2 $minOpts
+    bluefin -q $infile -o $dataDir -t $dataDir -c2 $minOpts
     if [ "$?" != "0" ]; then 
-      echo "ERROR! bluefin $infile -o $dataDir -t $dataDir FAILED!"
+      echo "ERROR! bluefin -q $infile -o $dataDir -t $dataDir FAILED!"
       ###echo cat $outfile
       ###cat $outfile
       #echo tail $outfile

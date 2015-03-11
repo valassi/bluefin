@@ -43,6 +43,7 @@ namespace bluefin
     out << "Usage: " << argv0 << " [options] [<indir>/]<infile>.bfin\n"
         << "  Available options:\n"
         << "    -h           - print help message and exit\n"
+        << "    -q           - quiet latex (omit latex logs from bluefin logs)\n"
         << "    -o <outdir>  - store/overwrite <infile>.pdf and <infile>_bluefin.log in <outdir>\n"
         << "                   [default: use the input directory <indir>]\n"
         << "    -t <texdir>  - store/overwrite tex and other temporary files in <texdir>\n"
@@ -63,19 +64,23 @@ int main( int argc, char** argv )
   try
   {
     // Parse the command line options
+    bool quietLatex = false;
     std::string texFileDir;
     std::string outFileDir;
     InfoAnalyzer::CovPrintoutOpts covPrintoutOpts = InfoAnalyzer::COV_TOTAL_AND_PARTIAL;
     InfoAnalyzer::MinimizationOpts minimizationOpts = InfoAnalyzer::MIN_ADD_BYOD;
     {
       int c;
-      while ( ( c = ::getopt( argc, argv, "ho:t:c:M:" ) ) != -1 )
+      while ( ( c = ::getopt( argc, argv, "hqo:t:c:M:" ) ) != -1 )
       {
         switch ( c )
         {
         case 'h':
           usage( argv[0], std::cout );
           return 0;
+        case 'q':
+          quietLatex = true;
+          break;
         case 't':
           texFileDir = ::optarg;
           break;
@@ -459,12 +464,17 @@ int main( int argc, char** argv )
         hAddPt = "";
       }
       // Append tex output and remove temporary file
-      cmd = "cat " + tmpFileName + " >> " + logFileName;
-      cmd += "; rm " + tmpFileName;
+      if ( !quietLatex )
+        cmd = "cat " + tmpFileName + " >> " + logFileName + "; rm " + tmpFileName;
+      else
+        cmd = "rm " + tmpFileName;
       if ( ::system( cmd.c_str() ) )
       {
         std::cerr << cmd << std::endl;
-        std::cerr << "ERROR! cat/append failed!" << std::endl;
+        if ( !quietLatex )
+          std::cerr << "ERROR! cat/append/rm failed!" << std::endl;
+        else
+          std::cerr << "ERROR! rm failed!" << std::endl;
         return 1;
       }
     }
