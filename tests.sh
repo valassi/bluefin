@@ -11,9 +11,9 @@ if [ "$?" != "0" ]; then exit 1; fi
 
 dataDirs=""
 dataDirs="$dataDirs examples/dataTOP"
-#dataDirs="$dataDirs examples/dataXSE"
+dataDirs="$dataDirs examples/dataXSE"
 dataDirs="$dataDirs examples/dataSWW"
-#dataDirs="$dataDirs examples/dataBRW"
+dataDirs="$dataDirs examples/dataBRW"
 
 minOpts=
 ###minOpts=-M4
