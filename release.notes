@@ -9,8 +9,12 @@
 !-----------------------------------------------------------------------------
 
 ==============================================================================
-! 2015.03.10 - BlueFin 01.00.04
+! 2015.03.22 - BlueFin 01.00.04
 ==============================================================================
+
+- Use a downscale factor 1000 (instead of 100) for the sigmaWW example,
+  so that results are displayed in pb as for the LEP combination in the
+  Summer2001 conferences note. Add a footnote referencing this note.
 
 - Add the -q option to omit the pdflatex logs.
   Use it in the tests to make logs less verbose and allow comparisons to CC7.

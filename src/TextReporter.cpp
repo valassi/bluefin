@@ -115,6 +115,7 @@ namespace bluefin
     unsigned getDownscaleFactor( const Number maxAbs )
     {
       if ( maxAbs > 10000 ) return 10000;
+      else if ( maxAbs > 1000 ) return 1000; // improve dataSWW
       //else if ( maxAbs > 3000 ) return 1000;
       else if ( maxAbs > 100 ) return 100;
       //else if ( maxAbs > 30 ) return 10;
@@ -143,7 +144,7 @@ unsigned TextReporter::getDownscaleFactor( const BlueFish& bf )
 const std::string TextReporter::getDownscaleFactorTxt( const unsigned dscf, bool cov )
 {
   if ( dscf == 10000 ) return ( cov ? "/100M" : "/10000" );
-  //else if ( dscf == 1000 ) return ( cov ? "/1M" : "/1k" );
+  else if ( dscf == 1000 ) return ( cov ? "/1M" : "/1k" );
   else if ( dscf == 100 ) return ( cov ? "/10k" : "/100" );
   //else if ( dscf == 10 ) return ( cov ? "/100" : "/10" );
   else if ( dscf == 1 ) return "";

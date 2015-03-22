@@ -11,9 +11,9 @@ if [ "$?" != "0" ]; then exit 1; fi
 
 dataDirs=""
 dataDirs="$dataDirs examples/dataTOP"
-dataDirs="$dataDirs examples/dataXSE"
+#dataDirs="$dataDirs examples/dataXSE"
 dataDirs="$dataDirs examples/dataSWW"
-dataDirs="$dataDirs examples/dataBRW"
+#dataDirs="$dataDirs examples/dataBRW"
 
 minOpts=
 ###minOpts=-M4
@@ -36,6 +36,7 @@ for dataDir in $dataDirs; do
     outpdffile=$dataDir/${file}.pdf
     unset BFEXTRAFOOTER
     if [ "$file" == "lhc2012" ]; then export BFEXTRAFOOTER="WARNING! This is an example where inputs are taken from Table 4 in CMS PAS TOP-12-001. The output results differ because of rounding errors in those inputs."; fi
+    if [ "$file" == "sww" ]; then export BFEXTRAFOOTER="LEP Combination for the Summer 2001 Conferences (http://lepewwg.web.cern.ch/LEPEWWG/lepww/4f/Summer01). The output results may differ because of rounding errors."; fi
     echo "----------------------------------------------------------------------"
     echo Create $outfile and $outtexbody and $outpdffile
     if [ -f $outfile ]; then \rm -f $outfile; fi
