@@ -1,4 +1,4 @@
-<img src="utilities/BlueFinLogo.jpg"  width="30%">
+<img src="utilities/BlueFinLogo.jpg"  width="20%">
 # Welcome to BlueFin
 
 BlueFin is a software package for Best Linear Unbiased Estimate Fisher Information aNalysis.
