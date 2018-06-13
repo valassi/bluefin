@@ -4,10 +4,12 @@
 BlueFin is a software package for Best Linear Unbiased Estimate Fisher Information aNalysis.
 
 To download the latest version of the software (needs CERN Kerberos authentication):
-- git clone https://:@gitlab.cern.ch:8443/valassi/bluefin.git
+- `git clone https://:@gitlab.cern.ch:8443/valassi/bluefin.git`
 
 The package provides a software library, as well as an executable that builds a pdf report from an input data file in text format. To use the bluefin executable, source the setup.csh or setup.sh script and look at its usage:
-- source setup.csh; bluefin -h
+- `source setup.csh; bluefin -h`
+
+This will print out:
 ```
   Usage: bluefin [options] [<indir>/]<infile>.bfin
     Available options:
