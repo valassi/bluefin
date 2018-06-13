@@ -31,11 +31,11 @@ The ideas behind BlueFin are documented in the following article:
 - "Information and treatment of unknown correlations in the combination of measurements using the BLUE method" ([10.1140/epjc/s10052-014-2717-6](http://link.springer.com/article/10.1140/epjc/s10052-014-2717-6))
 
 For more details please refer to the documentation on this TRAC site.
-- You may [browse](../../tree/master) the source code of BlueFin on gitlab.
-- Minimal documentation is available in the [README](../../blob/master/README) file. 
-- Minimal release notes are available in the [release.notes](../../blob/master/release.notes) file.
-- An input data file example is available in the [xsePaper4.bfin](../../blob/master/examples/dataXSE/xsePaper4.bfin)  file.
-- The corresponding pdf report for this example is available in the [xsePaper4.pdf](../../blob/master/examples/dataXSE/xsePaper4.pdf)  file.
+- You may [browse](../tree/master) the source code of BlueFin on gitlab.
+- Minimal documentation is available in the [README](README) file. 
+- Minimal release notes are available in the [release.notes](release.notes) file.
+- An input data file example is available in the [xsePaper4.bfin](examples/dataXSE/xsePaper4.bfin)  file.
+- The corresponding pdf report for this example is available in the [xsePaper4.pdf](examples/dataXSE/xsePaper4.pdf)  file.
 
 *WARNING! This software is in beta version. Please report any problems to Andrea Valassi(at)cern.ch and Roberto Chierici(at)cern.ch.*
 
