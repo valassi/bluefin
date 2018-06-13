@@ -3,6 +3,20 @@
 
 BlueFin is a software package for Best Linear Unbiased Estimate Fisher Information aNalysis.
 
+## Overview
+
+This software is supported on SLC5 and SLC6 machines (and other variants of RedHat 5 and 6 distributions).  
+The CVMFS file system is required to use the ROOT and GCC libraries installed there.
+
+To build the software: type `make`.
+
+You can also use the prebuilt bluefin binary in `prebuilt/slc6`.  
+In that case, please use the provided `setup.csh` and `setup.sh` scripts in the same directory.
+
+Some examples of using bluefin are in the `tests.sh` script.
+
+## More details
+
 To download the latest version of the software (needs CERN Kerberos authentication):
 - `git clone https://:@gitlab.cern.ch:8443/valassi/bluefin.git`
 
@@ -33,11 +47,14 @@ The ideas behind BlueFin are documented in the following article:
 
 For more details please refer to the documentation on this TRAC site.
 - You may [browse](..) the source code of BlueFin on gitlab.
-- Minimal documentation is available in the [README](README) file. 
 - Minimal release notes are available in the [release.notes](release.notes) file.
 - An input data file example is available in the [xsePaper4.bfin](examples/dataXSE/xsePaper4.bfin)  file.
 - The corresponding pdf report for this example is available in the [xsePaper4.pdf](examples/dataXSE/xsePaper4.pdf)  file.
 
-*WARNING! This software is in beta version. Please report any problems to Andrea Valassi(at)cern.ch and Roberto Chierici(at)cern.ch.*
+## Contact
+
+*WARNING! This software is in beta version.* 
+
+Please report any problems to Andrea Valassi(at)cern.ch.*
 
 --- A.V. (August 2013)
