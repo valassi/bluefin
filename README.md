@@ -55,6 +55,6 @@ For more details please refer to the documentation on this TRAC site.
 
 *WARNING! This software is in beta version.* 
 
-Please report any problems to Andrea Valassi(at)cern.ch.*
+Please report any problems to Andrea Valassi(at)cern.ch.
 
---- A.V. (August 2013)
+Documentation last updated in August 2013.
