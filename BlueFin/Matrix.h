@@ -1,6 +1,6 @@
 //============================================================================
 //
-// Copyright 2012 - 2015 CERN
+// Copyright 2012-2018 CERN
 //
 // This file is part of the BlueFin software. BlueFin is distributed under
 // the terms of the GNU General Public License version 3 (GPL Version 3),
