@@ -43,7 +43,7 @@ Type 'make' to build from sources.
 Alternatively, you may use a prebuilt version of the bluefin executable for slc6 from the "prebuilt" directory.
 
 The ideas behind BlueFin are documented in the following article:
-- "Information and treatment of unknown correlations in the combination of measurements using the BLUE method" ([10.1140/epjc/s10052-014-2717-6](http://link.springer.com/article/10.1140/epjc/s10052-014-2717-6))
+- "Information and treatment of unknown correlations in the combination of measurements using the BLUE method" ([10.1140/epjc/s10052-014-2717-6](https://doi.org/10.1140/epjc/s10052-014-2717-6))
 
 For more details please refer to the documentation on this TRAC site.
 - You may [browse](..) the source code of BlueFin on gitlab.
