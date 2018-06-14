@@ -5,12 +5,12 @@ BlueFin is a software package for Best Linear Unbiased Estimate Fisher Informati
 
 ## Overview
 
-This software is supported on SLC5 and SLC6 machines (and other variants of RedHat 5 and 6 distributions).  
-The CVMFS file system is required to use the ROOT and GCC libraries installed there.
+This software is supported on SLC5, SLC6 and CC7 machines (and other variants of RedHat 5, 6 and 7 distributions).  
+The CVMFS file system is required to use the ROOT, Boost, TBB and GCC libraries installed there.
 
 To build the software: type `make`.
 
-You can also use the prebuilt bluefin binary in `prebuilt/slc6`.  
+You can also use the prebuilt SLC6 bluefin binary in `prebuilt/slc6`.  
 In that case, please use the provided `setup.csh` and `setup.sh` scripts in the same directory.
 
 Some examples of using bluefin are in the `tests.sh` script.
@@ -21,7 +21,7 @@ To download the latest version of the software (needs CERN Kerberos authenticati
 - `git clone https://:@gitlab.cern.ch:8443/valassi/bluefin.git`
 
 The package provides a software library, as well as an executable that builds a pdf report from an input data file in text format. To use the bluefin executable, source the setup.csh or setup.sh script and look at its usage:
-- `source setup.csh; bluefin -h`
+- `source setup.sh; bluefin -h`
 
 ```
   Usage: bluefin [options] [<indir>/]<infile>.bfin
@@ -37,7 +37,7 @@ The package provides a software library, as well as an executable that builds a 
                      [default: 3=all but the experimental ByOffDiagPerErrSrc]
 ```
 
-You can use this software on most RedHat-based systems (SL5/6, SLC5/6, RHEL5/6) with CVMFS installed.
+You can use this software on most RedHat-based systems (SL5/6, SLC5/6, RHEL5/6, CentOS7) with CVMFS installed.
 Support on CERNVM is incomplete because of problems with the pdflatex distribution on that platform.
 Type 'make' to build from sources.
 Alternatively, you may use a prebuilt version of the bluefin executable for slc6 from the "prebuilt" directory.
