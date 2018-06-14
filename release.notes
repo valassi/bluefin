@@ -3,9 +3,9 @@
 ! Responsible : Andrea Valassi
 ! Purpose     : Best Linear Unbiased Estimate Fisher Information aNalysis
 !-----------------------------------------------------------------------------
-! Repository  : svn+ssh://svn.cern.ch/reps/bluefin
-! Web page    : https://svnweb.cern.ch/trac/bluefin
-! Description : http://arxiv.org/abs/1307.4003
+! Repository  : https://:@gitlab.cern.ch:8443/valassi/bluefin.git
+! Web page    : https://gitlab.cern.ch/valassi/bluefin
+! Description : https://doi.org/10.1140/epjc/s10052-014-2717-6
 !-----------------------------------------------------------------------------
 
 ==============================================================================
