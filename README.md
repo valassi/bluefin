@@ -5,12 +5,14 @@ BlueFin is a software package for Best Linear Unbiased Estimate Fisher Informati
 
 ## Overview
 
-This software is supported on SLC5, SLC6 and CC7 machines (and other variants of RedHat 5, 6 and 7 distributions).  
+This software is supported on SLC6 and CC7 machines (and other variants of RedHat 6 and 7 distributions).  
+Support on CERNVM is incomplete because of problems with the pdflatex distribution on that platform.  
+
 The CVMFS file system is required to use the ROOT, Boost, TBB and GCC libraries installed there.
 
 To build the software: type `make`.
 
-You can also use the prebuilt SLC6 bluefin binary in `prebuilt/slc6`.  
+You can also use the prebuilt bluefin binary in `prebuilt/slc6` or `prebuilt/centos7`. 
 In that case, please use the provided `setup.csh` and `setup.sh` scripts in the same directory.
 
 Some examples of using bluefin are in the `tests.sh` script.
@@ -37,11 +39,6 @@ The package provides a software library, as well as an executable that builds a 
                      [default: 3=all but the experimental ByOffDiagPerErrSrc]
 ```
 
-You can use this software on most RedHat-based systems (SL5/6, SLC5/6, RHEL5/6, CentOS7) with CVMFS installed.
-Support on CERNVM is incomplete because of problems with the pdflatex distribution on that platform.
-Type 'make' to build from sources.
-Alternatively, you may use a prebuilt version of the bluefin executable for slc6 from the "prebuilt" directory.
-
 The ideas behind BlueFin are documented in the following article:
 - "Information and treatment of unknown correlations in the combination of measurements using the BLUE method" ([10.1140/epjc/s10052-014-2717-6](https://doi.org/10.1140/epjc/s10052-014-2717-6))
 
@@ -56,5 +53,3 @@ For more details please refer to the documentation on this TRAC site.
 *WARNING! This software is in beta version.* 
 
 Please report any problems to Andrea Valassi(at)cern.ch.
-
-Documentation last updated in August 2013.
