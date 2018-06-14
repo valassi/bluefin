@@ -1,13 +1,23 @@
 #!/bin/bash
 
+USEPREBUILDS=0
+###USEPREBUILDS=1 # test prebuilds
+
 cd `dirname $0`
 
 echo "======================================================================"
 
-make bluefin
-if [ "$?" != "0" ]; then exit 1; fi
-
-. setup.sh
+if [ "$USEPREBUILDS" == "0" ]; then
+  make bluefin
+  if [ "$?" != "0" ]; then exit 1; fi
+  . setup.sh
+else
+  LCG_os=`make show_LCG_os`
+  make prebuilds
+  if [ "$?" != "0" ]; then exit 1; fi
+  . prebuilt/${LCG_os}/setup.sh
+  export PATH=prebuilt/${LCG_os}:${PATH}
+fi
 
 dataDirs=""
 dataDirs="$dataDirs examples/dataTOP"

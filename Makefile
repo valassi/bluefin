@@ -53,7 +53,7 @@ ifeq ($(LCGREL),)
 endif
 
 # LCG releases - info
-$(info LCGREL=$(LCGREL))
+###$(info LCGREL=$(LCGREL))
 
 #---------------------------------------------------------------------------
 
@@ -311,10 +311,20 @@ setup_sh :
 # NB: The 'prebuilds' environment ONLY sets LD_LIBRARY_PATH for ROOT and BOOST
 # FIXME: The logic of ROOTSYSSUFFIX is now broken on SLC6 and especially on CC7 
 prebuilds: bluefin
+ifneq ($(LCGREL),$(CVMFS_LCGREL))
+$(error You must use CVMFS to make prebuilds)
+else
 	@mkdir -p $(topdir)prebuilt/$(LCG_os)/
 	@\cp -dpr $(bindir)/bluefin $(topdir)prebuilt/$(LCG_os)/
-	@echo "setenv LD_LIBRARY_PATH $(CVMFS_LCGREL)/$(GCCHOMESUFFIX)/lib64:$(CVMFS_LCGREL)/$(ROOTSYSSUFFIX)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.csh
-	@echo "export LD_LIBRARY_PATH=$(CVMFS_LCGREL)/$(GCCHOMESUFFIX)/lib64:$(CVMFS_LCGREL)/$(ROOTSYSSUFFIX)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.sh
+	@echo "setenv LD_LIBRARY_PATH $(GCCHOME)/lib64:$(ROOTSYS)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.csh
+	@echo "export LD_LIBRARY_PATH=$(GCCHOME)/lib64:$(ROOTSYS)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.sh
+endif
+
+show_LCG_os: 
+	@echo $(LCG_os)
+
+show_LCGREL: 
+	@echo $(LCGREL)
 
 .PHONY : all clean $(ALL) lib $(OBJS) prebuilds
 

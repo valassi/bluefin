@@ -1,1 +1,1 @@
-export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/external/gcc/4.6.2/x86_64-slc6/lib64:/cvmfs/sft.cern.ch/lcg/external/ROOT/5.34.03/x86_64-slc6-gcc46-opt/root/lib:/afs/cern.ch/sw/lcg/external/gcc/4.6.2/x86_64-slc6/lib64:/afs/cern.ch/sw/lcg/external/ROOT/5.34.03/x86_64-slc6-gcc46-opt/root/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/gcc/4.9.1/x86_64-slc6/lib64:/cvmfs/sft.cern.ch/lcg/releases/LCG_72a/ROOT/5.34.25/x86_64-slc6-gcc49-opt/lib:${LD_LIBRARY_PATH}
