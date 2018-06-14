@@ -18,6 +18,8 @@
 
 - Drop support for AFS in the configuration. Use CVMFS on both SLC6 and CC7.
 
+- Drop support for SLC5 in the configuration.
+
 ==============================================================================
 ! 2015.03.22 - BlueFin 01.00.05-pre1 (work in progress)
 ==============================================================================
