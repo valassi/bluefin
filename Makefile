@@ -265,6 +265,7 @@ BLUEFINLINK := -L$(bindir) -lBlueFin
 OBJS := $(OBJSLIB) $(OBJSBF)
 $(OBJS) : %.o : $(bindir)%.o
 
+# Replace .d dependencies by .P dependencies
 ifeq "$(FIXDEPEND)" ""
 ifeq "$(topdir)" ""
 FIXDEPEND = @cat $(@:%.o=%.d) | sed 's/ / \\\n/g' | egrep -v '^(| )\\$$' | egrep -v '$(LCGREL)' | sed 's|^$(bindir)|$$\(bindir\)|g' > $(@:%.o=%.P); \rm -f $(@:%.o=%.d)
