@@ -219,7 +219,7 @@ else
 ifeq ($(LCG_os),slc6)
 # Set up Boost 1.55 as in LCGCMT_72a on slc6
 # See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_72a/lcgcmt/LCG_Configuration/cmt/requirements
-BOOSTHOME := $(AFS_LCGREL)/LCG_72a/Boost/1.55.0_python2.7/$(LCG_basesystem)
+BOOSTHOME := $(CVMFS_LCGREL)/LCG_72a/Boost/1.55.0_python2.7/$(LCG_basesystem)
 BOOSTVERS := 1_55
 ifeq ($(shell ls -d $(BOOSTHOME)),)
   $(error INTERNAL ERROR! Directory "$(BOOSTHOME)" does not exist?)
@@ -256,7 +256,7 @@ ifeq ($(LCG_os),slc6)
 # Set up ROOT 5.34.25 as in LCGCMT_72a on slc6
 # See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_72a/lcgcmt/LCG_Configuration/cmt/requirements
 ROOTSYSSUFFIX := ROOT/5.34.25/$(LCG_system)
-ROOTSYS := $(AFS_LCGREL)/LCG_72a/$(ROOTSYSSUFFIX)
+ROOTSYS := $(CVMFS_LCGREL)/LCG_72a/$(ROOTSYSSUFFIX)
 TBBHOME :=
 ifeq ($(shell ls -d $(ROOTSYS)),)
   $(error INTERNAL ERROR! Directory "$(ROOTSYS)" does not exist?)

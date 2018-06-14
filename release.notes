@@ -16,6 +16,8 @@
 
 - Port the configuration to gcc62 on CC7. Port the code to gcc62 using c++11.
 
+- Drop support for AFS in the configuration. Use CVMFS on both SLC6 and CC7.
+
 ==============================================================================
 ! 2015.03.22 - BlueFin 01.00.05-pre1 (work in progress)
 ==============================================================================
