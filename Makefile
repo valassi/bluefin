@@ -267,9 +267,9 @@ $(OBJS) : %.o : $(bindir)%.o
 
 ifeq "$(FIXDEPEND)" ""
 ifeq "$(topdir)" ""
-FIXDEPEND = @cat $(@:%.o=%.d) | sed 's/ / \\\n/g' | egrep -v '^(| )\\$$' | egrep -v '($(LCGAPP)|$(LCGEXT))' | sed 's|^$(bindir)|$$\(bindir\)|g' > $(@:%.o=%.P); \rm -f $(@:%.o=%.d)
+FIXDEPEND = @cat $(@:%.o=%.d) | sed 's/ / \\\n/g' | egrep -v '^(| )\\$$' | egrep -v '$(LCGREL)' | sed 's|^$(bindir)|$$\(bindir\)|g' > $(@:%.o=%.P); \rm -f $(@:%.o=%.d)
 else
-FIXDEPEND = @cat $(@:%.o=%.d) | sed 's/ / \\\n/g' | egrep -v '^(| )\\$$' | egrep -v '($(LCGAPP)|$(LCGEXT))' | sed 's|^$(bindir)|$$\(bindir\)|g' | sed 's|^$(topdir)|$$\(topdir\)|g' > $(@:%.o=%.P); \rm -f $(@:%.o=%.d)
+FIXDEPEND = @cat $(@:%.o=%.d) | sed 's/ / \\\n/g' | egrep -v '^(| )\\$$' | egrep -v '$(LCGREL)' | sed 's|^$(bindir)|$$\(bindir\)|g' | sed 's|^$(topdir)|$$\(topdir\)|g' > $(@:%.o=%.P); \rm -f $(@:%.o=%.d)
 endif
 endif
 
