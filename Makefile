@@ -16,8 +16,8 @@ LCG_mode := opt
 # Choose two user-defined locations for LCG AA releases and externals.
 # If only one is specified but not the other, an error is generated.
 # If both are specified, they must exist, else an error is generated.
-# If not specified, LCG AA releases and externals are looked for first 
-# in CVMFS and then in AFS; if neither works, an error is generated.
+# If not specified, LCG AA releases and externals are looked for in CVMFS;
+# if this does not work, an error is generated (AFS is no longer supported).
 ###OPT_LCGAPP := /opt/sw/lcg/app/releases
 ###OPT_LCGEXT := /opt/sw/lcg/external
 OPT_LCGAPP :=
@@ -28,19 +28,19 @@ OPT_LCGEXT :=
 # Architecture (x86_64 or i686): use __ONLY__ 64-bit builds
 LCG_arch := x86_64
 
-# Compiler: use gcc43 on SLC5, gcc49 on SLC6 and gcc48 on CC7 (for better tests)
+# Compiler: use gcc43 on SLC5, gcc49 on SLC6 and gcc62 on CC7 (for better tests)
 # NB: gcc43 is only supported on SLC5 (use gcc46 or higher on SLC6)
-LCG_compiler_slc5 := gcc43
-LCG_compiler_slc6 := gcc49
-LCG_compiler_cc7  := gcc48
+LCG_compiler_slc5    := gcc43
+LCG_compiler_slc6    := gcc49
+LCG_compiler_centos7 := gcc62
 
 #---------------------------------------------------------------------------
 
-# App release area and external area on CVMFS and AFS
+# LCG releases on CVMFS
+# [NB: AFS is no longer supported as of 2018]
 CVMFS_LCGAPP := /cvmfs/sft.cern.ch/lcg/app/releases
 CVMFS_LCGEXT := /cvmfs/sft.cern.ch/lcg/external
-AFS_LCGAPP := /afs/cern.ch/sw/lcg/app/releases
-AFS_LCGEXT := /afs/cern.ch/sw/lcg/external
+CVMFS_LCGREL := /cvmfs/sft.cern.ch/lcg/releases
 
 # App release area - try user-defined directory if specified
 LCGAPP = 
@@ -56,15 +56,7 @@ ifeq ($(LCGAPP),)
   ifneq ($(shell ls -d $(CVMFS_LCGAPP) 2> /dev/null),)
     LCGAPP = $(CVMFS_LCGAPP)
   else
-    ###$(warning WARNING! CVMFS app directory "$(CVMFS_LCGAPP)" does not exist - try AFS)
-  endif
-endif
-# App release area - try AFS
-ifeq ($(LCGAPP),)
-  ifneq ($(shell ls -d $(AFS_LCGAPP)),)
-    LCGAPP = $(AFS_LCGAPP)
-  else
-    $(error ERROR! AFS app directory "$(AFS_LCGAPP)" does not exist)
+    $(error ERROR! CVMFS app directory "$(CVMFS_LCGAPP)" does not exist)
   endif
 endif
 # App release area - info
@@ -84,22 +76,11 @@ ifeq ($(LCGEXT),)
   ifneq ($(shell ls -d $(CVMFS_LCGEXT) 2> /dev/null),)
     LCGEXT = $(CVMFS_LCGEXT)
   else
-    ###$(warning WARNING! CVMFS ext directory "$(CVMFS_LCGEXT)" does not exist - try AFS)
-  endif
-endif
-# External area - try AFS
-ifeq ($(LCGEXT),)
-  ifneq ($(shell ls -d $(AFS_LCGEXT)),)
-    LCGEXT = $(AFS_LCGEXT)
-  else
-    $(error ERROR! AFS ext directory "$(AFS_LCGEXT)" does not exist)
+    $(error ERROR! CVMFS ext directory "$(CVMFS_LCGEXT)" does not exist)
   endif
 endif
 # External area - info
 $(info LCGEXT=$(LCGEXT))
-
-# Release area on AFS for >= LCG68
-AFS_LCGREL := /afs/cern.ch/sw/lcg/releases
 
 # Private copy of the nightlies for CC7 (temporary)
 OPT_LCGNGT := /opt/nightlies/dev3/20150311Wed
@@ -125,7 +106,7 @@ ifeq ($(wordlist 1,6,$(RH)),Red Hat Enterprise Linux Server release)
   LCG_os := slc$(firstword $(subst ., ,$(word 7,$(RH))))
 else
 ifeq ($(wordlist 1,3,$(RH)),CentOS Linux release)
-  LCG_os := cc$(firstword $(subst ., ,$(word 4,$(RH))))
+  LCG_os := centos$(firstword $(subst ., ,$(word 4,$(RH))))
 else
   $(error ERROR! O/S "$(RH)" is not an SLC/SL/RHEL/CentOS Linux system)
 endif
@@ -136,7 +117,7 @@ ifeq ($(LCG_os),slc5)
 else
 ifeq ($(LCG_os),slc6)
 else
-ifeq ($(LCG_os),cc7)
+ifeq ($(LCG_os),centos7)
 else
   $(error ERROR! O/S "$(RH)" is not SLC/SL/RHEL5, SLC/SL/RHEL6 or CC7)
 endif
@@ -165,8 +146,15 @@ else
 endif
 endif
 
+# Determine the compiler flags for the chosen compiler version
+ifeq ($(LCG_compiler),gcc62)
+  CPPFLAGS += -std=c++11
+else
+  CPPFLAGS += -ansi
+endif
+
 # Determine additional compiler flags (-fPIC is needed to make shared libs)
-CPPFLAGS += -ansi -Wall -W -pthread
+CPPFLAGS += -Wall -W -pthread
 CPPFLAGS += -fPIC
 ###CPPFLAGS += -Df2cFortran -D_GNU_SOURCE -Dlinux -Dunix -pipe
 
@@ -187,20 +175,17 @@ bindir := $(topdir)$(LCG_system)/
 ifeq ($(LCG_compiler),gcc43)
   GCCHOMESUFFIX := gcc/4.3.6/$(LCG_arch)-$(LCG_os)
 else
-ifeq ($(LCG_compiler),gcc48)
-  GCCHOMESUFFIX := gcc/4.8.1/$(LCG_arch)-$(LCG_os)
-else
 ifeq ($(LCG_compiler),gcc49)
   GCCHOMESUFFIX := gcc/4.9.1/$(LCG_arch)-$(LCG_os)
+else
+ifeq ($(LCG_compiler),gcc62)
+  GCCHOMESUFFIX := gcc/6.2.0/$(LCG_arch)-$(LCG_os)
 else
   $(error ERROR! The "$(LCG_compiler)" compiler is not supported)
 endif
 endif
 endif
 GCCHOME := $(CVMFS_LCGEXT)/$(GCCHOMESUFFIX)
-ifeq ($(shell ls -d $(GCCHOME) 2> /dev/null),)
-  GCCHOME := $(AFS_LCGEXT)/$(GCCHOMESUFFIX)
-endif
 ifeq ($(shell ls -d $(GCCHOME)),)
   $(error INTERNAL ERROR! Directory "$(GCCHOME)" does not exist?)
 endif
@@ -240,10 +225,10 @@ ifeq ($(shell ls -d $(BOOSTHOME)),)
   $(error INTERNAL ERROR! Directory "$(BOOSTHOME)" does not exist?)
 endif
 else
-ifeq ($(LCG_os),cc7)
-# Set up Boost 1.55 as in dev3 on cc7
-BOOSTHOME := $(OPT_LCGNGT)/Boost/1.55.0_python2.7/$(LCG_basesystem)
-BOOSTVERS := 1_55
+ifeq ($(LCG_os),centos7)
+# Set up Boost 1.66 as in LCG_93 on centos7
+BOOSTHOME := $(CVMFS_LCGREL)/LCG_93/Boost/1.66.0/$(LCG_basesystem)
+BOOSTVERS := 1_66
 ifeq ($(shell ls -d $(BOOSTHOME)),)
   $(error INTERNAL ERROR! Directory "$(BOOSTHOME)" does not exist?)
 endif
@@ -262,6 +247,7 @@ ifeq ($(LCG_os),slc5)
 # See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_64b/lcgcmt/LCG_Configuration/cmt/requirements
 ROOTSYSSUFFIX := ROOT/5.34.03/$(LCG_system)/root
 ROOTSYS := $(LCGAPP)/$(ROOTSYSSUFFIX)
+TBBHOME :=
 ifeq ($(shell ls -d $(ROOTSYS)),)
   $(error INTERNAL ERROR! Directory "$(ROOTSYS)" does not exist?)
 endif
@@ -271,14 +257,16 @@ ifeq ($(LCG_os),slc6)
 # See http://svnweb.cern.ch/world/wsvn/lcgsoft/tags/LCGCMT_72a/lcgcmt/LCG_Configuration/cmt/requirements
 ROOTSYSSUFFIX := ROOT/5.34.25/$(LCG_system)
 ROOTSYS := $(AFS_LCGREL)/LCG_72a/$(ROOTSYSSUFFIX)
+TBBHOME :=
 ifeq ($(shell ls -d $(ROOTSYS)),)
   $(error INTERNAL ERROR! Directory "$(ROOTSYS)" does not exist?)
 endif
 else
-ifeq ($(LCG_os),cc7)
-# Set up ROOT HEAD as in dev3 on cc7
-ROOTSYSSUFFIX := ROOT/HEAD/$(LCG_system)
-ROOTSYS := $(OPT_LCGNGT)/$(ROOTSYSSUFFIX)
+ifeq ($(LCG_os),centos7)
+# Set up ROOT 6.12.06 as in LCG_93 on centos7
+ROOTSYSSUFFIX := ROOT/6.12.06/$(LCG_system)
+ROOTSYS := $(CVMFS_LCGREL)/LCG_93/$(ROOTSYSSUFFIX)
+TBBHOME := $(CVMFS_LCGREL)/LCG_93/tbb/2018_U1/$(LCG_system)
 ifeq ($(shell ls -d $(ROOTSYS)),)
   $(error INTERNAL ERROR! Directory "$(ROOTSYS)" does not exist?)
 endif
@@ -288,13 +276,21 @@ endif
 endif
 endif
 ROOTINC := $(ROOTSYS)/include
-ROOTLINK := -L$(ROOTSYS)/lib -lMathCore -lMinuit2
+ifeq ($(TBBHOME),)
+  ROOTLINK := -L$(ROOTSYS)/lib -lMathCore -lMinuit2
+else
+  ROOTLINK := -L$(ROOTSYS)/lib -lMathCore -lMinuit2 -L$(TBBHOME)/lib -ltbb
+endif
 
 #---------------------------------------------------------------------------
 
 # Set up LD_LIBRARY_PATH and export it to make it available while building in make
 # See http://www.cmcrossroads.com/article/basics-getting-environment-variables-gnu-make
+ifeq ($(TBBHOME),)
 export LD_LIBRARY_PATH=$(GCCHOME)/lib64:$(ROOTSYS)/lib:$(BOOSTHOME)/lib:$(realpath $(bindir))
+else
+export LD_LIBRARY_PATH=$(GCCHOME)/lib64:$(ROOTSYS)/lib:$(BOOSTHOME)/lib:$(TBBHOME)/lib:$(realpath $(bindir))
+endif
 
 #-----------------------------------------------------------------------------
 
@@ -374,8 +370,8 @@ setup_sh :
 prebuilds: bluefin
 	@mkdir -p $(topdir)prebuilt/$(LCG_os)/
 	@\cp -dpr $(bindir)/bluefin $(topdir)prebuilt/$(LCG_os)/
-	@echo "setenv LD_LIBRARY_PATH $(CVMFS_LCGEXT)/$(GCCHOMESUFFIX)/lib64:$(CVMFS_LCGEXT)/$(ROOTSYSSUFFIX)/lib:$(AFS_LCGEXT)/$(GCCHOMESUFFIX)/lib64:$(AFS_LCGEXT)/$(ROOTSYSSUFFIX)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.csh
-	@echo "export LD_LIBRARY_PATH=$(CVMFS_LCGEXT)/$(GCCHOMESUFFIX)/lib64:$(CVMFS_LCGEXT)/$(ROOTSYSSUFFIX)/lib:$(AFS_LCGEXT)/$(GCCHOMESUFFIX)/lib64:$(AFS_LCGEXT)/$(ROOTSYSSUFFIX)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.sh
+	@echo "setenv LD_LIBRARY_PATH $(CVMFS_LCGEXT)/$(GCCHOMESUFFIX)/lib64:$(CVMFS_LCGEXT)/$(ROOTSYSSUFFIX)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.csh
+	@echo "export LD_LIBRARY_PATH=$(CVMFS_LCGEXT)/$(GCCHOMESUFFIX)/lib64:$(CVMFS_LCGEXT)/$(ROOTSYSSUFFIX)/lib:\$${LD_LIBRARY_PATH}" > $(topdir)prebuilt/$(LCG_os)/setup.sh
 
 .PHONY : all clean $(ALL) lib $(OBJS) prebuilds
 

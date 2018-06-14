@@ -162,10 +162,19 @@ BlueFish1Obs::onionizeCorrsByErrorSourceBF1( bool rc, std::ostream* ptStr ) cons
       if ( !rc ) meaByErr.clear();
       std::vector<std::pair<size_t, Number> > pairs;
       for ( size_t iMea=0; iMea<nMea(); ++iMea )
+      {
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
         if ( !rc ) // AV: use the partial covariance
           pairs.push_back( std::make_pair<size_t, Number>(iMea,cov(iMea,iMea)) );
         else // RC: use the full covariance
           pairs.push_back( std::make_pair<size_t, Number>(iMea,m_meaCov(iMea,iMea)) );
+#else
+        if ( !rc ) // AV: use the partial covariance
+          pairs.push_back( std::make_pair(iMea,cov(iMea,iMea)) );
+        else // RC: use the full covariance
+          pairs.push_back( std::make_pair(iMea,m_meaCov(iMea,iMea)) );
+#endif
+      }
       std::sort( pairs.begin(), pairs.end(),
                  boost::bind( &std::pair<size_t, Number>::second, _1) >
                  boost::bind( &std::pair<size_t, Number>::second, _2) );
@@ -518,7 +527,11 @@ BlueFish1Obs::removeMeasWithNegativeCvwInBF1( std::vector< std::pair<BlueFish1Ob
     }
     if ( minCvw <= 0 )
     {
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
       removed.push_back( std::make_pair<BlueFish1Obs,size_t>( bfNew, kMeaMinCvw ) );
+#else
+      removed.push_back( std::make_pair( bfNew, kMeaMinCvw ) );
+#endif
       bfNew = bfNew.removeOneMeasInBF1( kMeaMinCvw );
     }
     else break;

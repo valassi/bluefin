@@ -189,7 +189,11 @@ namespace bluefin
 
     /// The BlueFish1Obs reference for derivative calculation.
     /// This can be set only ONCE by the computeBlueDInfosBF1 method.
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
     mutable std::auto_ptr<BlueFish1Obs> m_blueDInfosRef;
+#else
+    mutable std::unique_ptr<BlueFish1Obs> m_blueDInfosRef;
+#endif
 
     /// The nErr (nMea by nMea) normalised BLUE info first derivatives (computed on demand).
     /// Derivatives are for every error source wrt each off-diagonal pair.
@@ -211,7 +215,11 @@ namespace bluefin
     /// The normalised BLUE info first derivative (computed on demand).
     /// Derivative is wrt a global factor.
     /// Normalised derivatives have been divided by the info of the reference BLUE.
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
     mutable std::auto_ptr<Number> m_blueD1NormInfByGlobalFactorBF1;
+#else
+    mutable std::unique_ptr<Number> m_blueD1NormInfByGlobalFactorBF1;
+#endif
 
     /// ========================================================================
     /// === Data members set (on demand) in computing several "weights"      ===

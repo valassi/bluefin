@@ -50,7 +50,11 @@ namespace bluefin
       TextReporter::printBlueFish( bfNomCor, tStr );
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfNomCor, tStr, latex, partial );
-      bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( TextReporter::nominalCorrelationTag(), bfNomCor ) );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
+       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( TextReporter::nominalCorrelationTag(), bfNomCor ) );
+#else
+       bfs.push_back( std::make_pair( TextReporter::nominalCorrelationTag(), bfNomCor ) );
+#endif
       // 2. MINIMIZE WRT GLOBAL FACTOR
       InfoMinimizer imByGF( bfNomCor, infoNomCor, InfoMinimizer::ByGlobalFactorMD );
       BlueFish1Obs bfMinByGF;
@@ -61,7 +65,11 @@ namespace bluefin
         TextReporter::printBlueFish( bfMinByGF, tStr );
         if ( opts.cov != InfoAnalyzer::COV_NONE )
           TextReporter::printMeaCovs( bfMinByGF, tStr, latex, partial );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
         bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by global factor", bfMinByGF ) );
+#else
+        bfs.push_back( std::make_pair( "Minimize by global factor", bfMinByGF ) );
+#endif
       }
       // 3. MINIMIZE WRT ERROR SOURCES
       InfoMinimizer imByES( bfNomCor, infoNomCor, InfoMinimizer::ByErrorSourceMD );
@@ -73,7 +81,11 @@ namespace bluefin
         TextReporter::printBlueFish( bfMinByES, tStr );
         if ( opts.cov != InfoAnalyzer::COV_NONE )
           TextReporter::printMeaCovs( bfMinByES, tStr, latex, partial );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
         bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by error sources", bfMinByES ) );
+#else
+        bfs.push_back( std::make_pair( "Minimize by error sources", bfMinByES ) );
+#endif
       }
       // 4. MINIMIZE WRT OFF DIAGONAL ELEMENTS
       InfoMinimizer imByOD( bfNomCor, infoNomCor, InfoMinimizer::ByOffDiagElemMD );
@@ -100,7 +112,11 @@ namespace bluefin
         {
           tStr << "ERROR! Minimization by off-diagonal element failed (unknown cause)" << std::endl;
         }
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
         bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by off-diagonal elements", bfMinByOD ) );
+#else
+        bfs.push_back( std::make_pair( "Minimize by off-diagonal elements", bfMinByOD ) );
+#endif
       }
       // 5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S
       tStr << std::endl << "5. REMOVE MEASUREMENTS WITH NEGATIVE CVW'S" << std::endl << std::endl;
@@ -109,7 +125,11 @@ namespace bluefin
       TextReporter::printBlueFish( bfPosCvws, tStr );
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfPosCvws, tStr, latex, partial );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Remove negative CVWs", bfPosCvws ) );
+#else
+      bfs.push_back( std::make_pair( "Remove negative CVWs", bfPosCvws ) );
+#endif
       // 6. MINIMIZE WRT OFF DIAGONAL ELEMENTS PER ERROR SOURCE
       InfoMinimizer imByOE( bfNomCor, infoNomCor, InfoMinimizer::ByOffDiagPerErrSrcMD );
       BlueFish1Obs bfMinByOE;
@@ -135,7 +155,11 @@ namespace bluefin
         {
           tStr << "ERROR! Minimization by off-diagonal per error src failed (unknown cause)" << std::endl;
         }
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
         bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Minimize by off-diagonal per error src", bfMinByOE ) );
+#else
+        bfs.push_back( std::make_pair( "Minimize by off-diagonal per error src", bfMinByOE ) );
+#endif
       }
       // 7a. ONIONIZE (RC)
       //tStr << std::endl << "7a. ONIONIZE (RC)" << std::endl << std::endl;
@@ -152,14 +176,22 @@ namespace bluefin
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfOnionAV, tStr, latex, partial );
       //bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Onionize (2--AV)", bfOnionAV ) );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( "Onionize", bfOnionAV ) );
+#else
+      bfs.push_back( std::make_pair( "Onionize", bfOnionAV ) );
+#endif
       // 8. ZERO CORRELATIONS
       const BlueFish1Obs bfZerCor = bfNomCor.keepCorrsForSource(-1); // zero correlations
       tStr << std::endl << "8. NO CORRELATIONS" << std::endl << std::endl;
       TextReporter::printBlueFish( bfZerCor, tStr );
       if ( opts.cov != InfoAnalyzer::COV_NONE )
         TextReporter::printMeaCovs( bfZerCor, tStr, latex, partial );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
       bfs.push_back( std::make_pair<std::string,BlueFish1Obs>( TextReporter::zeroCorrelationTag(), bfZerCor ) );
+#else
+      bfs.push_back( std::make_pair( TextReporter::zeroCorrelationTag(), bfZerCor ) );
+#endif
       errorStreamForPositiveDefiniteCheck() = 0;
       // ==========================================================================
       // === CREATE LATEX REPORT
@@ -321,14 +353,22 @@ InfoAnalyzer::printInfoAnalysis( const BlueFish& bfNomCor, // nominal correlatio
     TextReporter::printBlueFish( bfNomCor, tStr );
     if ( opts.cov != InfoAnalyzer::COV_NONE )
       TextReporter::printMeaCovs( bfNomCor, tStr, latex, partial );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
     bfs.push_back( std::make_pair<std::string,BlueFish>( TextReporter::nominalCorrelationTag(), bfNomCor ) );
+#else
+    bfs.push_back( std::make_pair( TextReporter::nominalCorrelationTag(), bfNomCor ) );
+#endif
     // 7. ZERO CORRELATIONS
     const BlueFish bfZerCor = bfNomCor.keepCorrsForSource(-1); // zero correlations
     tStr << std::endl << "7. NO CORRELATIONS" << std::endl << std::endl;
     TextReporter::printBlueFish( bfZerCor, tStr );
     if ( opts.cov != InfoAnalyzer::COV_NONE )
       TextReporter::printMeaCovs( bfZerCor, tStr, latex, partial );
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
     bfs.push_back( std::make_pair<std::string,BlueFish>( TextReporter::zeroCorrelationTag(), bfZerCor ) );
+#else
+    bfs.push_back( std::make_pair( TextReporter::zeroCorrelationTag(), bfZerCor ) );
+#endif
     // ==========================================================================
     // === CREATE LATEX REPORT
     // ==========================================================================

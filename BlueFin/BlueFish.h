@@ -317,7 +317,11 @@ namespace bluefin
 
     /// The delta for derivatives. Note that a negative delta is used,
     /// hence the lower limit for all variables is 2*delta (not 0!).
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
     static const Number Delta = 0.0001;
+#else
+    static constexpr Number Delta = 0.0001;
+#endif
 
   public:
 

@@ -521,7 +521,11 @@ bool InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
   //const std::string rootMinName = "GSLMultiFit";
   //const std::string rootAlgName = ""; // CRASH???
   tStr << "MINIMIZE USING ROOT " << rootMinName << std::endl;
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
   std::auto_ptr<ROOT::Math::Minimizer> rootMin;
+#else
+  std::unique_ptr<ROOT::Math::Minimizer> rootMin;
+#endif
   rootMin.reset( ROOT::Math::Factory::CreateMinimizer( rootMinName, rootAlgName ) );
   //rootAlgName = rootMin->Options().MinimizerAlgorithm(); // always returns Migrad (BUG?)
   rootMin->SetMaxFunctionCalls(1000000); // for Minuit/Minuit2 in ROOT
@@ -626,7 +630,11 @@ bool InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
           tStr << (iPar==0?" ":", ") << out;
         }
         tStr << std::endl;
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
         std::auto_ptr<double> ddStart( new double[nPar] );
+#else
+        std::unique_ptr<double> ddStart( new double[nPar] );
+#endif
         for ( size_t iPar=0; iPar<nPar; ++iPar ) ddStart.get()[iPar] = runSfsStart[iPar];
         snprintf( out, 12, "%11.8f", InfoMinimizerImpl::normInfoTM( ddStart.get() ) );
         tStr << "START: f=" << out << " at";
@@ -652,7 +660,7 @@ bool InfoMinimizer::minimizeUsingROOT( Number& runMinVal,
       // Do the minimization
       if ( done == 0 )
       {
-        if ( tStr != std::cout )
+        if ( &tStr != &std::cout )
         {
           // See http://stackoverflow.com/questions/4832603
           //std::cerr << "TEST initial std::cerr" << std::endl;

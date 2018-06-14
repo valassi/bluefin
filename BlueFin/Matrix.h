@@ -205,7 +205,11 @@ namespace bluefin
     size_t od2 = 0;
     for ( size_t i=0; i<m.size1(); i++ )
       for ( size_t j=0; j<i; j++ )
+#if ( ! defined(__GXX_EXPERIMENTAL_CXX0X__) ) && (__cplusplus < 201103L )
         if ( od2 == od ) return std::make_pair<size_t,size_t>( i, j );
+#else
+        if ( od2 == od ) return std::make_pair( i, j );
+#endif
         else od2++;
     throw std::runtime_error( "error in offDiagToIJ?" );
   }
