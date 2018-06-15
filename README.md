@@ -19,7 +19,7 @@ Some examples of using bluefin are in the `tests.sh` script.
 
 ## More details
 
-To download the latest version of the software (needs CERN Kerberos authentication):
+To download the latest version of the software:
 - `git clone https://:@gitlab.cern.ch:8443/valassi/bluefin.git`
 
 The package provides a software library, as well as an executable that builds a pdf report from an input data file in text format. To use the bluefin executable, source the setup.csh or setup.sh script and look at its usage:
