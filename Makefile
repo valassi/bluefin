@@ -115,7 +115,7 @@ setup_sh :
 print:
 	$(info cmake is $(shell which cmake))
 	$(info )
-	$(foreach var,BINARY_TAG CMAKEFLAGS LCG_arch LCG_compiler LCG_mode LCG_os,$(info $(var)=$($(var))))
+	$(foreach var,BINARY_TAG BUILDDIR CMAKEFLAGS LCG_arch LCG_compiler LCG_mode LCG_os,$(info $(var)=$($(var))))
 	$(info )
 	@: # noop	
 
