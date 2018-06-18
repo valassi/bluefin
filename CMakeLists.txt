@@ -35,6 +35,8 @@ include_directories(${Boost_INCLUDE_DIRS})
 find_package(ROOT REQUIRED MathCore)
 include_directories(${ROOT_INCLUDE_DIRS})
 
+find_package(tbb REQUIRED)
+
 add_compile_options(-Wall -W -pthread)
 
 add_library(BlueFin SHARED
