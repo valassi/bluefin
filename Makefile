@@ -1,15 +1,18 @@
+topdir := $(dir $(lastword $(MAKEFILE_LIST)))
+
 ###############################################################################
 #
 # Simple Makefile wrapper over cmake
 #
-# Author: Andrea Valassi, 31 August 2016
+# Author:    Andrea Valassi, 31 Aug 2016 (COOL)
+# Modified:  Andrea Valassi, 18 Jun 2018 (BLUEFIN)
 #
 # Targets:
 #   cmake     -> create cmake config ("cmake")
-#   all       -> also build code ("make")
-#   install   -> also install code ("make install")
+#   all       -> create cmake config and build code ("cmake; make")
 #
 # Additional targets (show build variables):
+#   setup_sh  -> show the commands needed to set up the (bash) environment
 #   print-<v> -> show the value of variable/macro <v>
 #   print     -> show a selection of relevant variables/macros
 #
@@ -18,7 +21,7 @@
 #
 # Recommended prerequisites:
 #   - the CMAKEFLAGS variable
-#     (this contains the command line options that are used in the cmake step)
+#     (this contains the command line options used in the cmake step)
 #   - the CMAKE_PREFIX_PATH env variable
 #     (this is used by CMake to resolve package dependencies of BLUEFIN)
 #
@@ -89,11 +92,20 @@ BUILDDIR := $(CURDIR)/build.$(BINARY_TAG)
 #-------------------------------------------------------------------------------
 
 # Phony targets
-.PHONY: cmake print
+.PHONY: cmake setup_sh print
 
 # Execute the make step (default target)
 all: cmake
 	cmake --build $(BUILDDIR) --config .
+	@echo ""
+	@echo "Build completed"
+	@echo "--------------------------------"
+	@echo "To set up the environment, type:"
+	@echo "  bash"
+ifneq ($(BLUEFIN_SETUPSH),)
+	@echo "  $(BLUEFIN_SETUPSH)"
+endif
+	@echo "  eval \`make -f $(topdir)Makefile setup_sh\`"
 
 # Execute the cmake step
 cmake:
@@ -108,6 +120,10 @@ install: cmake
 	@: # noop	
 # [Presently a noop]
 #	cmake --build $(BUILDDIR) --config . --target install | grep -v "^-- Up-to-date:"
+
+# Minimal setup: add the build directory to PATH and LD_LIBRARY_PATH
+setup_sh :
+	@echo "export PATH=$(realpath $(BUILDDIR)):\$${PATH}; export LD_LIBRARY_PATH=$(realpath $(BUILDDIR)):\$${LD_LIBRARY_PATH}"
 
 # Print all Makefile variables/macros
 # See https://stackoverflow.com/questions/22925380

@@ -42,16 +42,16 @@ lcg_os=$(make -f Makefile print-LCG_os)
 if [ "${lcg_os}" == "slc6" ]; then
   lcg_compiler=gcc49
   lcg_system=${lcg_arch}-${lcg_os}-${lcg_compiler}-${LCG_mode}
-  SETUPSH=". ${lcgviews}/LCG_72a/${lcg_system}/setup.sh"
+  BLUEFIN_SETUPSH=". ${lcgviews}/LCG_72a/${lcg_system}/setup.sh"
 elif [ "${lcg_os}" == "centos7" ]; then
   lcg_compiler=gcc62
   lcg_system=${lcg_arch}-${lcg_os}-${lcg_compiler}-${LCG_mode}
-  SETUPSH=". ${lcgviews}/LCG_93/${lcg_system}/setup.sh"
+  BLUEFIN_SETUPSH=". ${lcgviews}/LCG_93/${lcg_system}/setup.sh"
 else
   echo "ERROR! Unknown O/S ${lcg_os}"
   exit 1
 fi
-eval '${SETUPSH}'
+eval '${BLUEFIN_SETUPSH}'
 
 # Set the build flags (C++ std) appropriate to each compiler in LCG views
 if [[ ${lcg_compiler} == *gcc6* ]]; then
@@ -80,22 +80,10 @@ fi
 # Export the relevant variables
 export CMAKEFLAGS
 export LCG_mode
+export BLUEFIN_SETUPSH
 
 # Print all variables
 make -f Makefile print
 
 # Build all targets
 make -f Makefile
-
-# Install all targets
-#make -f Makefile install
-
-# Print the setup instructions
-bintag=$(make -f Makefile print-BINARY_TAG)
-SETUPSH="${SETUPSH}; export PATH=${PWD}/build.${bintag}:\${PATH}; export LD_LIBRARY_PATH=${PWD}/build.${bintag}:\${LD_LIBRARY_PATH}"
-echo ""
-echo "Build completed"
-echo "--------------------------------"
-echo "To set up the environment, type:"
-echo "  bash"
-echo "  ${SETUPSH}"
