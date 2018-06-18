@@ -35,7 +35,6 @@ topdir := $(dir $(lastword $(MAKEFILE_LIST)))
 
 # Architecture (e.g. x86_64)
 LCG_arch := $(shell uname -m)
-#$(info LCG_arch=$(LCG_arch))
 
 # Determine the O/S
 ifneq ($(wildcard /etc/os-release),)
@@ -43,7 +42,7 @@ ifneq ($(wildcard /etc/os-release),)
   LCG_os := $(shell cat /etc/os-release | grep ^ID= | sed 's/^ID="//' | sed 's/"$$//')
   LCG_os := $(LCG_os)$(shell cat /etc/os-release | grep ^VERSION_ID= | sed 's/^VERSION_ID="//' | sed 's/"$$//' | cut -d. -f1)
 else
-ifneq ($(wildcard /etc/redhat-releases),)
+ifneq ($(wildcard /etc/redhat-release),)
 # 2. Determine the O/S from /etc/redhat-release
 RH := $(shell more /etc/redhat-release)
 ifeq ($(RH),)

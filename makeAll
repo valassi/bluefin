@@ -3,6 +3,7 @@ cd `dirname $0`
 
 # Setup the build environment from LCG views
 . setupLCG.sh
+if [ "$?" != "0" ]; then exit 1; fi
 
 # Print all variables
 make -f Makefile print
