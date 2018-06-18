@@ -1,0 +1,77 @@
+./makeAll > log_cc7_new.txt
+
+cmake is /cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/bin/cmake
+
+BINARY_TAG=x86_64-centos7-gcc620-opt
+CMAKEFLAGS=-GNinja -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_CXX_FLAGS=-std=c++14 -DCMAKE_BUILD_TYPE=Release 
+LCG_arch=x86_64
+LCG_compiler=gcc620
+LCG_mode=opt
+LCG_os=centos7
+
+cmake -GNinja -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_CXX_FLAGS=-std=c++14 -DCMAKE_BUILD_TYPE=Release  -H. -B/afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt
+-- The C compiler identification is GNU 6.2.0
+-- The CXX compiler identification is GNU 6.2.0
+-- Check for working C compiler: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/gcc
+-- Check for working C compiler: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/gcc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++
+-- Check for working CXX compiler: /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- 
+-- ====== WELCOME TO BLUEFIN CMakeLists.txt ======
+-- Date is 2018-06-18 17:30:24
+-- Hostname is lxplus001.cern.ch
+-- OS is Linux 3.10.0-862.3.2.el7.x86_64
+-- CMAKE_COMMAND is /cvmfs/sft.cern.ch/lcg/releases/CMake/3.7.0-a8e5d/x86_64-centos7-gcc62-opt/bin/cmake
+-- ===============================================
+-- CMAKE_BINARY_DIR is /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt
+-- CMAKE_BUILD_TYPE is Release
+-- CMAKE_C_COMPILER is /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/gcc
+-- CMAKE_CXX_COMPILER is /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++
+-- CMAKE_CXX_FLAGS is -std=c++14
+-- CMAKE_INSTALL_PREFIX is /usr/local
+-- CMAKE_PREFIX_PATH [env] is /cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt
+-- CMAKE_SOURCE_DIR is /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin
+-- CMAKE_VERBOSE_MAKEFILE is ON
+-- =============================================
+-- 
+-- Boost version: 1.66.0
+-- Found ROOT: /cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include  
+-- ROOT version: 6.12/06
+-- Found the following ROOT libraries:
+--   Core
+--   MathCore
+-- Found the following ROOT tools:
+--   root
+--   rootcling
+--   genreflex
+-- Found TBB: /cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/lib/libtbb.so  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt
+cmake --build /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt --config .
+[1/11] /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++   -DBlueFin_EXPORTS -I/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include -I../. -std=c++14 -O3 -DNDEBUG -fPIC -MD -MT CMakeFiles/BlueFin.dir/src/InfoAnalyzer.cpp.o -MF CMakeFiles/BlueFin.dir/src/InfoAnalyzer.cpp.o.d -o CMakeFiles/BlueFin.dir/src/InfoAnalyzer.cpp.o -c /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/src/InfoAnalyzer.cpp
+[2/11] /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++   -DBlueFin_EXPORTS -I/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include -I../. -std=c++14 -O3 -DNDEBUG -fPIC -MD -MT CMakeFiles/BlueFin.dir/src/InputParser.cpp.o -MF CMakeFiles/BlueFin.dir/src/InputParser.cpp.o.d -o CMakeFiles/BlueFin.dir/src/InputParser.cpp.o -c /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/src/InputParser.cpp
+[3/11] /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++   -DBlueFin_EXPORTS -I/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include -I../. -std=c++14 -O3 -DNDEBUG -fPIC -MD -MT CMakeFiles/BlueFin.dir/src/BlueFish.cpp.o -MF CMakeFiles/BlueFin.dir/src/BlueFish.cpp.o.d -o CMakeFiles/BlueFin.dir/src/BlueFish.cpp.o -c /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/src/BlueFish.cpp
+[4/11] /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++   -DBlueFin_EXPORTS -I/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include -I../. -std=c++14 -O3 -DNDEBUG -fPIC -MD -MT CMakeFiles/BlueFin.dir/src/TextReporter.cpp.o -MF CMakeFiles/BlueFin.dir/src/TextReporter.cpp.o.d -o CMakeFiles/BlueFin.dir/src/TextReporter.cpp.o -c /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/src/TextReporter.cpp
+[5/11] /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++   -DBlueFin_EXPORTS -I/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include -I../. -std=c++14 -O3 -DNDEBUG -fPIC -MD -MT CMakeFiles/BlueFin.dir/src/BlueFish1Obs.cpp.o -MF CMakeFiles/BlueFin.dir/src/BlueFish1Obs.cpp.o.d -o CMakeFiles/BlueFin.dir/src/BlueFish1Obs.cpp.o -c /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/src/BlueFish1Obs.cpp
+[6/11] /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++   -DBlueFin_EXPORTS -I/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include -I../. -std=c++14 -O3 -DNDEBUG -fPIC -MD -MT CMakeFiles/BlueFin.dir/src/InfoMinimizer.cpp.o -MF CMakeFiles/BlueFin.dir/src/InfoMinimizer.cpp.o.d -o CMakeFiles/BlueFin.dir/src/InfoMinimizer.cpp.o -c /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/src/InfoMinimizer.cpp
+[7/11] : && /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++  -fPIC -std=c++14 -O3 -DNDEBUG   -shared -Wl,-soname,libBlueFin.so -o libBlueFin.so CMakeFiles/BlueFin.dir/src/BlueFish1Obs.cpp.o CMakeFiles/BlueFin.dir/src/BlueFish.cpp.o CMakeFiles/BlueFin.dir/src/InfoAnalyzer.cpp.o CMakeFiles/BlueFin.dir/src/InfoMinimizer.cpp.o CMakeFiles/BlueFin.dir/src/InputParser.cpp.o CMakeFiles/BlueFin.dir/src/TextReporter.cpp.o   && :
+[8/11] cd /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt && cd /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/utilities && objcopy -Bi386 --input binary --output elf64-x86-64 BlueFinReport.tex /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt/CMakeFiles/BlueFinReport.dir/utilities/BlueFinReport.tex.o
+[9/11] cd /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt && cd /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/utilities && objcopy -Bi386 --input binary --output elf64-x86-64 BlueFinLogo.jpg /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt/CMakeFiles/BlueFinLogo.dir/utilities/BlueFinLogo.jpg.o
+[10/11] /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++    -I/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/include -I../. -std=c++14 -O3 -DNDEBUG -MD -MT CMakeFiles/bluefin.dir/utilities/bluefin.cpp.o -MF CMakeFiles/bluefin.dir/utilities/bluefin.cpp.o.d -o CMakeFiles/bluefin.dir/utilities/bluefin.cpp.o -c /afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/utilities/bluefin.cpp
+[11/11] : && /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/bin/g++   -std=c++14 -O3 -DNDEBUG   CMakeFiles/BlueFinLogo.dir/utilities/BlueFinLogo.jpg.o CMakeFiles/BlueFinReport.dir/utilities/BlueFinReport.tex.o CMakeFiles/bluefin.dir/utilities/bluefin.cpp.o  -o bluefin  -Wl,-rpath,/afs/cern.ch/user/a/avalassi/blue2/BLUEFIN/bluefin/build.x86_64-centos7-gcc620-opt:/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/lib -rdynamic libBlueFin.so /cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/lib/libCore.so /cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt/lib/libMathCore.so && :
+
+Build completed
+--------------------------------
+To set up the environment, type:
+  bash
+  eval `make -f ./Makefile setup_sh`
+
