@@ -100,3 +100,4 @@ fi
 # Export the additional variables relevant for the cmake build of BLUEFIN
 export CMAKEFLAGS
 export LCG_mode
+export VERBOSE
