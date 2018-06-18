@@ -38,6 +38,11 @@ if [ "${lcg_arch}" != "x86_64" ]; then
 fi
 CMAKE_CXX_FLAGS="-m64"
 
+# Set up ninja and CMake just in case
+# (On centos7 they are taken from the LCG views, but not on slc6)
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.6.0/Linux-x86_64/bin:${PATH}
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.4.0/x86_64-slc6:${PATH}
+
 # Set CMAKE_BUILD_TYPE from the LCG build mode
 if [ "${lcg_mode}" == "opt" ]; then
   LCG_mode=${lcg_mode}
