@@ -3,29 +3,70 @@
 
 BlueFin is a software package for Best Linear Unbiased Estimate Fisher Information aNalysis.
 
-## Overview
-
-This software is supported on SLC6 and CC7 machines (and other variants of RedHat 6 and 7 distributions).  
-Support on CERNVM is incomplete because of problems with the pdflatex distribution on that platform.  
-
-The CVMFS file system is required to use the ROOT, Boost, TBB and GCC libraries installed there.
-
-To build the software: type `make`.
-
-You can also use the prebuilt bluefin binary in `prebuilt/slc6` or `prebuilt/centos7`. 
-In that case, please use the provided `setup.csh` and `setup.sh` scripts in the same directory.
-
-Some examples of using bluefin are in the `tests.sh` script.
-
-## More details
+## Download
 
 To download the latest version of the software:
 - `git clone https://:@gitlab.cern.ch:8443/valassi/bluefin.git`
 
-The package provides a software library, as well as an executable that builds a pdf report from an input data file in text format. To use the bluefin executable, source the setup.csh or setup.sh script and look at its usage:
-- `source setup.sh; bluefin -h`
+## Build
 
+The software is built using CMake.
+
+To build the software, some external packages such as Boost, ROOT and tbb are needed. You have two options:
+1. Set up and build using the 'LCG view' software installed on cvmfs, using the scripts provided for this purpose.
+2. Set up and build using your own preferred Boost, ROOT and tbb installations.
+
+### Build against LCG views
+
+This option is supported on SLC6 and CC7 machines with cvmfs installed, such as lxplus6 and lxplus7 at CERN.
+
+Set up the LCG views appropriate to your O/S, build the software and set up its runtime environment:
+```bash
+. setupLCG.sh
+make 
+eval `make -f ./Makefile setup_sh`
 ```
+
+This will create all relevant libraries and binaries in a separate build directory:
+- `build.x86_64-slc6-gcc493-opt` on slc6, using the LCG view `/cvmfs/sft.cern.ch/lcg/views/LCG_72a/x86_64-slc6-gcc49-opt`
+- `build.x86_64-centos7-gcc620-opt` on centos7, using the LCG view `/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt`
+
+It will also add the build directory to the `$PATH` and `$LD_LIBRARY_PATH` environment variables.
+
+### Build against specific installations of Boost, ROOT and tbb
+
+The following is an example on centos7, using individual Boost, ROOT and tbb installations in the LCG stack.  
+
+You need to use a compiler and a set of compilation options compatible with those used for your chosen installations of ROOT and Boost.
+
+The following example uses ninja instead of GNU make.
+
+```bash
+. /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/setup.sh
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.6.0/Linux-x86_64/bin:${PATH}
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.4.0/x86_64-slc6:${PATH}
+export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/Boost/1.66.0/x86_64-centos7-gcc62-opt/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/ROOT/6.12.06/x86_64-centos7-gcc62-opt/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/tbb/2018_U1/x86_64-centos7-gcc62-opt/lib:${LD_LIBRARY_PATH}
+export CMAKE_PREFIX_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/Boost/1.66.0/x86_64-centos7-gcc62-opt:${CMAKE_PREFIX_PATH}
+export CMAKE_PREFIX_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/ROOT/6.12.06/x86_64-centos7-gcc62-opt:${CMAKE_PREFIX_PATH}
+export CMAKEFLAGS="-GNinja -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_CXX_FLAGS='-std=c++14 -m64' -DCMAKE_BUILD_TYPE=Release"
+export VERBOSE=1
+make
+
+BUILDDIR=$(make print-BUILDDIR)
+export PATH=${BUILDDIR}:${PATH}
+export LD_LIBRARY_PATH=${BUILDDIR}:${LD_LIBRARY_PATH}
+```
+
+## The bluefin executable
+
+The package provides a software library, as well as an executable that builds a pdf report from an input data file in text format. 
+
+To use the `bluefin` executable, look at its usage:
+```bash
+  bluefin -h`
+
   Usage: bluefin [options] [<indir>/]<infile>.bfin
     Available options:
       -h           - print help message and exit
@@ -39,6 +80,12 @@ The package provides a software library, as well as an executable that builds a 
                      [default: 3=all but the experimental ByOffDiagPerErrSrc]
 ```
 
+You need to have a reasonably complete installation of `pdflatex`, such as those available on lxplus6 and lxplus7 at CERN.
+
+Some examples of using bluefin are in the `tests.sh` script.
+
+## Additional documentation
+
 The ideas behind BlueFin are documented in the following article:
 - "Information and treatment of unknown correlations in the combination of measurements using the BLUE method" ([10.1140/epjc/s10052-014-2717-6](https://doi.org/10.1140/epjc/s10052-014-2717-6))
 
@@ -49,7 +96,5 @@ For more details please refer to the documentation on this TRAC site.
 - The corresponding pdf report for this example is available in the [xsePaper4.pdf](examples/dataXSE/xsePaper4.pdf)  file.
 
 ## Contact
-
-*WARNING! This software is in beta version.* 
 
 Please report any problems to Andrea Valassi(at)cern.ch.
