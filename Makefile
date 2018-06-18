@@ -102,10 +102,8 @@ all: cmake
 	@echo "--------------------------------"
 	@echo "To set up the environment, type:"
 	@echo "  bash"
-ifneq ($(BLUEFIN_SETUPSH),)
-	@echo "  $(BLUEFIN_SETUPSH)"
-endif
 	@echo "  eval \`make -f $(topdir)Makefile setup_sh\`"
+	@echo ""
 
 # Execute the cmake step
 cmake:

@@ -2,11 +2,27 @@
 
 cd `dirname $0`
 
-echo "======================================================================"
+#-------------------------------------------------------------------------------
+# Setup the environment and build the code
+#-------------------------------------------------------------------------------
 
-make bluefin
+# Setup the build and runtime environment from LCG views
+. setupLCG.sh
 if [ "$?" != "0" ]; then exit 1; fi
-. setup.sh
+
+# Print all variables
+make -f Makefile print
+
+# Build all targets
+make -f Makefile
+if [ "$?" != "0" ]; then exit 1; fi
+
+# Setup the runtime environment for BLUEFIN
+eval `make -f ./Makefile setup_sh`
+
+#-------------------------------------------------------------------------------
+# Execute the tests
+#-------------------------------------------------------------------------------
 
 dataDirs=""
 dataDirs="$dataDirs examples/dataTOP"
