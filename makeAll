@@ -16,7 +16,7 @@ if [ ! -d ${lcgviews} ]; then
 fi
 
 # Check that the host architecture (LCG_arch) is supported
-lcg_arch=$(make -f cmake.mk print-LCG_arch)
+lcg_arch=$(make -f Makefile print-LCG_arch)
 if [ "${lcg_arch}" != "x86_64" ]; then
   echo "ERROR! Unknown architecture '${lcg_arch}'"
   exit 1
@@ -38,7 +38,7 @@ CMAKEFLAGS="-DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE $CMAKEFLAGS"
 # Check that the host O/S (LCG_os) is supported
 # Use a different LCG view depending on LCG_os
 # Use a different compiler depending on LCG_os
-lcg_os=$(make -f cmake.mk print-LCG_os)
+lcg_os=$(make -f Makefile print-LCG_os)
 if [ "${lcg_os}" == "slc6" ]; then
   lcg_compiler=gcc49
   lcg_system=${lcg_arch}-${lcg_os}-${lcg_compiler}-${LCG_mode}
@@ -82,16 +82,16 @@ export CMAKEFLAGS
 export LCG_mode
 
 # Print all variables
-make -f cmake.mk print
+make -f Makefile print
 
 # Build all targets
-make -f cmake.mk
+make -f Makefile
 
 # Install all targets
-#make -f cmake.mk install
+#make -f Makefile install
 
 # Print the setup instructions
-bintag=$(make -f cmake.mk print-BINARY_TAG)
+bintag=$(make -f Makefile print-BINARY_TAG)
 SETUPSH="${SETUPSH}; export PATH=${PWD}/build.${bintag}:\${PATH}; export LD_LIBRARY_PATH=${PWD}/build.${bintag}:\${LD_LIBRARY_PATH}"
 echo ""
 echo "Build completed"
