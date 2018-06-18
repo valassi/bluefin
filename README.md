@@ -80,7 +80,8 @@ To use the `bluefin` executable, look at its usage:
                      [default: 3=all but the experimental ByOffDiagPerErrSrc]
 ```
 
-You need to have a reasonably complete installation of `pdflatex`, such as those available on lxplus6 and lxplus7 at CERN.
+You need to have a reasonably complete installation of `pdflatex`, such as those available on lxplus6 and lxplus7 at CERN.  
+On slc6 and centos7, `yum install texlive` should be enough.
 
 Some examples of using bluefin are in the `tests.sh` script.
 
