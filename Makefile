@@ -25,10 +25,6 @@ topdir := $(dir $(lastword $(MAKEFILE_LIST)))
 #   - the CMAKE_PREFIX_PATH env variable
 #     (this is used by CMake to resolve package dependencies of BLUEFIN)
 #
-# Optional settings:
-#   - the BUILDDIR variable can be used to choose a different build dir
-#     (the default BUILDDIR is build.$BINARY_TAG)
-#
 ###############################################################################
 
 #------------------------------------------------------------------------------
@@ -81,7 +77,6 @@ endif
 
 # Determine the BINARY_TAG for the build
 BINARY_TAG := $(LCG_arch)-$(LCG_os)-$(LCG_compiler)-$(LCG_mode)
-###CMAKEFLAGS := "-DBINARY_TAG=$(BINARY_TAG) $(CMAKEFLAGS)"
 
 # Define the default build directory as build.${BINARY_TAG}
 BUILDDIR := $(CURDIR)/build.$(BINARY_TAG)
@@ -96,13 +91,6 @@ BUILDDIR := $(CURDIR)/build.$(BINARY_TAG)
 # Execute the make step (default target)
 all: cmake
 	cmake --build $(BUILDDIR) --config .
-	@echo ""
-	@echo "Build completed"
-	@echo "--------------------------------"
-	@echo "To set up the environment, type:"
-	@echo "  bash"
-	@echo "  eval \`make -f $(topdir)Makefile setup_sh\`"
-	@echo ""
 
 # Execute the cmake step
 cmake:
