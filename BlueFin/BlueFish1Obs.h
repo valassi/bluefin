@@ -79,8 +79,6 @@ namespace bluefin
     /// Recompute the output and return it in a new BlueFish1Obs instance.
     /// Throws if this is not a single-observable combination
     /// Throws if there are any negative correlations
-    /// [More traditional recipes for onionizing blue fish are described for instance
-    /// by Goldoni et al: http://www.cucinaveneziana.net/2009/01/09/la-sarde-in-saor]
     BlueFish1Obs onionizeCorrsByErrorSourceBF1( bool rc, std::ostream* ptStr = 0 ) const;
 
     /// Rescale corrs for all error sources in a single-obs combination.
