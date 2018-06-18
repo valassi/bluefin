@@ -36,6 +36,7 @@ if [ "${lcg_arch}" != "x86_64" ]; then
   echo "ERROR! Unknown architecture '${lcg_arch}'"
   return 1
 fi
+CMAKE_CXX_FLAGS="-m64"
 
 # Set CMAKE_BUILD_TYPE from the LCG build mode
 if [ "${lcg_mode}" == "opt" ]; then
@@ -69,18 +70,18 @@ fi
 
 # Set the build flags (C++ std) appropriate to each compiler in LCG views
 if [[ ${lcg_compiler} == *gcc6* ]]; then
-  CMAKE_CXX_FLAGS="-std=c++14"
+  CMAKE_CXX_FLAGS="-std=c++14 ${CMAKE_CXX_FLAGS}"
 elif [[ ${lcg_compiler} == *gcc5* ]]; then
-  CMAKE_CXX_FLAGS="-std=c++14"
+  CMAKE_CXX_FLAGS="-std=c++14 ${CMAKE_CXX_FLAGS}"
 elif [[ ${lcg_compiler} == *gcc49* ]]; then
-  CMAKE_CXX_FLAGS="-std=c++1y"
+  CMAKE_CXX_FLAGS="-std=c++1y ${CMAKE_CXX_FLAGS}"
 elif [[ ${lcg_compiler} == *gcc48* ]]; then
-  CMAKE_CXX_FLAGS="-std=c++11"
+  CMAKE_CXX_FLAGS="-std=c++11 ${CMAKE_CXX_FLAGS}"
 else
   echo "ERROR! Unknown compiler ${lcg_compiler}"
   return 1
 fi
-CMAKEFLAGS="-DCMAKE_CXX_FLAGS=$CMAKE_CXX_FLAGS $CMAKEFLAGS"
+CMAKEFLAGS="-DCMAKE_CXX_FLAGS='$CMAKE_CXX_FLAGS' $CMAKEFLAGS"
 
 # Additional settings for Makefile and ninja verbosity
 VERBOSE=1
