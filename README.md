@@ -64,7 +64,7 @@ export LD_LIBRARY_PATH=${BUILDDIR}:${LD_LIBRARY_PATH}
 The package provides a software library, as well as an executable that builds a pdf report from an input data file in text format. 
 
 To use the `bluefin` executable, look at its usage:
-```bash
+```
   bluefin -h
 
   Usage: bluefin [options] [<indir>/]<infile>.bfin
