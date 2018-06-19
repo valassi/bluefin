@@ -43,11 +43,14 @@ namespace bluefin
     out << "Usage: " << argv0 << " [options] [<indir>/]<infile>.bfin\n"
         << "  Available options:\n"
         << "    -h           - print help message and exit\n"
+        << "    -T           - skip latex\n"
         << "    -q           - quiet latex (omit latex logs from bluefin logs)\n"
+        << "                   [noop if -T is specified]\n"
         << "    -o <outdir>  - store/overwrite <infile>.pdf and <infile>_bluefin.log in <outdir>\n"
         << "                   [default: use the input directory <indir>]\n"
         << "    -t <texdir>  - store/overwrite tex and other temporary files in <texdir>\n"
         << "                   [default: use a temporary directory]\n"
+        << "                   [noop if -T is specified]\n"
         << "    -c (0..2)    - covariance printout: 0=none, 1=full, 2=all (full and partial)\n"
         << "                   [default: 2=all]\n"
         << "    -M (0..4)    - minimizations: 0=none, 1+=ByGlobFac, 2+=ByErrSrc, 3+=ByOffDiag, 4+=ByOffDiagPerErrSrc\n"
@@ -64,6 +67,7 @@ int main( int argc, char** argv )
   try
   {
     // Parse the command line options
+    bool skipLatex = false;
     bool quietLatex = false;
     std::string texFileDir;
     std::string outFileDir;
@@ -71,7 +75,7 @@ int main( int argc, char** argv )
     InfoAnalyzer::MinimizationOpts minimizationOpts = InfoAnalyzer::MIN_ADD_BYOD;
     {
       int c;
-      while ( ( c = ::getopt( argc, argv, "hqo:t:c:M:" ) ) != -1 )
+      while ( ( c = ::getopt( argc, argv, "hTqo:t:c:M:" ) ) != -1 )
       {
         switch ( c )
         {
@@ -80,6 +84,9 @@ int main( int argc, char** argv )
           return 0;
         case 'q':
           quietLatex = true;
+          break;
+        case 'T':
+          skipLatex = true;
           break;
         case 't':
           texFileDir = ::optarg;
@@ -207,89 +214,96 @@ int main( int argc, char** argv )
     const std::string pdfFileNameNoDir = inFileBase+".pdf";
     const std::string pdfFileName = outFileDir+pdfFileNameNoDir;
     const std::string logFileName = outFileDir+inFileBase+"_bluefin.log";
-    // If no texdir was specified, create a temporary directory
-    if ( texFileDir == "" )
-    {
-      std::string tmpDir = std::string( "/tmp/" ) + ::getenv("USER") + "/bluefin";
-      ::system( ( "mkdir -p " + tmpDir ).c_str() );
-      tmpDir += "/XXXXXXXX";
-      char* tmpDirC = (char*) ::malloc( tmpDir.size() + 1 );
-      ::strcpy( tmpDirC, tmpDir.c_str() );
-      if ( ! ::mkdtemp( tmpDirC ) )
-      {
-        std::cerr << "ERROR! Could not create temporary directory " << tmpDir << std::endl;
-        ::free( tmpDirC );
-        return 1;
-      }
-      texFileDir = tmpDirC;
-      ::free( tmpDirC );
-    }
-    // Replace "//" by "/" in the output directory and ensure a trailing "/"
-    for ( size_t i = texFileDir.find( "//" ); i != std::string::npos; i = texFileDir.find( "//" ) )
-      texFileDir.erase( i, 1 );
-    if ( texFileDir[texFileDir.size()-1] != '/' ) texFileDir += "/";
-    // Check if the tex directory exists
-    struct stat texFileDirSb;
-    if ( ::stat( texFileDir.c_str(), &texFileDirSb ) != 0 )
-    {
-      std::cerr << "ERROR! Tex directory " << texFileDir << " does not exist!" << std::endl;
-      return 1;
-    }
-    if ( !S_ISDIR( texFileDirSb.st_mode ) )
-    {
-      std::cerr << "ERROR! File " << texFileDir << " is not a directory!" << std::endl;
-      return 1;
-    }
-    const std::string texBodyNameBase = inFileBase+"_body";
-    const std::string texBodyNameNoDir = texBodyNameBase+".tex";
-    const std::string texBodyName = texFileDir+texBodyNameNoDir;
-    const std::string texFileNameNoDir = inFileBase+".tex";
-    const std::string texFileName = texFileDir+texFileNameNoDir;
-    // Check whether pdflatex is installed on the system
-    if ( ::system( "which pdflatex > /dev/null" ) )
-    {
-      std::cerr << "ERROR! pdflatex is not installed!" << std::endl;
-      return 1;
-    }
-    // Print the input arguments
+    // Print the program banner
     const std::string blueFinVersion = BLUEFIN_VERSION;
     std::cout << "==================================================================" << std::endl;
     std::cout << "BLUEFIN version " << blueFinVersion << std::endl;
     std::cout << "==================================================================" << std::endl;
+    // Latex-specific configuration
+    std::string texBodyName = "(NONE)";
+    std::string texFileName = "(NONE)";
+    const std::string texBodyNameBase = inFileBase+"_body";
+    const std::string texBodyNameNoDir = texBodyNameBase+".tex";
+    const std::string texFileNameNoDir = inFileBase+".tex";
+    struct stat texFileDirSb;
+    if ( ! skipLatex )
+    {
+      // If no texdir was specified, create a temporary directory
+      if ( texFileDir == "" )
+      {
+        std::string tmpDir = std::string( "/tmp/" ) + ::getenv("USER") + "/bluefin";
+        ::system( ( "mkdir -p " + tmpDir ).c_str() );
+        tmpDir += "/XXXXXXXX";
+        char* tmpDirC = (char*) ::malloc( tmpDir.size() + 1 );
+        ::strcpy( tmpDirC, tmpDir.c_str() );
+        if ( ! ::mkdtemp( tmpDirC ) )
+        {
+          std::cerr << "ERROR! Could not create temporary directory " << tmpDir << std::endl;
+          ::free( tmpDirC );
+          return 1;
+        }
+        texFileDir = tmpDirC;
+        ::free( tmpDirC );
+      }
+      // Replace "//" by "/" in the output directory and ensure a trailing "/"
+      for ( size_t i = texFileDir.find( "//" ); i != std::string::npos; i = texFileDir.find( "//" ) )
+        texFileDir.erase( i, 1 );
+      if ( texFileDir[texFileDir.size()-1] != '/' ) texFileDir += "/";
+      // Check if the tex directory exists
+      if ( ::stat( texFileDir.c_str(), &texFileDirSb ) != 0 )
+      {
+        std::cerr << "ERROR! Tex directory " << texFileDir << " does not exist!" << std::endl;
+        return 1;
+      }
+      if ( !S_ISDIR( texFileDirSb.st_mode ) )
+      {
+        std::cerr << "ERROR! File " << texFileDir << " is not a directory!" << std::endl;
+        return 1;
+      }
+      texBodyName = texFileDir+texBodyNameNoDir;
+      texFileName = texFileDir+texFileNameNoDir;
+      // Check whether pdflatex is installed on the system
+      if ( ::system( "which pdflatex > /dev/null" ) )
+      {
+        std::cerr << "ERROR! pdflatex is not installed!" << std::endl;
+        return 1;
+      }
+      // Create BlueFinLogo.jpg in the tex directory
+      {
+        std::ofstream bStr;
+        bStr.open ( ( texFileDir + "/BlueFinLogo.jpg" ).c_str() );
+        char* p = &_binary_BlueFinLogo_jpg_start;
+        while ( p != &_binary_BlueFinLogo_jpg_end ) bStr << *p++;
+        bStr.close();
+      }
+      // Create BlueFinReport.tex in the tex directory
+      {
+        std::ofstream bStr;
+        bStr.open ( ( texFileDir + "/BlueFinReport.tex" ).c_str() );
+        char* p = &_binary_BlueFinReport_tex_start;
+        while ( p != &_binary_BlueFinReport_tex_end ) bStr << *p++;
+        bStr.close();
+      }
+      // Copy the input file to the tex directory
+      // (unless the tex directory is the input directory)
+      if ( texFileDirSb.st_dev != inFileDirSb.st_dev ||
+           texFileDirSb.st_ino != inFileDirSb.st_ino )
+      {
+        std::string cmd = "cp " + inFileName + " " + texFileDir;
+        if ( ::system( cmd.c_str() ) )
+        {
+          std::cerr << cmd << std::endl;
+          std::cerr << "ERROR! copying input file failed!" << std::endl;
+          return 1;
+        }
+      }
+    }
+    // Print the input arguments
     std::cout << "- input file:      " << inFileName << std::endl;
     std::cout << "- output PDF file: " << pdfFileName << std::endl;
     std::cout << "- output LOG file: " << logFileName << std::endl;
     std::cout << "- output TEX body: " << texBodyName << std::endl;
     std::cout << "- output TEX file: " << texFileName << std::endl;
-    // Create BlueFinLogo.jpg in the tex directory
-    {
-      std::ofstream bStr;
-      bStr.open ( ( texFileDir + "/BlueFinLogo.jpg" ).c_str() );
-      char* p = &_binary_BlueFinLogo_jpg_start;
-      while ( p != &_binary_BlueFinLogo_jpg_end ) bStr << *p++;
-      bStr.close();
-    }
-    // Create BlueFinReport.tex in the tex directory
-    {
-      std::ofstream bStr;
-      bStr.open ( ( texFileDir + "/BlueFinReport.tex" ).c_str() );
-      char* p = &_binary_BlueFinReport_tex_start;
-      while ( p != &_binary_BlueFinReport_tex_end ) bStr << *p++;
-      bStr.close();
-    }
-    // Copy the input file to the tex directory
-    // (unless the tex directory is the input directory)
-    if ( texFileDirSb.st_dev != inFileDirSb.st_dev ||
-         texFileDirSb.st_ino != inFileDirSb.st_ino )
-    {
-      std::string cmd = "cp " + inFileName + " " + texFileDir;
-      if ( ::system( cmd.c_str() ) )
-      {
-        std::cerr << cmd << std::endl;
-        std::cerr << "ERROR! copying input file failed!" << std::endl;
-        return 1;
-      }
-    }
     // Create a BLUE combination from the input data
     BlueFish bf = InputParser::createBlueFishFromInputData( inFileName );
     std::ofstream tStr; // text stream
@@ -297,208 +311,211 @@ int main( int argc, char** argv )
     InfoAnalyzer::PrintoutOpts printoutOpts = { covPrintoutOpts, minimizationOpts };
     InfoAnalyzer::printInfoAnalysis( bf, tStr, texBodyName, printoutOpts );
     tStr.close();
-    // Warning message (reserved option)
-    std::string extraFooter;
-    std::string extraFootMM = "0mm";
-    if ( ::getenv( "BFEXTRAFOOTER" ) )
+    // Latex handling
+    if ( !skipLatex )
     {
-      extraFooter = std::string( ::getenv( "BFEXTRAFOOTER" ) );
-      extraFootMM = "4mm";
-    }
-    // Fine tuning of text width and height
-    std::string wAddPt = ""; // not yet determined
-    std::string hAddPt = ""; // not yet determined
-    do
-    {
-      // Create a tex wrapper from BlueFinReport.tex
-      std::string cmd = "cat " + texFileDir + "BlueFinReport.tex";
-      std::string zero = "0";
-      cmd += " | sed \"s|BFWADDPT|" + ( wAddPt != "" ? wAddPt : zero ) + "|\"";
-      cmd += " | sed \"s|BFHADDPT|" + ( hAddPt != "" ? hAddPt : zero ) + "|\"";
-      cmd += " | sed \"s|BFMYFILENAMEIN|" + inFileBase + ".bfin|\"";
-      cmd += " | sed \"s|BFMYFILENAMEBODY|" + texBodyNameBase + "|\"";
-      cmd += " | sed \"s|BFMYCOMBNAME|" + bf.combName() + "|\"";
-      cmd += " | sed \"s|BFVERS|" + blueFinVersion + "|\"";
-      cmd += " | sed \"s|BFEXTRAFOOTER|" + extraFooter + "|\"";
-      cmd += " | sed \"s|BFEXTRAFOOTMM|" + extraFootMM + "|\"";
-      cmd += " > " + texFileName;
-      if ( ::system( cmd.c_str() ) )
+      // Warning message (reserved option)
+      std::string extraFooter;
+      std::string extraFootMM = "0mm";
+      if ( ::getenv( "BFEXTRAFOOTER" ) )
       {
-        std::cerr << cmd << std::endl;
-        std::cerr << "ERROR! cat/sed failed!" << std::endl;
-        return 1;
+        extraFooter = std::string( ::getenv( "BFEXTRAFOOTER" ) );
+        extraFootMM = "4mm";
       }
-      // Execute pdflatex
-      const std::string tmpFileNameNoDir = inFileBase+"_tmp.txt";
-      const std::string tmpFileName = texFileDir+tmpFileNameNoDir;
-      cmd = "cd " + texFileDir + ";";
-      cmd += " pdflatex -interaction=nonstopmode " + texFileNameNoDir;
-      cmd += " > " + tmpFileNameNoDir;
-      if ( ::system( cmd.c_str() ) )
+      // Fine tuning of text width and height
+      std::string wAddPt = ""; // not yet determined
+      std::string hAddPt = ""; // not yet determined
+      do
       {
-        std::cerr << cmd << std::endl;
-        std::cerr << "ERROR! pdflatex (1st pass) failed!" << std::endl;
-        return 1;
-      }
-      // Execute pdflatex again
-      cmd = "cd " + texFileDir + ";";
-      cmd += " pdflatex -interaction=nonstopmode " + texFileNameNoDir;
-      cmd += " >> " + tmpFileNameNoDir;
-      if ( ::system( cmd.c_str() ) )
-      {
-        std::cerr << cmd << std::endl;
-        std::cerr << "ERROR! pdflatex (2nd pass) failed!" << std::endl;
-        return 1;
-      }
-
-      // Check for width and/or height overfull in the tex output
-      // 1. Fix the final width first - check for width overfull
-      if ( wAddPt == "" ) // do this only the first time!
-      {
-        cmd = "cat " + tmpFileName + " | egrep '^Overfull \\\\hbox'";
-        cmd += " | awk '{h=substr($3,2,length($3)-3); print h}' | sort -g -u | tail -1";
-        FILE* pipe = ::popen( cmd.c_str(), "r" );
-        if ( pipe )
+        // Create a tex wrapper from BlueFinReport.tex
+        std::string cmd = "cat " + texFileDir + "BlueFinReport.tex";
+        std::string zero = "0";
+        cmd += " | sed \"s|BFWADDPT|" + ( wAddPt != "" ? wAddPt : zero ) + "|\"";
+        cmd += " | sed \"s|BFHADDPT|" + ( hAddPt != "" ? hAddPt : zero ) + "|\"";
+        cmd += " | sed \"s|BFMYFILENAMEIN|" + inFileBase + ".bfin|\"";
+        cmd += " | sed \"s|BFMYFILENAMEBODY|" + texBodyNameBase + "|\"";
+        cmd += " | sed \"s|BFMYCOMBNAME|" + bf.combName() + "|\"";
+        cmd += " | sed \"s|BFVERS|" + blueFinVersion + "|\"";
+        cmd += " | sed \"s|BFEXTRAFOOTER|" + extraFooter + "|\"";
+        cmd += " | sed \"s|BFEXTRAFOOTMM|" + extraFootMM + "|\"";
+        cmd += " > " + texFileName;
+        if ( ::system( cmd.c_str() ) )
+        {
+          std::cerr << cmd << std::endl;
+          std::cerr << "ERROR! cat/sed failed!" << std::endl;
+          return 1;
+        }
+        // Execute pdflatex
+        const std::string tmpFileNameNoDir = inFileBase+"_tmp.txt";
+        const std::string tmpFileName = texFileDir+tmpFileNameNoDir;
+        cmd = "cd " + texFileDir + ";";
+        cmd += " pdflatex -interaction=nonstopmode " + texFileNameNoDir;
+        cmd += " > " + tmpFileNameNoDir;
+        if ( ::system( cmd.c_str() ) )
+        {
+          std::cerr << cmd << std::endl;
+          std::cerr << "ERROR! pdflatex (1st pass) failed!" << std::endl;
+          return 1;
+        }
+        // Execute pdflatex again
+        cmd = "cd " + texFileDir + ";";
+        cmd += " pdflatex -interaction=nonstopmode " + texFileNameNoDir;
+        cmd += " >> " + tmpFileNameNoDir;
+        if ( ::system( cmd.c_str() ) )
+        {
+          std::cerr << cmd << std::endl;
+          std::cerr << "ERROR! pdflatex (2nd pass) failed!" << std::endl;
+          return 1;
+        }
+        // Check for width and/or height overfull in the tex output
+        // 1. Fix the final width first - check for width overfull
+        if ( wAddPt == "" ) // do this only the first time!
+        {
+          cmd = "cat " + tmpFileName + " | egrep '^Overfull \\\\hbox'";
+          cmd += " | awk '{h=substr($3,2,length($3)-3); print h}' | sort -g -u | tail -1";
+          FILE* pipe = ::popen( cmd.c_str(), "r" );
+          if ( pipe )
+          {
+            wAddPt = "";
+            int c;
+            while( ( c = fgetc( pipe ) ) != EOF && c != '\n' ) wAddPt += std::string( 1, c );
+            ::pclose(pipe);
+            if ( wAddPt == "" )
+            {
+              wAddPt = "0"; // no overfull found - fix the final width
+            }
+            else
+            {
+              std::stringstream msg;
+              msg << "WARNING! Overfull hbox: increase width by " << wAddPt << "pt";
+              std::cout << msg.str() << std::endl;
+              cmd = "echo " + msg.str() + " >> " + logFileName;
+              if ( ::system( cmd.c_str() ) )
+              {
+                std::cerr << cmd << std::endl;
+                std::cerr << "ERROR! echo/append failed!" << std::endl;
+                return 1;
+              }
+            }
+          }
+        }
+        // 2. If width has been fixed, fix the final height - check for height overfull
+        else if ( hAddPt == "" ) // do this only the first time!
+        {
+          cmd = "cat " + tmpFileName + " | egrep '^Overfull \\\\vbox'";
+          cmd += " | awk '{h=substr($3,2,length($3)-3); print h}' | sort -g -u | tail -1";
+          FILE* pipe = ::popen( cmd.c_str(), "r" );
+          if ( pipe )
+          {
+            hAddPt = "";
+            int c;
+            while( ( c = fgetc( pipe ) ) != EOF && c != '\n' ) hAddPt += std::string( 1, c );
+            ::pclose(pipe);
+            if ( hAddPt == "" )
+            {
+              hAddPt = "0"; // no overfull found - fix the final height
+            }
+            else
+            {
+              std::stringstream msg;
+              msg << "WARNING! Overfull vbox: increase height by " << hAddPt << "pt";
+              std::cout << msg.str() << std::endl;
+              cmd = "echo " + msg.str() + " >> " + logFileName;
+              if ( ::system( cmd.c_str() ) )
+              {
+                std::cerr << cmd << std::endl;
+                std::cerr << "ERROR! echo/append failed!" << std::endl;
+                return 1;
+              }
+            }
+            // You potentially have both the final width and height now.
+            // However it would be nice to have an A4-like ratio between the two!
+            const float a4ratio = 296./210.;
+            float wAdd = ::atof( wAddPt.c_str() );
+            float hAdd = ::atof( hAddPt.c_str() );
+            std::stringstream msg;
+            //std::cout << "DEBUG1 extras: width=" << wAddPt << ", height=" << hAddPt << std::endl;
+            if ( wAddPt == "0" && hAddPt == "0" )
+            {
+              // Nothing to do!
+            }
+            else if ( wAdd > hAdd*(a4ratio*0.99) ) // allow 1% too high rather than forcing a new loop
+            {
+              // We added more width than height
+              // We can safely increase the height accordingly and exit the loop
+              std::stringstream str;
+              str << wAdd/a4ratio;
+              hAddPt = str.str();
+              msg << "WARNING! Re-gain A4 ratio: increase height by " << hAddPt << "pt instead";
+            }
+            else
+            {
+              // We added more height than width
+              // We must increase the width accordingly and recompute the height!
+              std::stringstream str;
+              str << hAdd*a4ratio;
+              wAddPt = str.str();
+              hAddPt = "";
+              msg << "WARNING! Re-gain A4 ratio: increase width by " << wAddPt << "pt instead";
+            }
+            if ( msg.str() != "" )
+            {
+              std::cout << msg.str() << std::endl;
+              cmd = "echo " + msg.str() + " >> " + logFileName;
+              if ( ::system( cmd.c_str() ) )
+              {
+                std::cerr << cmd << std::endl;
+                std::cerr << "ERROR! echo/append failed!" << std::endl;
+                return 1;
+              }
+            }
+            //std::cout << "DEBUG2 extras: width=" << wAddPt << ", height=" << hAddPt << std::endl;
+          }
+        }
+        // 3. If both width and height have been fixed, exit the loop
+        // (pdflatex has been executed one last time with the final width and height)!
+        else
         {
           wAddPt = "";
-          int c;
-          while( ( c = fgetc( pipe ) ) != EOF && c != '\n' ) wAddPt += std::string( 1, c );
-          ::pclose(pipe);
-          if ( wAddPt == "" )
-          {
-            wAddPt = "0"; // no overfull found - fix the final width
-          }
-          else
-          {
-            std::stringstream msg;
-            msg << "WARNING! Overfull hbox: increase width by " << wAddPt << "pt";
-            std::cout << msg.str() << std::endl;
-            cmd = "echo " + msg.str() + " >> " + logFileName;
-            if ( ::system( cmd.c_str() ) )
-            {
-              std::cerr << cmd << std::endl;
-              std::cerr << "ERROR! echo/append failed!" << std::endl;
-              return 1;
-            }
-          }
-        }
-      }
-      // 2. If width has been fixed, fix the final height - check for height overfull
-      else if ( hAddPt == "" ) // do this only the first time!
-      {
-        cmd = "cat " + tmpFileName + " | egrep '^Overfull \\\\vbox'";
-        cmd += " | awk '{h=substr($3,2,length($3)-3); print h}' | sort -g -u | tail -1";
-        FILE* pipe = ::popen( cmd.c_str(), "r" );
-        if ( pipe )
-        {
           hAddPt = "";
-          int c;
-          while( ( c = fgetc( pipe ) ) != EOF && c != '\n' ) hAddPt += std::string( 1, c );
-          ::pclose(pipe);
-          if ( hAddPt == "" )
-          {
-            hAddPt = "0"; // no overfull found - fix the final height
-          }
+        }
+        // Append tex output and remove temporary file
+        if ( !quietLatex )
+          cmd = "cat " + tmpFileName + " >> " + logFileName + "; rm " + tmpFileName;
+        else
+          cmd = "rm " + tmpFileName;
+        if ( ::system( cmd.c_str() ) )
+        {
+          std::cerr << cmd << std::endl;
+          if ( !quietLatex )
+            std::cerr << "ERROR! cat/append/rm failed!" << std::endl;
           else
-          {
-            std::stringstream msg;
-            msg << "WARNING! Overfull vbox: increase height by " << hAddPt << "pt";
-            std::cout << msg.str() << std::endl;
-            cmd = "echo " + msg.str() + " >> " + logFileName;
-            if ( ::system( cmd.c_str() ) )
-            {
-              std::cerr << cmd << std::endl;
-              std::cerr << "ERROR! echo/append failed!" << std::endl;
-              return 1;
-            }
-          }
-          // You potentially have both the final width and height now.
-          // However it would be nice to have an A4-like ratio between the two!
-          const float a4ratio = 296./210.;
-          float wAdd = ::atof( wAddPt.c_str() );
-          float hAdd = ::atof( hAddPt.c_str() );
-          std::stringstream msg;
-          //std::cout << "DEBUG1 extras: width=" << wAddPt << ", height=" << hAddPt << std::endl;
-          if ( wAddPt == "0" && hAddPt == "0" )
-          {
-            // Nothing to do!
-          }
-          else if ( wAdd > hAdd*(a4ratio*0.99) ) // allow 1% too high rather than forcing a new loop
-          {
-            // We added more width than height
-            // We can safely increase the height accordingly and exit the loop
-            std::stringstream str;
-            str << wAdd/a4ratio;
-            hAddPt = str.str();
-            msg << "WARNING! Re-gain A4 ratio: increase height by " << hAddPt << "pt instead";
-          }
-          else
-          {
-            // We added more height than width
-            // We must increase the width accordingly and recompute the height!
-            std::stringstream str;
-            str << hAdd*a4ratio;
-            wAddPt = str.str();
-            hAddPt = "";
-            msg << "WARNING! Re-gain A4 ratio: increase width by " << wAddPt << "pt instead";
-          }
-          if ( msg.str() != "" )
-          {
-            std::cout << msg.str() << std::endl;
-            cmd = "echo " + msg.str() + " >> " + logFileName;
-            if ( ::system( cmd.c_str() ) )
-            {
-              std::cerr << cmd << std::endl;
-              std::cerr << "ERROR! echo/append failed!" << std::endl;
-              return 1;
-            }
-          }
-          //std::cout << "DEBUG2 extras: width=" << wAddPt << ", height=" << hAddPt << std::endl;
+            std::cerr << "ERROR! rm failed!" << std::endl;
+          return 1;
         }
       }
-      // 3. If both width and height have been fixed, exit the loop
-      // (pdflatex has been executed one last time with the final width and height)!
-      else
+      while ( wAddPt != "" || hAddPt != "" ); // both are == "" at the end
+      // Copy pdf from the tex to the output directory
+      // (unless the output directory is the tex directory)
+      if ( outFileDirSb.st_dev != texFileDirSb.st_dev ||
+           outFileDirSb.st_ino != texFileDirSb.st_ino )
       {
-        wAddPt = "";
-        hAddPt = "";
+        std::string cmd = "mv " + texFileDir + pdfFileNameNoDir + " " + pdfFileName;
+        if ( ::system( cmd.c_str() ) )
+        {
+          std::cerr << cmd << std::endl;
+          std::cerr << "ERROR! mv pdf failed!" << std::endl;
+          return 1;
+        }
       }
-      // Append tex output and remove temporary file
-      if ( !quietLatex )
-        cmd = "cat " + tmpFileName + " >> " + logFileName + "; rm " + tmpFileName;
-      else
-        cmd = "rm " + tmpFileName;
+      // Cleanup - remove BlueFinReport.tex
+      std::string cmd = "rm " + texFileDir + "BlueFinReport.tex";
       if ( ::system( cmd.c_str() ) )
       {
         std::cerr << cmd << std::endl;
-        if ( !quietLatex )
-          std::cerr << "ERROR! cat/append/rm failed!" << std::endl;
-        else
-          std::cerr << "ERROR! rm failed!" << std::endl;
+        std::cerr << "ERROR! rm BlueFinReport.tex failed!" << std::endl;
         return 1;
       }
-    }
-    while ( wAddPt != "" || hAddPt != "" ); // both are == "" at the end
-    // Copy pdf from the tex to the output directory
-    // (unless the output directory is the tex directory)
-    if ( outFileDirSb.st_dev != texFileDirSb.st_dev ||
-         outFileDirSb.st_ino != texFileDirSb.st_ino )
-    {
-      std::string cmd = "mv " + texFileDir + pdfFileNameNoDir + " " + pdfFileName;
-      if ( ::system( cmd.c_str() ) )
-      {
-        std::cerr << cmd << std::endl;
-        std::cerr << "ERROR! mv pdf failed!" << std::endl;
-        return 1;
-      }
-    }
-    // Cleanup - remove BlueFinReport.tex
-    std::string cmd = "rm " + texFileDir + "BlueFinReport.tex";
-    if ( ::system( cmd.c_str() ) )
-    {
-      std::cerr << cmd << std::endl;
-      std::cerr << "ERROR! rm BlueFinReport.tex failed!" << std::endl;
-      return 1;
     }
   }
   catch ( std::exception& e )

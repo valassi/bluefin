@@ -49,6 +49,10 @@ for dataDir in $dataDirs; do
     outtexbody=$dataDir/${file}_body.tex
     reftexbody=$dataDir/${file}_body.tex.ref
     outpdffile=$dataDir/${file}.pdf
+    outfile1=$dataDir/${file}_bluefin1.log
+    outfile2=$dataDir/${file}_bluefin2.log
+    outfile1s=$dataDir/${file}_bluefin1s.log
+    outfile2s=$dataDir/${file}_bluefin2s.log
     unset BFEXTRAFOOTER
     if [ "$file" == "lhc2012" ]; then export BFEXTRAFOOTER="WARNING! This is an example where inputs are taken from Table 4 in CMS PAS TOP-12-001. The output results differ because of rounding errors in those inputs."; fi
     if [ "$file" == "sww" ]; then export BFEXTRAFOOTER="LEP Combination for the Summer 2001 Conferences (http://lepewwg.web.cern.ch/LEPEWWG/lepww/4f/Summer01). The output results may differ because of rounding errors."; fi
@@ -56,6 +60,8 @@ for dataDir in $dataDirs; do
     echo Create $outfile and $outtexbody and $outpdffile
     if [ -f $outfile ]; then \rm -f $outfile; fi
     if [ -f $outtexfile ]; then \rm -f $outtexbody; fi
+    if [ -f $outfile1 ]; then \rm -f $outfile1; fi
+    if [ -f $outfile1s ]; then \rm -f $outfile1s; fi
     echo bluefin -q $infile -o $dataDir -t $dataDir -c2 $minOpts
     bluefin -q $infile -o $dataDir -t $dataDir -c2 $minOpts
     if [ "$?" != "0" ]; then 
@@ -67,6 +73,46 @@ for dataDir in $dataDirs; do
       continue
     fi
     ###cat $outfile
+    \mv $outfile $outfile1
+    cat $outfile1 | awk -vp=1 '{if ($1$2$3=="Createlatexreport:"){p=0}; if(p==1) print $0;}' > $outfile1s
+    echo "----------------------------------------------------------------------"
+    echo "Create $outfile (skip latex)"
+    if [ -f $outfile ]; then \rm -f $outfile; fi
+    if [ -f $outfile2 ]; then \rm -f $outfile2; fi
+    if [ -f $outfile2s ]; then \rm -f $outfile2s; fi
+    echo bluefin $infile -o $dataDir -T -c2 $minOpts
+    bluefin $infile -o $dataDir -T -c2 $minOpts
+    if [ "$?" != "0" ]; then 
+      echo "ERROR! bluefin $infile -o $dataDir -T -c2 $minOpts FAILED!"
+      ###echo cat $outfile
+      ###cat $outfile
+      #echo tail $outfile
+      #tail -10 $outfile
+      continue
+    fi
+    ###cat $outfile
+    \mv $outfile $outfile2
+    cat $outfile2 | awk -vp=1 '{if ($1$2$3=="Createlatexreport:"){p=0}; if(p==1) print $0;}' > $outfile2s
+    #------------------------------------------------------------
+    # Compare logs with and without latex
+    #------------------------------------------------------------
+    ls -l $outfile1s $outfile2s
+    ###echo "Compare $outfile1s to $outfile2s"
+    echo "diff $outfile1s $outfile2s"
+    diff $outfile1s $outfile2s
+    if [ "$?" != "0" ]; then
+      echo "ERROR! Logfiles differ with and without pdflatex?"
+      exit 1
+    fi
+    ###echo tkdiff $outfile1s $outfile2s
+    ###tkdiff $outfile1s $outfile2s &
+    ###sleep 1 # wait until tkdiff has started before removing the file!
+    #--- BEGIN cleanup
+    \mv $outfile1 $outfile 
+    \rm -f $outfile1s
+    \rm -f $outfile2
+    \rm -f $outfile2s
+    #--- END cleanup
     #------------------------------------------------------------
     # Compare ref
     #------------------------------------------------------------
