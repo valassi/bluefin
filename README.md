@@ -65,7 +65,7 @@ The package provides a software library, as well as an executable that builds a 
 
 To use the `bluefin` executable, look at its usage:
 ```bash
-  bluefin -h`
+  bluefin -h
 
   Usage: bluefin [options] [<indir>/]<infile>.bfin
     Available options:
