@@ -64,23 +64,28 @@ export LD_LIBRARY_PATH=${BUILDDIR}:${LD_LIBRARY_PATH}
 The package provides a software library, as well as an executable that builds a pdf report from an input data file in text format. 
 
 To use the `bluefin` executable, look at its usage:
-```bash
-  bluefin -h`
+```
+  bluefin -h
 
   Usage: bluefin [options] [<indir>/]<infile>.bfin
     Available options:
       -h           - print help message and exit
+      -T           - skip latex
+      -q           - quiet latex (omit latex logs from bluefin logs)
+                     [noop if -T is specified]
       -o <outdir>  - store/overwrite <infile>.pdf and <infile>_bluefin.log in <outdir>
                      [default: use the input directory <indir>]
       -t <texdir>  - store/overwrite tex and other temporary files in <texdir>
                      [default: use a temporary directory]
+                     [noop if -T is specified]
       -c (0..2)    - covariance printout: 0=none, 1=full, 2=all (full and partial)
                      [default: 2=all]
       -M (0..4)    - minimizations: 0=none, 1+=ByGlobFac, 2+=ByErrSrc, 3+=ByOffDiag, 4+=ByOffDiagPerErrSrc
                      [default: 3=all but the experimental ByOffDiagPerErrSrc]
 ```
 
-You need to have a reasonably complete installation of `pdflatex`, such as those available on lxplus6 and lxplus7 at CERN.
+You need to have a reasonably complete installation of `pdflatex`, such as those available on lxplus6 and lxplus7 at CERN.  
+On slc6 and centos7, `yum install texlive` should be enough.
 
 Some examples of using bluefin are in the `tests.sh` script.
 
