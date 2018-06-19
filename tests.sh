@@ -102,6 +102,9 @@ for dataDir in $dataDirs; do
     diff $outfile1s $outfile2s
     if [ "$?" != "0" ]; then
       echo "ERROR! Logfiles differ with and without pdflatex?"
+      echo ""
+      echo "diff $outfile1 $outfile2"
+      diff $outfile1 $outfile2
       exit 1
     fi
     ###echo tkdiff $outfile1s $outfile2s

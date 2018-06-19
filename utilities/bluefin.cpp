@@ -220,8 +220,8 @@ int main( int argc, char** argv )
     std::cout << "BLUEFIN version " << blueFinVersion << std::endl;
     std::cout << "==================================================================" << std::endl;
     // Latex-specific configuration
-    std::string texBodyName = "(NONE)";
-    std::string texFileName = "(NONE)";
+    std::string texBodyName = "";
+    std::string texFileName = "";
     const std::string texBodyNameBase = inFileBase+"_body";
     const std::string texBodyNameNoDir = texBodyNameBase+".tex";
     const std::string texFileNameNoDir = inFileBase+".tex";
@@ -302,8 +302,8 @@ int main( int argc, char** argv )
     std::cout << "- input file:      " << inFileName << std::endl;
     std::cout << "- output PDF file: " << pdfFileName << std::endl;
     std::cout << "- output LOG file: " << logFileName << std::endl;
-    std::cout << "- output TEX body: " << texBodyName << std::endl;
-    std::cout << "- output TEX file: " << texFileName << std::endl;
+    std::cout << "- output TEX body: " << ( texBodyName != "" ? texBodyName : std::string("(NONE)") ) << std::endl;
+    std::cout << "- output TEX file: " << ( texFileName != "" ? texFileName : std::string("(NONE)") ) << std::endl;
     // Create a BLUE combination from the input data
     BlueFish bf = InputParser::createBlueFishFromInputData( inFileName );
     std::ofstream tStr; // text stream

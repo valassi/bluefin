@@ -196,11 +196,11 @@ namespace bluefin
       // ==========================================================================
       // === CREATE LATEX REPORT
       // ==========================================================================
-      if ( outputLatexFile == "" ) return;
-      latex = true;
       tStr << std::endl;
       tStr << "--------------------------------------------------------------------" << std::endl;
       tStr << std::endl;
+      if ( outputLatexFile == "" ) return;
+      latex = true;
       tStr << "Create latex report: " << outputLatexFile << std::endl;
       std::ofstream lStr; // latex stream
       lStr.open ( outputLatexFile.c_str() );
@@ -372,11 +372,11 @@ InfoAnalyzer::printInfoAnalysis( const BlueFish& bfNomCor, // nominal correlatio
     // ==========================================================================
     // === CREATE LATEX REPORT
     // ==========================================================================
-    if ( outputLatexFile == "" ) return;
-    latex = true;
     tStr << std::endl;
     tStr << "--------------------------------------------------------------------" << std::endl;
     tStr << std::endl;
+    if ( outputLatexFile == "" ) return;
+    latex = true;
     tStr << "Create latex report: " << outputLatexFile << std::endl;
     std::ofstream lStr; // latex stream
     lStr.open ( outputLatexFile.c_str() );
