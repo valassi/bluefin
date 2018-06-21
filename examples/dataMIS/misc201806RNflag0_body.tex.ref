@@ -1,0 +1,970 @@
+\section{Nominal correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &     -10.42 &       5.64 &      12.86 &       7.19 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &     122.47 &      85.67 &      74.51 &      84.50 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &     -12.06 &      23.70 &       3.57 &       8.32 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &     -15.02 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.28 $\pm$       0.21 &     100.00 &     100.00 &      90.94 &     100.00 &       0.20 &       0.08 &       -nan &       0.03\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.91/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|rrrr|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & OffDiag\\
+\hline
+X2 / X1 &  0 &  \colorbox{Tomato1}{    0.242} &  \colorbox{Tomato1}{    0.398} &  0 &  \colorbox{Tomato1}{    0.641} \\
+X3 / X1 &  0 &     -0.048 &  0 &  0 &     -0.048 \\
+X3 / X2 &  0 &  \colorbox{Tomato1}{    0.192} &  \colorbox{Tomato1}{    0.187} &      0.032 &  \colorbox{Tomato1}{    0.412} \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ \colorbox{Tomato1}{    0.387}} & \multirow{2}{*}{ \colorbox{Tomato1}{    0.585}} & \multirow{2}{*}{     0.032} & GlobFact\\
+ & & & & &  \colorbox{Tomato1}{    1.004} \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: nominal correlations). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &       0.11 &       0.08 \\
+\mathrm{X2} \hspace*{2pt} &       0.11 &       0.05 &       0.06 \\
+\mathrm{X3} \hspace*{2pt} &       0.08 &       0.06 &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &       0.04 &       0.08 \\
+\mathrm{X2} \hspace*{2pt} &       0.04 &       0.01 &       0.03 \\
+\mathrm{X3} \hspace*{2pt} &       0.08 &       0.03 &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &       0.07 &  0 \\
+\mathrm{X2} \hspace*{2pt} &       0.07 &       0.01 &       0.03 \\
+\mathrm{X3} \hspace*{2pt} &  0 &       0.03 &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  {\scriptstyle \sim }0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\section{Modified correlations.}
+\subsection{Summary of results.}
+\begin{table}[h]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|l|c|cccc|c|}
+\hline
+Combination & BLUE & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & {\tiny$\chi^2$/ndof} \\
+\hline
+Nominal correlations &     172.28 $\pm$      0.21 &       0.20 &       0.08 &       -nan &       0.03 &       1.91/2\\
+\hline
+Minimize by global factor &     172.37 $\pm$      0.22 &       0.16 &       0.12 &       0.10 &       0.04 &       1.35/2\\
+Minimize by error sources &     172.37 $\pm$      0.23 &       0.16 &       0.12 &       0.10 &       0.05 &       1.35/2\\
+Minimize by off-diagonal elements &     172.35 $\pm$      0.23 &       0.16 &       0.12 &       0.10 &       0.04 &       1.50/2\\
+Remove negative CVWs &     172.35 $\pm$      0.23 &       0.16 &       0.12 &       0.10 &       0.04 &  0/0\\
+Onionize &     172.41 $\pm$      0.22 &       0.14 &       0.12 &       0.11 &       0.04 &       1.09/2\\
+\hline
+NO correlations &     172.45 $\pm$      0.20 &       0.13 &       0.10 &       0.10 &       0.04 &       0.85/2\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Summary table. BLUE's of the combinations performed with nominal and modified correlations.}
+\end{center}
+\end{table}
+
+\clearpage
+\subsection{Minimize correlations by a global rescaling factor.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &      -3.33 &       6.41 &       1.49 &       3.12 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &      97.04 &      97.27 &      69.91 &      90.98 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &       6.29 &      26.91 &       1.21 &       5.90 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &     -30.59 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.37 $\pm$       0.22 &     100.00 &     100.00 &      72.61 &     100.00 &       0.16 &       0.12 &       0.10 &       0.04\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.35/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny GlobalScaleFact} & \#0 &    0.6750 $\pm$    0.7928 &   -0.8595 & {\tiny $\sim$ }0 &    1.0044 & Variable \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at 1) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|rrrr|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & OffDiag\\
+\hline
+X2 / X1 &  0 &      0.036 &  \colorbox{Yellow1}{    0.060} &  0 &  \colorbox{Yellow1}{    0.096} \\
+X3 / X1 &  0 &      0.005 &  0 &  0 &      0.005 \\
+X3 / X2 &  0 &     -0.047 &     -0.046 &     -0.008 &     -0.101 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & \multirow{2}{*}{    -0.006} & \multirow{2}{*}{     0.014} & \multirow{2}{*}{    -0.008} & GlobFact\\
+ & & & & &  {\tiny $\sim$ }0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by global factor). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &  \colorbox{Green1}{$      0.07$} &  \colorbox{Green1}{$      0.06$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Green1}{$      0.07$} &       0.05 &  \colorbox{Green1}{$      0.04$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.06$} &  \colorbox{Green1}{$      0.04$} &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &  \colorbox{Green1}{$      0.03$} &  \colorbox{Green1}{$      0.06$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Green1}{$      0.03$} &       0.01 &  \colorbox{Green1}{$      0.02$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.06$} &  \colorbox{Green1}{$      0.02$} &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &  \colorbox{Green1}{$      0.05$} &  0 \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Green1}{$      0.05$} &       0.01 &  \colorbox{Green1}{$      0.02$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Green1}{$      0.02$} &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  \colorbox{Green1}{$ {\scriptstyle \sim }0$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Green1}{$ {\scriptstyle \sim }0$} &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Minimize correlations by one factor per error source.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &      -2.33 &       6.48 &       0.74 &       2.22 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &      96.59 &      98.43 &      70.71 &      92.29 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &       5.74 &      27.23 &       0.96 &       5.48 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &     -32.15 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.37 $\pm$       0.23 &     100.00 &     100.00 &      72.41 &     100.00 &       0.16 &       0.12 &       0.10 &       0.05\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.35/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny Stat} & \#0 &    1.0000 $\pm$ N/A & 0 & 0 & 0 & FIXED \\
+ {\tiny Sys1} & \#1 &    1.0000 $\pm$    0.8859 &   -0.4073 &   -0.0185 &    0.3871 & Variable \\
+ {\tiny Sys2} & \#2 &    0.3547 $\pm$    0.7867 &   -0.4081 & {\tiny $\sim$ }0 &    0.5853 & Variable \\
+ {\tiny Sys3} & \#3 &    1.0000 $\pm$    0.8761 &   -0.0441 &   -0.0091 &    0.0321 & Variable \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at 1) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|rrrr|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & OffDiag\\
+\hline
+X2 / X1 &  0 &      0.037 &      0.022 &  0 &  \colorbox{Yellow1}{    0.059} \\
+X3 / X1 &  0 &      0.004 &  0 &  0 &      0.004 \\
+X3 / X2 &  0 &     -0.063 &     -0.022 &     -0.010 &     -0.095 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & \multirow{2}{*}{    -0.021} & \multirow{2}{*}{ {\tiny $\sim$ }0} & \multirow{2}{*}{    -0.010} & GlobFact\\
+ & & & & &     -0.032 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by error source). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &  \colorbox{Green1}{$      0.07$} &  \colorbox{Green1}{$      0.08$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Green1}{$      0.07$} &       0.05 &  \colorbox{Green1}{$      0.04$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.08$} &  \colorbox{Green1}{$      0.04$} &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &  \colorbox{Green1}{$      0.04$} &  \colorbox{Green1}{$      0.08$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Green1}{$      0.04$} &       0.01 &  \colorbox{Green1}{$      0.03$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.08$} &  \colorbox{Green1}{$      0.03$} &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &  \colorbox{Cyan1}{$      0.02$} &  0 \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Cyan1}{$      0.02$} &       0.01 &  \colorbox{Cyan1}{$      0.01$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Cyan1}{$      0.01$} &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  \colorbox{Green1}{$ {\scriptstyle \sim }0$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Green1}{$ {\scriptstyle \sim }0$} &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Minimize correlations by one factor per off-diagonal element.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &  {\tiny $\sim$ }0 &       6.59 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &     100.00 &     100.00 &      70.24 &     100.00 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &  {\tiny $\sim$ }0 &      27.67 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &     -34.25 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.35 $\pm$       0.23 &     100.00 &     100.00 &      70.24 &     100.00 &       0.16 &       0.12 &       0.10 &       0.04\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.50/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|c|c|c|ccc|c|}
+\hline
+Parameter name & ParID & Parameter value &\multicolumn{3}{|c|}{1/I$^\mathrm{nom}$*dI/dX} & Fixed or\\
+ & & ScaleFactor X @MIN & @0 & @MIN & @1 & Variable\\
+\hline
+ {\tiny X2/X1} & \#0 &    0.4649 $\pm$    0.7236 &   -0.2427 & {\tiny $\sim$ }0 &    0.6406 & Variable \\
+ {\tiny X3/X1} & \#1 &    1.0000 $\pm$    0.8525 &   -0.0508 & {\tiny $\sim$ }0 &   -0.0477 & Variable \\
+ {\tiny X3/X2} & \#2 &    0.8377 $\pm$    0.8848 &   -0.5659 & {\tiny $\sim$ }0 &    0.4115 & Variable \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I$^\mathrm{nom}$*dI/dX (before and after minimization) and minimization results.  The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to the corresponding nominal correlation, and all normalized by the information I$^\mathrm{nom}$ at nominal correlations (''@1''). They are computed at three different values of the scale factors X: for nominal values of all correlations (i.e. when all scale factors are 1: ''@1''), for correlations all equal to zero (i.e. when all scale factors are 0: ''@0'') and for the scale factors minimizing Fisher information (''@MIN''). In the minimization, the scale factors X were varied (between 0 and 1, starting at onionized covariances) unless dI/dX@0 == dI/dX@1 == 0. A minimum was found in this minimization.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|rrrr|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & OffDiag\\
+\hline
+X2 / X1 &  0 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &  0 &  {\tiny $\sim$ }0 \\
+X3 / X1 &  0 &  {\tiny $\sim$ }0 &  0 &  0 &  {\tiny $\sim$ }0 \\
+X3 / X2 &  0 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 &  {\tiny $\sim$ }0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ {\tiny $\sim$ }0} & \multirow{2}{*}{ {\tiny $\sim$ }0} & \multirow{2}{*}{ {\tiny $\sim$ }0} & GlobFact\\
+ & & & & &  {\tiny $\sim$ }0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in minimization by off-diagonal elements). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &  \colorbox{Cyan1}{$      0.05$} &  \colorbox{Green1}{$      0.08$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Cyan1}{$      0.05$} &       0.05 &  \colorbox{Green1}{$      0.05$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.08$} &  \colorbox{Green1}{$      0.05$} &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &  \colorbox{Cyan1}{$      0.02$} &  \colorbox{Green1}{$      0.08$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Cyan1}{$      0.02$} &       0.01 &  \colorbox{Green1}{$      0.02$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.08$} &  \colorbox{Green1}{$      0.02$} &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &  \colorbox{Cyan1}{$      0.03$} &  0 \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Cyan1}{$      0.03$} &       0.01 &  \colorbox{Green1}{$      0.02$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Green1}{$      0.02$} &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  \colorbox{Green1}{$ {\scriptstyle \sim }0$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Green1}{$ {\scriptstyle \sim }0$} &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Remove measurements with negative central value weights.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X2 &     172.35 $\pm$       0.23 &     100.00 &     100.00 &     100.00 &     100.00 &       0.16 &       0.12 &       0.10 &       0.04\\
+Correlations & --- & --- &  0 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.35 $\pm$       0.23 &     100.00 &     100.00 &     100.00 &     100.00 &       0.16 &       0.12 &       0.10 &       0.04\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof= 0/0).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|c|cccc|c|}
+\hline
+N {\tiny meas} & \multicolumn{3}{c|}{Measurement removed in iteration} & \multirow{2}{*}{BLUE} & \multirow{2}{*}{\tiny Stat} & \multirow{2}{*}{\tiny Sys1} & \multirow{2}{*}{\tiny Sys2} & \multirow{2}{*}{\tiny Sys3} & \multirow{2}{*}{\tiny$\chi^2$/ndof}\\
+\cline{2-4}
+{\tiny in BLUE} & Removed & CVW/\% & MIW/\% & & & & & & \\\hline
+3 & X3 &     -12.06 &       3.57 &     172.28 $\pm$      0.21 &       0.20 &       0.08 &       -nan &       0.03 &       1.91/2 \\
+2 & X1 &      -9.69 &      11.15 &     172.34 $\pm$      0.21 &       0.18 &       0.10 &       0.04 &       0.04 &       0.04/1 \\
+\hline
+1 & {\em NONE} & N/A & N/A & 
+    172.35 $\pm$      0.23 &       0.16 &       0.12 &       0.10 &       0.04 &  0/0 \\
+\hline
+\end{tabular}
+\caption{From the original combination of 3 with nominal correlations, a new combination where all remaining 1 measurements have central value weights CVW$>$0 was derived by removing measurements iteratively. At each step of the iteration, the measurement with the most negative CVW$<=$0 in the combination with N measurements was removed until all remainining measurements had CVW$>$0 in the combination of N-1 measurements. For each iteration and for the final result, the results of the BLUE and the name, CVW and MIW of the measurement removed in that iteration are displayed.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|rrrr|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & OffDiag\\
+\hline
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ 0} & GlobFact\\
+ & & & & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in combination with CVW$>$0 measurements). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|c}
+ & \mathrm{X2} \\
+\hline
+\mathrm{X2} \hspace*{2pt} &       0.05 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|c}
+ & \mathrm{X2} \\
+\hline
+\mathrm{X2} \hspace*{2pt} &       0.03 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|c}
+ & \mathrm{X2} \\
+\hline
+\mathrm{X2} \hspace*{2pt} &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|c}
+ & \mathrm{X2} \\
+\hline
+\mathrm{X2} \hspace*{2pt} &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|c}
+ & \mathrm{X2} \\
+\hline
+\mathrm{X2} \hspace*{2pt} &  {\scriptstyle \sim }0 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Onionize correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &       2.49 &       6.08 &       0.99 &       2.49 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &      84.54 &      92.25 &      71.51 &      84.54 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &      12.97 &      25.52 &       6.03 &      12.97 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &     -23.85 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.41 $\pm$       0.22 &     100.00 &     100.00 &      78.53 &     100.00 &       0.14 &       0.12 &       0.11 &       0.04\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      1.09/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|rrrr|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & OffDiag\\
+\hline
+X2 / X1 &  0 &     -0.013 &     -0.009 &  0 &     -0.022 \\
+X3 / X1 &  0 &     -0.008 &  0 &  0 &     -0.008 \\
+X3 / X2 &  0 &     -0.066 &     -0.046 &     -0.007 &     -0.120 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & \multirow{2}{*}{    -0.087} & \multirow{2}{*}{    -0.055} & \multirow{2}{*}{    -0.007} & GlobFact\\
+ & & & & &     -0.149 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: correlations in onionization 1st recipe). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &  \colorbox{SkyBlue1}{$      0.02$} &  \colorbox{Green1}{$      0.06$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{SkyBlue1}{$      0.02$} &       0.05 &  \colorbox{Cyan1}{$      0.03$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.06$} &  \colorbox{Cyan1}{$      0.03$} &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &  \colorbox{Cyan1}{$      0.01$} &  \colorbox{Green1}{$      0.06$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{Cyan1}{$      0.01$} &       0.01 &  \colorbox{Green1}{$      0.01$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{Green1}{$      0.06$} &  \colorbox{Green1}{$      0.01$} &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &  \colorbox{SkyBlue1}{$      0.01$} &  0 \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{SkyBlue1}{$      0.01$} &       0.01 &  \colorbox{Cyan1}{$      0.01$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Cyan1}{$      0.01$} &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  \colorbox{Cyan1}{$ {\scriptstyle \sim }0$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{Cyan1}{$ {\scriptstyle \sim }0$} &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\subsection{Zero correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &       4.91 &       4.91 &       4.91 &       4.91 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &      74.49 &      74.49 &      74.49 &      74.49 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &      20.61 &      20.61 &      20.61 &      20.61 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &  0 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.45 $\pm$       0.20 &     100.00 &     100.00 &     100.00 &     100.00 &       0.13 &       0.10 &       0.10 &       0.04\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      0.85/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|r|rrrr|r|}
+\hline
+ OffDiag \& ErrSrc & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3} & OffDiag\\
+\hline
+X2 / X1 &  0 &  0 &  0 &  0 &  0 \\
+X3 / X1 &  0 &  0 &  0 &  0 &  0 \\
+X3 / X2 &  0 &  0 &  0 &  0 &  0 \\
+\hline
+\multirow{2}{*}{ErrSrc} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ 0} & \multirow{2}{*}{ 0} & GlobFact\\
+ & & & & &  0 \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Normalised Fisher information derivatives 1/I*dI/dX for the combination under consideration. The derivatives in the table are computed with respect to scale factors X, representing the ratio of a given correlation to its "current" value in the combination under consideration, and all normalized by the information I for the "current" values of correlations. They are computed for the "current" values of correlations (in this case: zero correlations). Color boxes indicate normalised derivatives greater than 0.05 (yellow), 0.10 (orange) and 0.15 (red). The last column and last row list information derivatives when the same rescaling factor is used for a given off-diagonal element or error source, which are equal to the sums of individual derivatives in each row and column, respectively.}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &       0.05 &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources). Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &       0.01 &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{X3} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &  \colorbox{SkyBlue1}{$ 0$} &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &  \colorbox{SkyBlue1}{$ 0$} &  0 \\
+\mathrm{X2} \hspace*{2pt} &  \colorbox{SkyBlue1}{$ 0$} &       0.01 &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{SkyBlue1}{$ 0$} &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  \colorbox{SkyBlue1}{$ 0$} \\
+\mathrm{X3} \hspace*{2pt} &  0 &  \colorbox{SkyBlue1}{$ 0$} &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3. Color boxes indicate covariances lower than nominal values by a factor up to 2 (green), up to 3 (cyan) or greater than 3 (blue).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}

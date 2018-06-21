@@ -1,0 +1,216 @@
+\section{Nominal correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &       5.28 &       4.71 &       5.54 &       5.28 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &      75.70 &      71.47 &      78.73 &      75.70 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &      19.02 &      19.77 &      17.41 &      19.02 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &       4.05 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.44 $\pm$       0.19 &     100.00 &     100.00 &     101.68 &     100.00 &       0.13 &       0.15 &       -nan &       0.01\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      0.85/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &      -0.03 &       0.08 \\
+\mathrm{X2} \hspace*{2pt} &      -0.03 &       0.05 &  {\scriptstyle \sim }0 \\
+\mathrm{X3} \hspace*{2pt} &       0.08 &  {\scriptstyle \sim }0 &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &       0.04 &       0.08 \\
+\mathrm{X2} \hspace*{2pt} &       0.04 &       0.01 &       0.03 \\
+\mathrm{X3} \hspace*{2pt} &       0.08 &       0.03 &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &      -0.07 &  0 \\
+\mathrm{X2} \hspace*{2pt} &      -0.07 &       0.01 &      -0.03 \\
+\mathrm{X3} \hspace*{2pt} &  0 &      -0.03 &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  {\scriptstyle \sim }0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\clearpage
+\section{Modified correlations.}
+\subsection{Zero correlations.}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{|lc|c|c|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Measurements} & CVW/\%  & IIW/\%  & MIW/\%  & RI/\%  & {\tiny Stat} & {\tiny Sys1} & {\tiny Sys2} & {\tiny Sys3}\\
+\hline
+X1 &     172.50 $\pm$       0.89 &       4.91 &       4.91 &       4.91 &       4.91 &       0.43 &       0.35 &       0.69 &  0\\
+X2 &     172.35 $\pm$       0.23 &      74.49 &      74.49 &      74.49 &      74.49 &       0.16 &       0.12 &       0.10 &       0.04\\
+X3 &     172.80 $\pm$       0.43 &      20.61 &      20.61 &      20.61 &      20.61 &       0.19 &       0.24 &       0.28 &       0.12\\
+Correlations & --- & --- &  0 & --- & --- & --- & --- & --- & ---\\
+\hline
+BLUE {\tiny x} &     172.45 $\pm$       0.20 &     100.00 &     100.00 &     100.00 &     100.00 &       0.13 &       0.10 &       0.10 &       0.04\\
+\hline
+\end{tabular}
+\caption{BLUE of the combination ($\chi^2$/ndof=      0.85/2).
+ For each input measurement $i$ the following are listed: the central value weight CVW$_i$ or $\lambda_i$, the intrinsic information weight IIW$_i$ , the marginal information weight MIW$_i$, the relative importance RI$_i$. The intrinsic information weight IIW$_{\mathrm{corr}}$ of correlations is also shown on a separate row.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.78 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.05 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.19 \\
+\end{array}\right)\end{math}
+\caption{Full input covariance between measurements (summed over error sources).}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.18 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.03 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.04 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#0: Stat.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.12 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.01 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.06 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#1: Sys1.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &       0.48 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &       0.01 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.08 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#2: Sys2.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}
+\begin{table}[H]
+\scriptsize
+\begin{center}
+\renewcommand{\arraystretch}{1.1}
+\begin{math}\left(\begin{array}{c|ccc}
+ & \mathrm{X1} & 
+\mathrm{X2} & 
+\mathrm{X3} \\
+\hline
+\mathrm{X1} \hspace*{2pt} &  0 &  0 &  0 \\
+\mathrm{X2} \hspace*{2pt} &  0 &  {\scriptstyle \sim }0 &  0 \\
+\mathrm{X3} \hspace*{2pt} &  0 &  0 &       0.01 \\
+\end{array}\right)\end{math}
+\caption{Partial input covariance between measurements. Error source \#3: Sys3.}
+\renewcommand{\arraystretch}{1}
+\end{center}
+\end{table}

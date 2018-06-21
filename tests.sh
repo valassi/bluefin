@@ -29,11 +29,13 @@ dataDirs="$dataDirs examples/dataTOP"
 dataDirs="$dataDirs examples/dataXSE"
 dataDirs="$dataDirs examples/dataSWW"
 dataDirs="$dataDirs examples/dataBRW"
-
-minOpts=
-###minOpts=-M4
+dataDirs="$dataDirs examples/dataMIS"
 
 for dataDir in $dataDirs; do
+
+  minOpts=
+  ###minOpts=-M4
+  ###if [ "$dataDir" == "examples/dataMIS" ]; then minOpts=-M0; fi
 
   dataDir=`cd $dataDir; pwd`
   files=`cd $dataDir; \ls *.bfin`
