@@ -25,6 +25,6 @@
 #endif
 
 // Include files
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 #endif // BLUEFIN_BOOSTBINDHEADERS_H

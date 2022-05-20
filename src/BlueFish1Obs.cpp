@@ -176,8 +176,8 @@ BlueFish1Obs::onionizeCorrsByErrorSourceBF1( bool rc, std::ostream* ptStr ) cons
 #endif
       }
       std::sort( pairs.begin(), pairs.end(),
-                 boost::bind( &std::pair<size_t, Number>::second, _1) >
-                 boost::bind( &std::pair<size_t, Number>::second, _2) );
+                 boost::bind( &std::pair<size_t, Number>::second, boost::placeholders::_1) >
+                 boost::bind( &std::pair<size_t, Number>::second, boost::placeholders::_2) );
       for ( std::vector<std::pair<size_t, Number> >::const_iterator
               pair = pairs.begin(); pair != pairs.end(); pair++ )
         meaByErr.push_back( pair->first );
