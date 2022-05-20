@@ -84,6 +84,10 @@ namespace bluefin
 // Namespace
 using namespace bluefin;
 
+// Ignore snprintf warnings (https://stackoverflow.com/a/51536663)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-truncation"
+
 //-----------------------------------------------------------------------------
 
 InfoMinimizer::~InfoMinimizer()
@@ -1053,3 +1057,6 @@ InfoMinimizer::subMinimizers() const
 }
 
 //-----------------------------------------------------------------------------
+
+// Ignore snprintf warnings (https://stackoverflow.com/a/51536663)
+#pragma GCC diagnostic pop
