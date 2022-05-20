@@ -6,8 +6,12 @@ BlueFin is a software package for Best Linear Unbiased Estimate Fisher Informati
 
 ## Download
 
+The central software repository for this package is now hosted on https://github.com/valassi/bluefin.
+
+An older mirror (which may not be up to date) is still kept on https://gitlab.cern.ch/valassi/bluefin.
+
 To download the latest version of the software:
-- `git clone https://:@gitlab.cern.ch:8443/valassi/bluefin.git`
+- `git clone git@github.com:valassi/bluefin.git`
 
 ## Build
 
