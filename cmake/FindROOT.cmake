@@ -58,7 +58,7 @@ endif()
 INCLUDE(FindPackageHandleStandardArgs)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(ROOT DEFAULT_MSG ${_root_required_vars})
 mark_as_advanced(ROOT_FOUND ROOTSYS ROOT_INCLUDE_DIR)
-find_package(tbb)
+find_package(TBB)
 ######################################################################
 # Report findings
 if(ROOT_FOUND)
