@@ -27,6 +27,7 @@ This option is supported on SLC6 and CC7 machines with cvmfs installed, such as 
 
 Set up the LCG views appropriate to your O/S, build the software and set up its runtime environment:
 ```bash
+bash
 . setupLCG.sh
 make 
 eval `make -f ./Makefile setup_sh`
@@ -34,7 +35,7 @@ eval `make -f ./Makefile setup_sh`
 
 This will create all relevant libraries and binaries in a separate build directory:
 - `build.x86_64-slc6-gcc493-opt` on slc6, using the LCG view `/cvmfs/sft.cern.ch/lcg/views/LCG_72a/x86_64-slc6-gcc49-opt`
-- `build.x86_64-centos7-gcc620-opt` on centos7, using the LCG view `/cvmfs/sft.cern.ch/lcg/views/LCG_93/x86_64-centos7-gcc62-opt`
+- `build.x86_64-centos7-gcc1030-opt` on centos7, using the LCG view `/cvmfs/sft.cern.ch/lcg/views/LCG_101/x86_64-centos7-gcc10-opt`
 
 It will also add the build directory to the `$PATH` and `$LD_LIBRARY_PATH` environment variables.
 
@@ -47,14 +48,15 @@ You need to use a compiler and a set of compilation options compatible with thos
 The following example uses ninja instead of GNU make.
 
 ```bash
-. /cvmfs/sft.cern.ch/lcg/contrib/gcc/6.2binutils/x86_64-centos7/setup.sh
-export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.6.0/Linux-x86_64/bin:${PATH}
-export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.4.0/x86_64-slc6:${PATH}
-export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/Boost/1.66.0/x86_64-centos7-gcc62-opt/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/ROOT/6.12.06/x86_64-centos7-gcc62-opt/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/tbb/2018_U1/x86_64-centos7-gcc62-opt/lib:${LD_LIBRARY_PATH}
-export CMAKE_PREFIX_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/Boost/1.66.0/x86_64-centos7-gcc62-opt:${CMAKE_PREFIX_PATH}
-export CMAKE_PREFIX_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_93/ROOT/6.12.06/x86_64-centos7-gcc62-opt:${CMAKE_PREFIX_PATH}
+bash
+. /cvmfs/sft.cern.ch/lcg/contrib/gcc/10.3.0/x86_64-centos7/setup.sh
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.23.1/Linux-x86_64/bin:${PATH}
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.10.0/Linux-x86_64:${PATH}
+export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_101/Boost/1.77.0/x86_64-centos7-gcc10-opt/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_101/ROOT/6.24.06/x86_64-centos7-gcc10-opt/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_101/tbb/2020_U2/x86_64-centos7-gcc10-opt/lib:${LD_LIBRARY_PATH}
+export CMAKE_PREFIX_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_101/Boost/1.77.0/x86_64-centos7-gcc10-opt:${CMAKE_PREFIX_PATH}
+export CMAKE_PREFIX_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_101/ROOT/6.24.06/x86_64-centos7-gcc10-opt:${CMAKE_PREFIX_PATH}
 export CMAKEFLAGS="-GNinja -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_CXX_FLAGS='-std=c++14 -m64' -DCMAKE_BUILD_TYPE=Release"
 export VERBOSE=1
 make

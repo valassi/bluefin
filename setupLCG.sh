@@ -40,8 +40,8 @@ CMAKE_CXX_FLAGS="-m64"
 
 # Set up ninja and CMake just in case
 # (On centos7 they are taken from the LCG views, but not on slc6)
-export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.6.0/Linux-x86_64/bin:${PATH}
-export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.4.0/x86_64-slc6:${PATH}
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/CMake/3.23.1/Linux-x86_64/bin:${PATH}
+export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.10.0/Linux-x86_64:${PATH}
 
 # Set CMAKE_BUILD_TYPE from the LCG build mode
 if [ "${lcg_mode}" == "opt" ]; then
@@ -65,16 +65,18 @@ if [ "${lcg_os}" == "slc6" ]; then
   lcg_system=${lcg_arch}-${lcg_os}-${lcg_compiler}-${LCG_mode}
   . ${lcgviews}/LCG_72a/${lcg_system}/setup.sh
 elif [ "${lcg_os}" == "centos7" ]; then
-  lcg_compiler=gcc62
+  lcg_compiler=gcc10
   lcg_system=${lcg_arch}-${lcg_os}-${lcg_compiler}-${LCG_mode}
-  . ${lcgviews}/LCG_93/${lcg_system}/setup.sh
+  . ${lcgviews}/LCG_101/${lcg_system}/setup.sh
 else
   echo "ERROR! Unknown O/S ${lcg_os}"
   return 1
 fi
 
 # Set the build flags (C++ std) appropriate to each compiler in LCG views
-if [[ ${lcg_compiler} == *gcc6* ]]; then
+if [[ ${lcg_compiler} == *gcc10* ]]; then
+  CMAKE_CXX_FLAGS="-std=c++14 ${CMAKE_CXX_FLAGS}"
+elif [[ ${lcg_compiler} == *gcc6* ]]; then
   CMAKE_CXX_FLAGS="-std=c++14 ${CMAKE_CXX_FLAGS}"
 elif [[ ${lcg_compiler} == *gcc5* ]]; then
   CMAKE_CXX_FLAGS="-std=c++14 ${CMAKE_CXX_FLAGS}"
