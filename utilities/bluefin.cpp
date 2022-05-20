@@ -355,6 +355,9 @@ int main( int argc, char** argv )
         {
           std::cerr << cmd << std::endl;
           std::cerr << "ERROR! pdflatex (1st pass) failed!" << std::endl;
+          cmd = "cd " + texFileDir + ";";
+          cmd += "grep -i error " + tmpFileNameNoDir;
+          ::system( cmd.c_str() );
           return 1;
         }
         // Execute pdflatex again
