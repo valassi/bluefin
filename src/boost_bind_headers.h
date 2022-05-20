@@ -1,6 +1,6 @@
 //============================================================================
 //
-// Copyright 2012-2018 CERN
+// Copyright 2012-2022 CERN
 //
 // This file is part of the BlueFin software. BlueFin is distributed under
 // the terms of the GNU General Public License version 3 (GPL Version 3),
@@ -9,7 +9,7 @@
 // as an Intergovernmental Organization or submit itself to any jurisdiction.
 //
 // Original author of the software:
-//   * Andrea Valassi (CERN) 2012 - 2015
+//   * Andrea Valassi (CERN) 2012-2022
 //
 // Based on ideas (http://arxiv.org/abs/1307.4003) by:
 //   * Andrea Valassi (CERN)
